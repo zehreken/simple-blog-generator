@@ -7,19 +7,17 @@ fn main() {
         .expect("'posts' directory is not found")
         .map(|res| res.map(|e| e.path()))
         .collect::<Result<Vec<_>, io::Error>>()
-        .expect("");
+        .expect("Error collecting entriescar");
 
     entries.sort();
 
     for entry in entries {
         let mut path = entry;
-        // let filename = "2018-11-22-collections-in-dotnet.markdown";
+        // This filters .DS_Store
         if let Some(_) = path.extension() {
             let contents =
                 fs::read_to_string(path.clone()).expect("Something went wrong reading the file");
-            // println!("Markdown text:\n{}", contents);
-            // let filestring = path.into_os_string().into_string().unwrap();
-            // let a: Vec<&str> = filestring.split('.').collect();
+
             test_markdown(contents.as_str(), &mut path);
         }
     }
@@ -32,6 +30,7 @@ fn test_markdown(markdown: &str, path: &mut PathBuf) {
     // and we therefore must enable it explicitly.
     let mut options = Options::empty();
     options.insert(Options::ENABLE_STRIKETHROUGH);
+    options.insert(Options::ENABLE_TABLES);
     let parser = Parser::new_ext(markdown, options);
 
     // Write to String buffer.
@@ -40,11 +39,9 @@ fn test_markdown(markdown: &str, path: &mut PathBuf) {
     // println!("{}", html_output);
 
     let r = fs::create_dir("site");
-    let r = match r {
+    let _r = match r {
         Ok(_) => (),
-        Err(error) => {
-            println!("{:?}", error)
-        },
+        Err(error) => println!("{:?}", error),
     };
 
     let file_name = path.file_stem().unwrap();

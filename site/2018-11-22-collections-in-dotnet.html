@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
 <hr />
 <h2>layout: post
 title: Collections in .NET</h2>
@@ -24,14 +29,15 @@ I use Queue type to order user input as commands to make sure that they are alwa
 All of the collections has a method to add a new element and luckily they all have a method to check if an elements exists in it or not.
 I have based my tests on these two properties.
 The size of each collection is 10000 and the tick counts below are the averages of 1000 repeats.</p>
-<p>| type | add | reach |
-| --- | --- | --- |
-| Dictionary | 2408.91 | 22.11 |
-| HashSet | 4594.83 | 21.97 |
-| LinkedList | 2735.02 | 7244.52 |
-| List | 607.61 | 6924.83 |
-| Queue | 394.46 | 14394.67 |
-| Stack | 350.45 | 9107.59 |</p>
+<table><thead><tr><th>type</th><th>add</th><th>reach</th></tr></thead><tbody>
+<tr><td>Dictionary</td><td>2408.91</td><td>22.11</td></tr>
+<tr><td>HashSet</td><td>4594.83</td><td>21.97</td></tr>
+<tr><td>LinkedList</td><td>2735.02</td><td>7244.52</td></tr>
+<tr><td>List</td><td>607.61</td><td>6924.83</td></tr>
+<tr><td>Queue</td><td>394.46</td><td>14394.67</td></tr>
+<tr><td>Stack</td><td>350.45</td><td>9107.59</td></tr>
+</tbody></table>
 <p>Also test <strong>capacity</strong> property.</p>
 <h3>Conclusion</h3>
 <p>Write conclusion</p>
+</html>
