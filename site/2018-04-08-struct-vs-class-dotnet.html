@@ -9,15 +9,16 @@ Everybody should and probably do know by heart that, struct is a <em>value type<
 The things is most people do not know what this means and what are the effects.
 I am going to give some examples to explain these effects.</p>
 <ul>
-<li>The <strong>new</strong> keyword. You can create a struct without using the <strong>new</strong> keyword, but then you need to assign all of the fields manually</li>
-</ul>
-<pre><code>struct MyStruct
+<li>The <strong>new</strong> keyword. You can create a struct without using the <strong>new</strong> keyword, but then you need to assign all of the fields manually
+{% highlight ruby %}
+struct MyStruct
 {
-	public int a;
+public int a;
 }
 MyStruct myStruct;
 myStruct.a = 1; // Don't do this and you are going to get a compile error
-</code></pre>
+{% endhighlight %}</li>
+</ul>
 <p>If you use the new keyword, then the fields will be assigned to their default values. (e.g. 0 for int)</p>
 <ul>
 <li>

@@ -1,0 +1,35 @@
+<hr />
+<h2>layout: post
+title: Fuzzy Logic Essentials</h2>
+<p><strong>Hello</strong> again, as I mentioned in the previous post, I’ve developed a simple application about essentials of fuzzy logic and I will try to explain them. I strongly suggest you reading the previous post to get a brief information about fuzzy logic. You can also download the source files.</p>
+<p>We said, in fuzzy logic, an element can <strong>partially</strong> belong to a set, a fuzzy set, unlike in traditional logic. Let’s see how. In the application below there are ten black circles and a green circle. Let’s assume they are some kind of living creatures, maybe bacterias, and the green one eats the black ones to survive. The question is, how it decides which black one to eat. The green bacteria or circle or thing, whatever you call, only minds the distance and size of the black bacterias, and it likes the close and midsized ones. So, we have two <strong>fuzzy variables</strong>, first one is closeness and second one is midsized-ness, thereby we have two <strong>fuzzy sets</strong>, closeness and midsized-ness fuzzy sets. This is one of the main characteristics of fuzzy logic, we can express <strong>numerical variables as linguistic variables</strong>, e.g. very close, not so close…</p>
+<p><img src="/assets/2010/fuzzy_logic_essentials_chart.jpg" alt="Alt text" /></p>
+<h6>Black bacterias’ degrees of membership to the closeness fuzzy set</h6>
+<p>The graph above shows the <strong>degrees of membership</strong> of the black ones to the closeness fuzzy set according to their distance to the green one. As you see, the closest one has the highest degree of membership and the farmost one has the lowest.</p>
+<p>{% highlight ruby %}
+private function calculateDistance():void
+{
+for (i = 0; i &lt; smallBacteriaArray.length; i++)
+{
+distance = Math.sqrt(Math.pow((this.x - smallBacteriaArray[i].x), 2) + Math.pow((this.y - smallBacteriaArray[i].y), 2)); //simple formula to calcute the distance between two points
+if (distance &gt; 250)
+{
+closenessArray[i] = 0; //if the distance is greater than 250 pixels, the degree of membership to the closeness fuzzy set is 0
+}
+else
+{
+distance /= 250; //normalizing values
+distance = 1 - distance; 
+closenessArray[i] = Math.pow(distance, 2);
+}
+}
+}
+{% endhighlight %}</p>
+<p>To calculate the degrees of membership to the midsized-ness fuzzy set, the process is very similar to the one above. Alright, we have calculated the degrees of membership but how do we use them? In practice we can use these membership values to decide or to make something decide. For example if you are interested in something that is close to you then you should choose the one which has the greatest degree of membership to the closeness fuzzy set. Programming with fuzzy logic is like having <strong>unlimited number of if clauses but with high performance</strong>.</p>
+<p><object width="500" height="500" data="/assets/2010/fuzzy_logic_essentials.swf"></object></p>
+<h6>Fuzzy logic essentials</h6>
+<p>As I mentioned before, there are two fuzzy variables in the application above, one is closeness and the other is midsized-ness. The green bacteria calculates the membership values for both the closeness and midsized-ness fuzzy sets and then decides which black bacteria to eat. Let’s say, for black bacteria #2, the closeness value is .55 (this means <strong>not so close</strong>), midsized-ness value is 1 (this means bacteria #2 is half the size of green bacteria, <strong>exactly midsized</strong>) and the total is 1.55, for black bacteria #6, the closeness value is .85 (this means <strong>very close</strong>), midsized-ness value is .8 (this means <strong>nearly midsized</strong>) and the total is 1.65. In this case #6 is more suitable than #2 to eat (1.65 &gt; 1.55). If you increase the weight of midsized-ness by one(this means midsized-ness is <strong>two times more important</strong> than closeness), the total value for #2 becomes .55 + 2 * 1 = 2.55 and the total value for #6 becomes .85 + 2 * .8 = 2.45. In this case #2 is more suitable than #6 (2.55 &gt; 2.45).</p>
+<h3>Instructions</h3>
+<p>You can start and stop the application using run/stop button. Use &lt; &gt; buttons to choose the fuzzy variable, and – + to change the weight of the chosen fuzzy variable. Remember that, if you set the weight of the fuzzy variable to 0, the fuzzy variable loses its importance.</p>
+<p>If you think that this article is wrong or missing, or maybe you have a question, please feel free to send me a message.</p>
+<p><a href="/assets/2010/fuzzy_logic_essentials_source.zip">download source files</a></p>

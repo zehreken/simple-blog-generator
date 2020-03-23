@@ -1,0 +1,33 @@
+<hr />
+<h2>layout: post
+title: A* Pathfinding Tutorial</h2>
+<p><strong>Hi</strong> there. It has been over a year since my last post, I’ve read some of my old posts and noticed that I have been all whiny about doing something about curve fitting or something like that but things have changed. As the title says, this article is about A* Pathfinding Algorithm. Well, there is a big source on the internet about A* and other pathfinding algorithms, I needed to learn these things because of a tower defense game I’m working on and I have come up with this post. I hope you like it.</p>
+<p>According to Wikipedia, A* Pathfinding Algorithm is first described in 1968 by Peter Hart, Nils Nilsson and Bertram Raphael and is an extension of Edsger Djikstra’s 1959 algorithm. I suggest reading the article about A* Pathfinding on Wikipedia for more information.</p>
+<p>I will try to explain the concept as simple as possible for true beginners like me. So let’s start.</p>
+<p>First of all, we should know about the area we are searching for the shortest path. The area can be a <strong>grid</strong> or a <strong>graph</strong>. Actually this makes no difference.</p>
+<p><img src="/assets/2012/astar_illustration00.png" alt="Alt text" /></p>
+<h6>Here are an illustration of a grid and an illustration of a graph</h6>
+<p>A square in a grid or a circle in a graph is called a node. A node is the most basic element in a search algorithm. We should know well about the nodes. A node has 3 important properties.</p>
+<p><strong>H score</strong>: H is for heuristic. H score is the estimated movement cost from the respective node to the target node.</p>
+<p><strong>G score</strong>: G score is the movement cost from the starting node to the respective node.</p>
+<p><strong>F score</strong>: F score is the sum of G score and H score. <strong>F = G + H</strong></p>
+<h3>Pseudo Algorithm</h3>
+<p>I will to try to explain the algorithm step by step because I think this is the easiest way to do.</p>
+<p><strong>1.</strong> Examine the search area. Define the start and finish nodes. Calculate each H cost (heuristic) from each node to the finish node. Note that, right now all of the G cost values for each node is “0”. You will get a grid like this.</p>
+<p><img src="/assets/2012/astar_illustration01.png" alt="Alt text" /></p>
+<h6>H costs are calculated according to the rule: no diagonal movement</h6>
+<p><strong>2.</strong> Add the start node to the frontier list, right now start node is the only node in the frontier list, so we select the start node as the best node. (minimum F cost)</p>
+<p><strong>3.</strong> Examine each neighbour of the selected node. Since the diagonal movement is forbidden for this example, the neighbours should be the top, bottom, left and right nodes of the selected node.</p>
+<p><strong>4.</strong> Add each neighbour of the selected node to the frontier list. Add 1 to the G cost value of the selected node and assign this value to the G cost values of its neighbours. Remove the selected node from the frontier list and add it to the visited list. By doing this, we won’t get stuck by searching for the same node again and again.</p>
+<p><strong>5.</strong> Remember F = G + H, according to this function now choose the node in the frontier list which has the smallest F cost. Then go to step 3, if you are on the finish node then stop. You have found the shortest path.</p>
+<p>I’ve developed a simple application for the sake of better understanding of A* Pathfinding Algorithm. With the application you can observe and examine how the H, G and F scores change. Because of the lousy interface, once again I need to explain how to use the application.</p>
+<ul>
+<li>“Set Start” button lets you to choose the starting node.</li>
+<li>“Set Finish” button lets you to choose the finish node.</li>
+<li>“Set Obstacle” button lets you to make a node impassable</li>
+<li>“Find Path” button starts the simulation</li>
+<li>“Switch Type” button lets you choose between the step by step and instant simulation types</li>
+</ul>
+<p><object width="500" height="500" data="/assets/2012/a_star_pathfinding.swf"></object></p>
+<p>If you think that this article is wrong or missing, or maybe you have a question, please feel free to send me a message.</p>
+<p><a href="/assets/2012/a_star_pathfinding_source.zip">download source files</a></p>

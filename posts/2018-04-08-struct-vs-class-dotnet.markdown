@@ -12,14 +12,14 @@ The things is most people do not know what this means and what are the effects.
 I am going to give some examples to explain these effects.
 
 * The **new** keyword. You can create a struct without using the **new** keyword, but then you need to assign all of the fields manually
-```
+{% highlight ruby %}
 struct MyStruct
 {
 	public int a;
 }
 MyStruct myStruct;
 myStruct.a = 1; // Don't do this and you are going to get a compile error
-```
+{% endhighlight %}
 
 If you use the new keyword, then the fields will be assigned to their default values. (e.g. 0 for int)
 
