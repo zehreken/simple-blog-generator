@@ -1,9 +1,21 @@
 body {
-    background-color: lightblue;
+    background-color: lightgoldenrodyellow;
     width: 600px;
 }
 
 h1 {
-    color: navy;
+    color: red;
     margin-left: 20px;
+}
+
+h2 {
+    color: red;
+}
+
+h3 {
+    color: blue;
+}
+
+hr {
+    border: 1px solid red;
 }
