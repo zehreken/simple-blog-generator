@@ -5,7 +5,23 @@ use std::path::PathBuf;
 use std::{fs, io};
 
 fn main() {
-    let head_string = fs::read_to_string("head.txt");
+    let test_file = fs::read_to_string("posts/2009-12-15-hello-again.markdown").unwrap();
+    // let post: Post = toml::from_str(
+    //     r#"
+    //     [metadata]
+    //     layout = 'post'
+    //     title = 'Hello Again!'
+    //     [content]
+    //     markdown = '''test
+    //     test'''
+    //     "#,
+    // )
+    // .unwrap();
+    let post: Post = toml::from_str(test_file.as_str()).unwrap();
+
+    println!("{:?}", post);
+    return;
+    let head_string = fs::read_to_string("head.html");
     let head_string = match head_string {
         Ok(file) => file,
         Err(error) => panic!("Error while readin head.txt: {:?}", error),
@@ -43,6 +59,12 @@ fn main() {
 
             let file_name = path.file_stem().unwrap();
             let mut out_path = PathBuf::from("site");
+
+            let file_name_string = String::from(file_name.to_str().unwrap());
+            let words: Vec<&str> = file_name_string.split('-').collect();
+            for i in 0..3 {
+                println!("{}", words[i]);
+            }
             out_path.push(file_name);
             out_path.set_extension("html");
 
@@ -69,4 +91,14 @@ fn to_markdown(markdown: &str) -> String {
     html::push_html(&mut html_output, parser);
 
     html_output
+}
+
+use serde::Deserialize;
+use toml;
+
+#[derive(Debug, Deserialize)]
+struct Post {
+    layout: String,
+    title: String,
+    markdown: String,
 }
