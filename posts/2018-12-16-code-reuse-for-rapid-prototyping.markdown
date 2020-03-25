@@ -1,7 +1,7 @@
----
-layout: post
-title: Code Reuse for Rapid Prototyping
----
+layout = "post"
+title = "Code Reuse for Rapid Prototyping"
+date = "2018-12-16"
+markdown = """
 **Hyper casual games** are today's hottest topic in mobile game development.
 First of all what is an hyper casual game? An hyper casual game is a super simple, easy to play and hard to master, instant play game.
 
@@ -49,3 +49,4 @@ Don't worry about performance of your prototype, if it is playable then the perf
 
 ### Conclusion
 The hyper casual market is already very crowded since it is very easy to create(or clone) an hyper casual game using current game development tools and I personally think that the profits from those games will go down soon. The most important thing to be successful in this genre is being super fast. So be fast, release fast and with a bit of luck and a good partnership with a publisher, you can create the next big hyper casual game.
+"""

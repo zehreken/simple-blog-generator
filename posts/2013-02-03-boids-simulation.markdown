@@ -1,7 +1,7 @@
----
-layout: post
-title: Boids (Flock) Simulation
----
+layout = "post"
+title = "Boids (Flock) Simulation"
+date = "2013-02-03"
+markdown = """
 **In** the previous months, I was searching for some interesting AI algorithms to study and I’ve come across one of the coolest things I’ve ever seen in my life, **Boids Simulation**. Boids simulation or flock simulation is about imitating the behavior of fish schools or any other flocking animal behavior in nature.
 
 It was first introduced by **Craig Reynolds** in 1986, his [website](http://www.red3d.com/cwr/boids/) is a little bit outdated but still has the best information and coolest examples.
@@ -25,3 +25,4 @@ On the top-left corner of the application, there is the user interface. With it,
 If you think that this article is wrong or missing, or maybe you have a question, please feel free to send me a message.
 
 [download source files](/assets/2013/boid_simulation_source.zip)
+"""

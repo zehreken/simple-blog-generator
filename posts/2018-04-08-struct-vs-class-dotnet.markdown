@@ -1,7 +1,7 @@
----
-layout: post
-title: Struct vs. Class in .NET
----
+layout = "post"
+title = "Struct vs. Class in .NET"
+date = "2018-04-08"
+markdown = """
 **Lately**, I've made a very important mistake while using structs in our persistency system(save/load game).
 So I wanted to write this post, which may help others, especially **Unity** developers. Since they mostly use C#
 in their programs.
@@ -81,3 +81,4 @@ RecursiveA(ref ms);
 I think it is clear that a mutable struct is not a good idea. They are good for storing read-only data. Whenever you need mutable data, you should use a class instead of a struct.
 
 If you think that this blog post is wrong or missing, please send me a message.
+"""

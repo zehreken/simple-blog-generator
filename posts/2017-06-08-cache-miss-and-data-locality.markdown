@@ -1,7 +1,7 @@
----
-layout: post
-title: Cache Miss and Data Locality
----
+layout = "post"
+title = "Cache Miss and Data Locality"
+date = "2017-06-08"
+markdown = """
 **Programmers** working in the game industry are proud people. And they (the good ones at least) have the right to be. It is a hard job. We care about performance, and we want our code to be fast - sometimes more than necessary. But we usually look for problems in the wrong places, we try to optimize our code by using faster algorithms but never check or care about where we put our data.
 
 In recent years, the increase in CPU speed compared to the increase in memory speed is enormous. As good as it sounds, it is not actually a good thing. In the past, CPU speed and memory speed were similar and they worked in harmony. But today, because of the speed difference, CPU waits for the memory for data and wastes precious cycles doing nothing.
@@ -140,3 +140,4 @@ It has been a very long time since the hype of Data Oriented Programming, and I 
 You can find the source files in this [file](/assets/2017/dod_tests-master.zip).
 
 If you think that this blog post is wrong or missing, please send me a message.
+"""

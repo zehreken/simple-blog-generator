@@ -19,8 +19,6 @@ fn main() {
     // .unwrap();
     let post: Post = toml::from_str(test_file.as_str()).unwrap();
 
-    println!("{:?}", post);
-    return;
     let head_string = fs::read_to_string("head.html");
     let head_string = match head_string {
         Ok(file) => file,
@@ -54,17 +52,14 @@ fn main() {
             let contents =
                 fs::read_to_string(path.clone()).expect("Something went wrong reading the file");
 
+            let post: Post = toml::from_str(contents.as_str()).unwrap();
             let mut html_output = head_string.clone();
-            html_output = html_output.replace("$content", to_markdown(contents.as_str()).as_str());
+            html_output =
+                html_output.replace("$content", to_markdown(post.markdown.as_str()).as_str());
 
             let file_name = path.file_stem().unwrap();
             let mut out_path = PathBuf::from("site");
 
-            let file_name_string = String::from(file_name.to_str().unwrap());
-            let words: Vec<&str> = file_name_string.split('-').collect();
-            for i in 0..3 {
-                println!("{}", words[i]);
-            }
             out_path.push(file_name);
             out_path.set_extension("html");
 
@@ -100,5 +95,6 @@ use toml;
 struct Post {
     layout: String,
     title: String,
+    date: String,
     markdown: String,
 }

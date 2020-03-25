@@ -1,7 +1,7 @@
----
-layout: post
-title: A* Pathfinding Tutorial
----
+layout = "post"
+title = "A* Pathfinding Tutorial"
+date = "2012-05-24"
+markdown = """
 **Hi** there. It has been over a year since my last post, I’ve read some of my old posts and noticed that I have been all whiny about doing something about curve fitting or something like that but things have changed. As the title says, this article is about A* Pathfinding Algorithm. Well, there is a big source on the internet about A* and other pathfinding algorithms, I needed to learn these things because of a tower defense game I’m working on and I have come up with this post. I hope you like it.
 
 According to Wikipedia, A* Pathfinding Algorithm is first described in 1968 by Peter Hart, Nils Nilsson and Bertram Raphael and is an extension of Edsger Djikstra’s 1959 algorithm. I suggest reading the article about A* Pathfinding on Wikipedia for more information.
@@ -51,3 +51,4 @@ I’ve developed a simple application for the sake of better understanding of A*
 If you think that this article is wrong or missing, or maybe you have a question, please feel free to send me a message.
 
 [download source files](/assets/2012/a_star_pathfinding_source.zip)
+"""

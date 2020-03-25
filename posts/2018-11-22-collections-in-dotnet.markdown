@@ -1,7 +1,7 @@
----
-layout: post
-title: Collections in .NET
----
+layout = "post"
+title = "Collections in .NET"
+date = "2018-11-22"
+markdown = """
 Yesterday, I was surfing on msdn and reading .NET documentation and when I hit the topic **collections** I was surprised that there are some generic collection types that I have never heard of.
 
 It has been 5 years since I started using C# professionally and I have never used their LinkedList and Stack implementations. Whenever I needed a LinkedList I wrote my own or whenever I needed a Stack, I used List as a stack.
@@ -48,3 +48,4 @@ Also test **capacity** property.
 
 ### Conclusion
 Write conclusion
+"""

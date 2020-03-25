@@ -1,7 +1,7 @@
----
-layout: post
-title: Performance Comparison of OOD and ECS Patterns within Unity
----
+layout = "post"
+title = "Performance Comparison of OOD and ECS Patterns within Unity"
+date = "2016-11-07"
+markdown = """
 **For** the last three months at the company, we, programmers, talked, discussed and thought a lot about the architectural design patterns because we wanted to make our individual development approaches alike and we also wanted to be faster. Finally we have decided on using **Entity-Component-System** architecture.
 
 So what is an ECS?
@@ -94,3 +94,4 @@ At the end Entitas and plain OOD is definitely better than using MonoBehaviours 
 In the same sense, for the ones who don't want to use any ECS architecture or plain OOD, having small scripts that extend MonoBehaviours is also better than a huge script that also extends MonoBehaviour.
 
 If you think that this article is wrong or missing, or maybe you have a question, please feel free to send me a message.
+"""
