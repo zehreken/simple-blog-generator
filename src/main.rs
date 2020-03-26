@@ -45,6 +45,7 @@ fn main() {
         Err(error) => println!("{:?}", error),
     };
 
+    let mut index_markdown = String::new();
     for entry in entries {
         let path = entry;
         // This filters .DS_Store
@@ -53,12 +54,21 @@ fn main() {
                 fs::read_to_string(path.clone()).expect("Something went wrong reading the file");
 
             let post: Post = toml::from_str(contents.as_str()).unwrap();
+
             let mut html_output = head_string.clone();
             html_output =
                 html_output.replace("$content", to_markdown(post.markdown.as_str()).as_str());
 
             let file_name = path.file_stem().unwrap();
             let mut out_path = PathBuf::from("site");
+
+            index_markdown.push('[');
+            index_markdown.push_str(post.title.as_str());
+            index_markdown.push(']');
+            index_markdown.push('(');
+            index_markdown.push_str(file_name.to_str().unwrap());
+            index_markdown.push_str(".html");
+            index_markdown.push_str(")<br>");
 
             out_path.push(file_name);
             out_path.set_extension("html");
@@ -69,6 +79,11 @@ fn main() {
                 .expect("Error writing to file");
         }
     }
+
+    let mut index_html = head_string.clone();
+    index_html = index_html.replace("$content", to_markdown(index_markdown.as_str()).as_str());
+    let mut index_file = fs::File::create("site/index.html").unwrap();
+    index_file.write_all(&index_html.into_bytes()).unwrap();
 }
 
 fn to_markdown(markdown: &str) -> String {
