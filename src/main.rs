@@ -3,6 +3,7 @@ use std::io::prelude::*;
 use std::path::Path;
 use std::path::PathBuf;
 use std::{fs, io};
+mod server;
 
 fn main() {
     let test_file = fs::read_to_string("posts/2009-12-15-hello-again.markdown").unwrap();
@@ -89,6 +90,12 @@ fn main() {
     index_html = index_html.replace("$content", to_markdown(index_markdown.as_str()).as_str());
     let mut index_file = fs::File::create("site/index.html").unwrap();
     index_file.write_all(&index_html.into_bytes()).unwrap();
+
+    // Open browser, this works but running this in another thread after making sure 
+    // that serve is started is a better idea
+    std::process::Command::new("open").arg(String::from("http://127.0.0.1:4000")).output();
+    // Start server
+    server::start_server();
 }
 
 fn to_markdown(markdown: &str) -> String {
