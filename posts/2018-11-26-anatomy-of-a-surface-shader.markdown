@@ -8,7 +8,7 @@ I tried to learn shaders several times but didn't succeed a lot honestly. I can 
 
 Let's examine a very simple shader.
 
-{% highlight ruby %}
+```
 Shader "ShaderLib/DiffuseWhite"
 {
     SubShader
@@ -34,16 +34,16 @@ Shader "ShaderLib/DiffuseWhite"
         ENDCG
     }
 }
-{% endhighlight %}
+```
 
 This is a **surface** shader. Because it uses the surface function defined in this line.
-{% highlight ruby %}
+```
 #pragma surface surf Lambert
-{% endhighlight %}
+```
 The name _surf_ is defined in this line as well, so if you want to use another name for your surface function, you can define it like this
-{% highlight ruby %}
+```
 #pragma surface function_name Lambert
-{% endhighlight %}
+```
 
 Surface function has two parameters, first one is input and second one is output. Surface function takes the input parameter and modifies the output accordingly. Albedo represents the diffuse color. Currently diffuse color is white.
 """

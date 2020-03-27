@@ -8,7 +8,7 @@ Finding a word in the dictionary in a quick and efficient way is really importan
 
 Then we decided to let the player use an unlimited number of wildcards and things started to get nasty. We realized that the search count would increase exponentially according to the number of wildcards used. For example if the player uses 1 wildcard, the number of searches performed becomes 26, if the player uses 2 wildcards the number of searches performed becomes 26^2=676, if the player uses 3 wildcards the number of searches we perform becomes 26^3=17576 etc. As you can see when the player uses n wildcards, the number of searches done is 26^n which is unacceptable. However, as a sane programmer I could not decide on anything before doing some tests. I implemented the feature and calculated the cartesian product of the letters in the English alphabet.
 
-{% highlight ruby %}
+```
 private static List<string> CartesianProduct(List<string> sourceOne, List<string> sourceTwo)
 {
     List<string> pairs = new List<string>();
@@ -21,7 +21,7 @@ private static List<string> CartesianProduct(List<string> sourceOne, List<string
     }
     return pairs;
 }
-{% endhighlight %}
+```
 
 The performance was awful even with 3 wildcards and after 5 wildcards the waiting time was like an eternity. Most of the CPU time was spent on calculating the cartesian product.
 
