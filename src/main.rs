@@ -32,6 +32,7 @@ fn main() {
         .expect("Error collecting entriescar");
 
     entries.sort();
+    entries.reverse();
 
     let r = fs::copy(Path::new("style.css"), Path::new("site/style.css"));
     let _ = match r {
@@ -56,6 +57,8 @@ fn main() {
             let post: Post = toml::from_str(contents.as_str()).unwrap();
 
             let mut html_output = head_string.clone();
+            html_output = html_output.replace("$title", post.title.as_str());
+            html_output = html_output.replace("$date", post.date.as_str());
             html_output =
                 html_output.replace("$content", to_markdown(post.markdown.as_str()).as_str());
 
@@ -81,6 +84,8 @@ fn main() {
     }
 
     let mut index_html = head_string.clone();
+    index_html = index_html.replace("$title", "");
+    index_html = index_html.replace("$date", "");
     index_html = index_html.replace("$content", to_markdown(index_markdown.as_str()).as_str());
     let mut index_file = fs::File::create("site/index.html").unwrap();
     index_file.write_all(&index_html.into_bytes()).unwrap();
