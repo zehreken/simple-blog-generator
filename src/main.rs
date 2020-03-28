@@ -3,6 +3,7 @@ use std::io::prelude::*;
 use std::path::Path;
 use std::path::PathBuf;
 use std::{fs, io};
+mod lib;
 mod server;
 
 fn main() {
@@ -26,6 +27,7 @@ fn main() {
         Err(error) => panic!("Error while readin head.txt: {:?}", error),
     };
 
+    lib::ThreadPool::new(1);
     let mut entries = fs::read_dir("posts")
         .expect("'posts' directory is not found")
         .map(|res| res.map(|e| e.path()))
@@ -90,6 +92,7 @@ fn main() {
     index_html = index_html.replace("$content", to_markdown(index_markdown.as_str()).as_str());
     let mut index_file = fs::File::create("site/index.html").unwrap();
     index_file.write_all(&index_html.into_bytes()).unwrap();
+
     // Start server
     server::start_server();
 }
