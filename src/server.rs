@@ -1,11 +1,34 @@
+use std::fs;
+use std::io::prelude::*;
 use std::net::TcpListener;
+use std::net::TcpStream;
 
 pub fn start_server() {
+    // Open browser, this works but running this in another thread after making sure
+    // that serve is started is a better idea, this only works on MacOs
+    std::process::Command::new("open")
+        .arg(String::from("http://127.0.0.1:4000"))
+        .output();
+
     let listener = TcpListener::bind("127.0.0.1:4000").unwrap();
 
     for stream in listener.incoming() {
         let stream = stream.unwrap();
 
         println!("Connection established!");
+        handle_connection(stream);
     }
+}
+
+fn handle_connection(mut stream: TcpStream) {
+    let mut buffer = [0; 512];
+
+    stream.read(&mut buffer).unwrap();
+
+    let contents = fs::read_to_string("site/index.html").unwrap();
+
+    let response = format!("HTTP/1.1 200 OK\r\n\r\n{}", contents);
+
+    stream.write(response.as_bytes()).unwrap();
+    stream.flush().unwrap();
 }
