@@ -3,11 +3,10 @@ use std::io::prelude::*;
 use std::path::Path;
 use std::path::PathBuf;
 use std::{fs, io};
-mod lib;
-mod server;
+use tiny_http::{Response, Server};
 
 fn main() {
-    let test_file = fs::read_to_string("posts/2009-12-15-hello-again.markdown").unwrap();
+    // let test_file = fs::read_to_string("posts/2009-12-15-hello-again.markdown").unwrap();
     // let post: Post = toml::from_str(
     //     r#"
     //     [metadata]
@@ -19,7 +18,7 @@ fn main() {
     //     "#,
     // )
     // .unwrap();
-    let post: Post = toml::from_str(test_file.as_str()).unwrap();
+    // let post: Post = toml::from_str(test_file.as_str()).unwrap();
 
     let head_string = fs::read_to_string("head.html");
     let head_string = match head_string {
@@ -27,7 +26,6 @@ fn main() {
         Err(error) => panic!("Error while readin head.txt: {:?}", error),
     };
 
-    lib::ThreadPool::new(1);
     let mut entries = fs::read_dir("posts")
         .expect("'posts' directory is not found")
         .map(|res| res.map(|e| e.path()))
@@ -93,8 +91,26 @@ fn main() {
     let mut index_file = fs::File::create("site/index.html").unwrap();
     index_file.write_all(&index_html.into_bytes()).unwrap();
 
-    // Start server
-    server::start_server();
+    // Open browser, this works but running this in another thread after making sure
+    // that serve is started is a better idea, this only works on MacOs
+    std::process::Command::new("open")
+        .arg(String::from("http://127.0.0.1:4000/index.html"))
+        .output();
+
+    let server = Server::http("127.0.0.1:4000").unwrap();
+
+    for request in server.incoming_requests() {
+        println!(
+            "received request! method: {:?}, url: {:?}, headers: {:?}",
+            request.method(),
+            request.url(),
+            request.headers()
+        );
+
+        let file = fs::File::open(format!("site{}", request.url())).unwrap();
+        let response = Response::from_file(file);
+        request.respond(response);
+    }
 }
 
 fn to_markdown(markdown: &str) -> String {
