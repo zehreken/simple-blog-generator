@@ -1,22 +1,22 @@
 *  { margin:0;padding:0;border:0;outline:0;text-decoration:none;font-weight:inherit;font-style:inherit;color:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;list-style:none;border-collapse:separate;border-spacing:0; -webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
 *:focus { outline: none}
 
-@font-face { font-family: 'neue_montreal_bold'; src: url('../media/fonts/NeueMontreal-Bold.ttf') format('truetype'); font-weight: normal; font-style: normal; }
-@font-face { font-family: 'input_mono_regular'; src: url('../media/fonts/input_mono_regular.ttf') format('truetype'); font-weight: normal; font-style: normal; }
-@font-face { font-family: 'input_mono_medium'; src: url('../media/fonts/input_mono_medium.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'OpenSans-Bold'; src: url('OpenSans-Bold.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'OpenSans-Light'; src: url('OpenSans-Light.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'OpenSans-Regular'; src: url('OpenSans-Regular.ttf') format('truetype'); font-weight: normal; font-style: normal; }
 
 html { background:rgb(226, 226, 226); }
-body { background:rgb(226, 226, 226); color:#000; font-family: "input_mono_regular", "Helvetica Neue", Helvetica, Arial; overflow-x: hidden; margin-top:5px; padding:45px 90px; }
+body { background:rgb(226, 226, 226); color:#000; font-family: "OpenSans-Regular", "Helvetica Neue", Helvetica, Arial; overflow-x: hidden; margin-top:5px; padding:45px 90px; }
 body hr { border:0; clear:both; }
 body header a#logo img { width:15%}
-body main > h1 { font-family: "neue_montreal_bold", "Helvetica Neue", Helvetica, Arial; font-size:30px; text-transform: capitalize; padding-left: 3px; padding-top:10px; padding-bottom:10px;}
-body main > h2 { font-family: "neue_montreal_bold", "Helvetica Neue", Helvetica, Arial; font-size:20px; text-transform: capitalize; padding-left: 3px; padding-top:10px; padding-bottom:10px;}
-body main > h3 { font-family: "neue_montreal_bold", "Helvetica Neue", Helvetica, Arial; font-size:15px; text-transform: capitalize; padding-left: 3px; padding-top:10px; padding-bottom:10px;}
+body main > h1 { font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial; font-size:30px; text-transform: capitalize; padding-left: 3px; padding-top:10px; padding-bottom:10px;}
+body main > h2 { font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial; font-size:20px; text-transform: capitalize; padding-left: 3px; padding-top:10px; padding-bottom:10px;}
+body main > h3 { font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial; font-size:15px; text-transform: capitalize; padding-left: 3px; padding-top:10px; padding-bottom:10px;}
 body main > h1:hover { background-color: rgb(41, 31, 220); color:#FFFFFF; }
 body main > h2:hover { background-color: rgb(41, 31, 220); color:#FFFFFF;}
 body main > h3:hover { background-color: rgb(41, 31, 220); color:#FFFFFF;}
 body main > * { max-width: 700px; margin-bottom: 20px; margin-top: 10px; }
-body main > ul { font-family: 'input_mono_regular'; font-size:12px; line-height: 20px; padding-left:2px}
+body main > ul { font-family: 'OpenSans-Regular'; font-size:12px; line-height: 20px; padding-left:2px}
 body hr { border:0; clear:both; }
 body main { border-top: 1px solid rgb(22, 22, 22); max-width: 700px; padding-top: 10px;}
 body main > ul li a { text-transform: capitalize; text-decoration: underline; }
@@ -102,7 +102,7 @@ h3 {
 
 hr {
     border: 1px solid #ff0055;
-}
+} */
 
 pre {
     background-color: orangered;
@@ -114,7 +114,7 @@ code {
     color: navy;
 }
 
-.wrapper {
+/* .wrapper {
     min-width : calc(600px - (30px * 2));
     max-width : calc(600px - (30px * 2));
     margin-right : auto;
