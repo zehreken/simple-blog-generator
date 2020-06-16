@@ -1,10 +1,80 @@
-body {
+*  { margin:0;padding:0;border:0;outline:0;text-decoration:none;font-weight:inherit;font-style:inherit;color:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;list-style:none;border-collapse:separate;border-spacing:0; -webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
+*:focus { outline: none}
+
+@font-face { font-family: 'neue_montreal_bold'; src: url('../media/fonts/NeueMontreal-Bold.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'input_mono_regular'; src: url('../media/fonts/input_mono_regular.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'input_mono_medium'; src: url('../media/fonts/input_mono_medium.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+
+html { background:rgb(226, 226, 226); }
+body { background:rgb(226, 226, 226); color:#000; font-family: "input_mono_regular", "Helvetica Neue", Helvetica, Arial; overflow-x: hidden; margin-top:5px; padding:45px 90px; }
+body hr { border:0; clear:both; }
+body header a#logo img { width:15%}
+body main > h1 { font-family: "neue_montreal_bold", "Helvetica Neue", Helvetica, Arial; font-size:30px; text-transform: capitalize; padding-left: 3px; padding-top:10px; padding-bottom:10px;}
+body main > h2 { font-family: "neue_montreal_bold", "Helvetica Neue", Helvetica, Arial; font-size:20px; text-transform: capitalize; padding-left: 3px; padding-top:10px; padding-bottom:10px;}
+body main > h3 { font-family: "neue_montreal_bold", "Helvetica Neue", Helvetica, Arial; font-size:15px; text-transform: capitalize; padding-left: 3px; padding-top:10px; padding-bottom:10px;}
+body main > h1:hover { background-color: rgb(41, 31, 220); color:#FFFFFF; }
+body main > h2:hover { background-color: rgb(41, 31, 220); color:#FFFFFF;}
+body main > h3:hover { background-color: rgb(41, 31, 220); color:#FFFFFF;}
+body main > * { max-width: 700px; margin-bottom: 20px; margin-top: 10px; }
+body main > ul { font-family: 'input_mono_regular'; font-size:12px; line-height: 20px; padding-left:2px}
+body hr { border:0; clear:both; }
+body main { border-top: 1px solid rgb(22, 22, 22); max-width: 700px; padding-top: 10px;}
+body main > ul li a { text-transform: capitalize; text-decoration: underline; }
+body main > ul li b { font-weight: bold }
+body main > ul li:hover a { text-decoration: none; }
+body main > p { line-height: 18px; font-size:12px; text-decoration: none; padding-left:2px;}
+body main > p a { text-decoration: underline; }
+body main > p strong { font-weight: bold }
+body main > p i { font-style: italic; }
+body main > p i { line-height: 18px; font-size:12px; }
+body main > p.quote { padding: 30px;font-size: 20px;font-style: italic; max-width: 400px }
+body main > ul.jump { columns:2; line-height: 20px}
+body main > ul.jump li { list-style-type: decimal-leading-zero; list-style-position: inside; text-transform: capitalize;}
+body main > ul.jump li::marker { color:#777; }
+body main > ul.jump li:hover { background:black; color:white; }
+body main > p img { max-width: 640px; width:100%; }
+body main > p iframe { max-width: 640px; width:100%; margin-top:0px; padding:0px}
+body main > pre {background-color: rgb(207, 207, 207); color:rgb(44, 43, 43); max-width: 700px; padding: 10px; margin-top: 0; padding-top: 0; font-size: 14px;}
+body footer { border-top: 1px solid rgb(22, 22, 22); max-width: 700px; padding-top: 10px;}
+body footer > p { line-height: 18px; font-size:12px; text-decoration: none; padding-left:2px;}
+body footer > p a { text-decoration: underline; }
+body footer > p strong { font-weight: bold }
+body footer > p i { font-style: italic; }
+
+.embed-container {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    padding-bottom: 56.25%;
+    background-color: rgb(163, 163, 163);
+}
+
+ .embed-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 900px) {
+	body { padding: 30px; }
+	body main > ul.jump { columns: 1 !important }
+}
+
+/* body {
     background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: medium;
+    font-family: "SourceCodePro-Light";
+    font-size: small;
     display : flex;
     min-height : 100vh;
     flex-direction : column;
+}
+
+@font-face {
+    font-family: "SourceCodePro-Light";
+    src: url('SourceCodePro-Light.ttf');
 }
 
 a {
@@ -23,6 +93,7 @@ h1 {
 
 h2 {
     color: #ff0055;
+    font-size: 13;
 }
 
 h3 {
@@ -50,4 +121,4 @@ code {
     margin-left : auto;
     padding-right : 30px;
     padding-left : 30px;
-}
+} */
