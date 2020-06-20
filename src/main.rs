@@ -95,7 +95,7 @@ fn main() {
     // that serve is started is a better idea, this only works on MacOs
     std::process::Command::new("open")
         .arg(String::from("http://127.0.0.1:4000/index.html"))
-        .output();
+        .output().unwrap();
 
     let server = Server::http("127.0.0.1:4000").unwrap();
 

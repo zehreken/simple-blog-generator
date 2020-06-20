@@ -5,16 +5,16 @@
 @font-face { font-family: 'OpenSans-Light'; src: url('OpenSans-Light.ttf') format('truetype'); font-weight: normal; font-style: normal; }
 @font-face { font-family: 'OpenSans-Regular'; src: url('OpenSans-Regular.ttf') format('truetype'); font-weight: normal; font-style: normal; }
 
-html { background:rgb(226, 226, 226); }
-body { background:rgb(226, 226, 226); color:#000; font-family: "OpenSans-Regular", "Helvetica Neue", Helvetica, Arial; overflow-x: hidden; margin-top:5px; padding:45px 90px; }
+html { background:rgb(255, 219, 88); }
+body { background:rgb(255, 255, 255); color:#000; font-family: "OpenSans-Regular", "Helvetica Neue", Helvetica, Arial; overflow-x: hidden; margin-top:5px; padding:45px 90px; }
 body hr { border:0; clear:both; }
 body header a#logo img { width:15%}
 body main > h1 { font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial; font-size:30px; text-transform: capitalize; padding-left: 3px; padding-top:10px; padding-bottom:10px;}
 body main > h2 { font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial; font-size:20px; text-transform: capitalize; padding-left: 3px; padding-top:10px; padding-bottom:10px;}
 body main > h3 { font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial; font-size:15px; text-transform: capitalize; padding-left: 3px; padding-top:10px; padding-bottom:10px;}
-body main > h1:hover { background-color: rgb(41, 31, 220); color:#FFFFFF; }
-body main > h2:hover { background-color: rgb(41, 31, 220); color:#FFFFFF;}
-body main > h3:hover { background-color: rgb(41, 31, 220); color:#FFFFFF;}
+body main > h1:hover { background-color: rgb(255, 219, 88); color:#000000; }
+body main > h2:hover { background-color: rgb(255, 219, 88); color:#000000;}
+body main > h3:hover { background-color: rgb(255, 219, 88); color:#000000;}
 body main > * { max-width: 700px; margin-bottom: 20px; margin-top: 10px; }
 body main > ul { font-family: 'OpenSans-Regular'; font-size:12px; line-height: 20px; padding-left:2px}
 body hr { border:0; clear:both; }
@@ -32,9 +32,9 @@ body main > ul.jump { columns:2; line-height: 20px}
 body main > ul.jump li { list-style-type: decimal-leading-zero; list-style-position: inside; text-transform: capitalize;}
 body main > ul.jump li::marker { color:#777; }
 body main > ul.jump li:hover { background:black; color:white; }
-body main > p img { max-width: 640px; width:100%; }
+body main > p img { max-width: 500px; width:100%; }
 body main > p iframe { max-width: 640px; width:100%; margin-top:0px; padding:0px}
-body main > pre {background-color: rgb(207, 207, 207); color:rgb(44, 43, 43); max-width: 700px; padding: 10px; margin-top: 0; padding-top: 0; font-size: 14px;}
+body main > pre {background-color: rgb(255, 219, 88); color:rgb(44, 43, 43); max-width: 700px; padding: 10px; margin-top: 0; padding-top: 0; font-size: 12px;}
 body footer { border-top: 1px solid rgb(22, 22, 22); max-width: 700px; padding-top: 10px;}
 body footer > p { line-height: 18px; font-size:12px; text-decoration: none; padding-left:2px;}
 body footer > p a { text-decoration: underline; }
@@ -63,62 +63,8 @@ body footer > p i { font-style: italic; }
 	body main > ul.jump { columns: 1 !important }
 }
 
-/* body {
-    background-color: white;
-    font-family: "SourceCodePro-Light";
-    font-size: small;
-    display : flex;
-    min-height : 100vh;
-    flex-direction : column;
-}
-
-@font-face {
-    font-family: "SourceCodePro-Light";
-    src: url('SourceCodePro-Light.ttf');
-}
-
-a {
-    color: navy;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #ff0055;
-}
-
-h1 {
-    color: #ff0055;
-    margin-left: 0px;
-}
-
-h2 {
-    color: #ff0055;
-    font-size: 13;
-}
-
-h3 {
-    color: blue;
-}
-
-hr {
-    border: 1px solid #ff0055;
-} */
-
-pre {
-    background-color: orangered;
-}
-
 code {
     tab-size: 2;
     white-space: pre-wrap;
-    color: navy;
+    color: rgb(0, 0, 196);
 }
-
-/* .wrapper {
-    min-width : calc(600px - (30px * 2));
-    max-width : calc(600px - (30px * 2));
-    margin-right : auto;
-    margin-left : auto;
-    padding-right : 30px;
-    padding-left : 30px;
-} */
