@@ -23,14 +23,14 @@ fn main() {
     let head_string = fs::read_to_string("head.html");
     let head_string = match head_string {
         Ok(file) => file,
-        Err(error) => panic!("Error while readin head.txt: {:?}", error),
+        Err(error) => panic!("Error while readin head.html: {:?}", error),
     };
 
     let mut entries = fs::read_dir("posts")
         .expect("'posts' directory is not found")
         .map(|res| res.map(|e| e.path()))
         .collect::<Result<Vec<_>, io::Error>>()
-        .expect("Error collecting entriescar");
+        .expect("Error collecting entries");
 
     entries.sort();
     entries.reverse();
@@ -95,7 +95,8 @@ fn main() {
     // that serve is started is a better idea, this only works on MacOs
     std::process::Command::new("open")
         .arg(String::from("http://127.0.0.1:4000/index.html"))
-        .output().unwrap();
+        .output()
+        .unwrap();
 
     let server = Server::http("127.0.0.1:4000").unwrap();
 
