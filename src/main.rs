@@ -6,7 +6,6 @@ use std::{fs, io};
 use tiny_http::{Response, Server};
 
 mod utils;
-use utils::*;
 
 const DIRECTORY_SITE: &str = "site";
 
@@ -25,7 +24,7 @@ fn main() {
     // .unwrap();
     // let post: Post = toml::from_str(test_file.as_str()).unwrap();
 
-    create_directory(DIRECTORY_SITE);
+    utils::create_directory(DIRECTORY_SITE);
 
     let head_string = fs::read_to_string("head.html");
     let head_string = match head_string {
@@ -42,11 +41,7 @@ fn main() {
     entries.sort();
     entries.reverse();
 
-    let r = fs::copy(Path::new("style.css"), Path::new("site/style.css"));
-    let _ = match r {
-        Ok(_) => (),
-        Err(error) => panic!("Error copying file: {:?}", error),
-    };
+    utils::copy_file("style.css", "site/style.css");
 
     let mut index_markdown = String::new();
     for entry in entries {
@@ -103,7 +98,7 @@ fn main() {
 
     for request in server.incoming_requests() {
         println!(
-            "received request! method: {:?}, url: {:?}, headers: {:?}",
+            "received request! method: {:?}\n, url: {:?}\n, headers: {:?}\n",
             request.method(),
             request.url(),
             request.headers()
@@ -115,7 +110,7 @@ fn main() {
                 let response = Response::from_file(file.unwrap());
                 request.respond(response).unwrap();
             }
-            Err(error) => println!("i/o error: {}", error),
+            Err(error) => println!("I/O ERROR: {}", error),
         }
     }
 }

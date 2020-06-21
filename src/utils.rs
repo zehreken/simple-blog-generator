@@ -12,3 +12,23 @@ pub fn create_directory(path: &str) {
         }
     }
 }
+
+pub fn copy_file(from: &str, to: &str) {
+    if Path::new(from).exists() {
+        let r = fs::copy(Path::new(from), Path::new(to));
+        match r {
+            Ok(_) => println!("Successfuly copied [{}] to [{}]", from, to),
+            Err(error) => println!("Error copying file: {}", error),
+        }
+    } else {
+        println!("File [{}] does not exist", from);
+    }
+}
+
+pub fn copy_directory(from: &str, to: &str) {
+    if Path::new(from).exists() {
+        // copy directory
+    } else {
+        println!("Directory [{}] does not exist", from);
+    }
+}
