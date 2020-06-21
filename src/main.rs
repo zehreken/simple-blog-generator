@@ -1,9 +1,9 @@
-use std::fs::File;
+use serde::Deserialize;
 use std::io::prelude::*;
-use std::path::Path;
 use std::path::PathBuf;
 use std::{fs, io};
 use tiny_http::{Response, Server};
+use toml;
 
 mod utils;
 
@@ -29,11 +29,11 @@ fn main() {
     let head_string = fs::read_to_string("head.html");
     let head_string = match head_string {
         Ok(file) => file,
-        Err(error) => panic!("Error while readin head.html: {:?}", error),
+        Err(error) => panic!("Error while reading [head.html]: {}", error),
     };
 
     let mut entries = fs::read_dir("posts")
-        .expect("'posts' directory is not found")
+        .expect("directory [posts] is not found")
         .map(|res| res.map(|e| e.path()))
         .collect::<Result<Vec<_>, io::Error>>()
         .expect("Error collecting entries");
@@ -131,9 +131,6 @@ fn to_markdown(markdown: &str) -> String {
 
     html_output
 }
-
-use serde::Deserialize;
-use toml;
 
 #[derive(Debug, Deserialize)]
 struct Post {

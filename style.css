@@ -1,9 +1,9 @@
 *  { margin:0;padding:0;border:0;outline:0;text-decoration:none;font-weight:inherit;font-style:inherit;color:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;list-style:none;border-collapse:separate;border-spacing:0; -webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
 *:focus { outline: none}
 
-@font-face { font-family: 'OpenSans-Bold'; src: url('OpenSans-Bold.ttf') format('truetype'); font-weight: normal; font-style: normal; }
-@font-face { font-family: 'OpenSans-Light'; src: url('OpenSans-Light.ttf') format('truetype'); font-weight: normal; font-style: normal; }
-@font-face { font-family: 'OpenSans-Regular'; src: url('OpenSans-Regular.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'OpenSans-Bold'; src: url('assets/OpenSans-Bold.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'OpenSans-Light'; src: url('assets/OpenSans-Light.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'OpenSans-Regular'; src: url('assets/OpenSans-Regular.ttf') format('truetype'); font-weight: normal; font-style: normal; }
 
 html { background:rgb(255, 219, 88); }
 body { background:rgb(255, 255, 255); color:#000; font-family: "OpenSans-Regular", "Helvetica Neue", Helvetica, Arial; overflow-x: hidden; margin-top:5px; padding:45px 90px; }
@@ -11,7 +11,7 @@ body hr { border:0; clear:both; }
 body header a#logo img { width:15%}
 body main > h1 { font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial; font-size:30px; text-transform: capitalize; padding-left: 3px; padding-top:10px; padding-bottom:10px;}
 body main > h2 { font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial; font-size:20px; text-transform: capitalize; padding-left: 3px; padding-top:10px; padding-bottom:10px;}
-body main > h3 { font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial; font-size:15px; text-transform: capitalize; padding-left: 3px; padding-top:10px; padding-bottom:10px;}
+body main > h3 { font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial; font-size:10px; text-transform: capitalize; padding-left: 3px; padding-top:10px; padding-bottom:10px;}
 body main > h1:hover { background-color: rgb(255, 219, 88); color:#000000; }
 body main > h2:hover { background-color: rgb(255, 219, 88); color:#000000;}
 body main > h3:hover { background-color: rgb(255, 219, 88); color:#000000;}
