@@ -45,7 +45,6 @@ body {
     color:#000;
     font-family: "OpenSans-Regular", "Helvetica Neue", Helvetica, Arial;
     overflow-x: hidden;
-    margin-top:5px;
     padding:45px 90px;
 }
 body hr {
@@ -85,20 +84,12 @@ body main > h6 {
     font-size:10px;
     text-transform: capitalize;
     padding-left: 3px;
-    color: gray;
-}
-body main > h1:hover {
-    background-color: rgb(255, 219, 88);
-    color:#000000;
-}
-body main > h2:hover {
-    background-color: rgb(255, 219, 88);
-    color:#000000;
+    color: rgb(50, 50, 50);
 }
 body main > * {
     max-width: 700px;
-    margin-bottom: 20px;
-    margin-top: 10px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 body main > ul {
     font-family: "OpenSans-Regular";
@@ -129,7 +120,9 @@ body main > p {
     line-height: small;
     font-size: small;
     text-decoration: none;
-    padding-left:2px;
+    padding-left: 2px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 body main > p a {
     text-decoration: underline;
