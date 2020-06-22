@@ -10,20 +10,6 @@ mod utils;
 const DIRECTORY_SITE: &str = "site";
 
 fn main() {
-    // let test_file = fs::read_to_string("posts/2009-12-15-hello-again.markdown").unwrap();
-    // let post: Post = toml::from_str(
-    //     r#"
-    //     [metadata]
-    //     layout = 'post'
-    //     title = 'Hello Again!'
-    //     [content]
-    //     markdown = '''test
-    //     test'''
-    //     "#,
-    // )
-    // .unwrap();
-    // let post: Post = toml::from_str(test_file.as_str()).unwrap();
-
     utils::create_directory(DIRECTORY_SITE);
 
     let head_string = fs::read_to_string("head.html");
@@ -56,13 +42,14 @@ fn main() {
             let mut html_output = head_string.clone();
             html_output = html_output.replace("$title", post.title.as_str());
             html_output = html_output.replace("$date", post.date.as_str());
-            html_output =
-                html_output.replace("$content", to_markdown(post.markdown.as_str()).as_str());
+            html_output = html_output.replace("$content", to_html(post.markdown.as_str()).as_str());
 
             let file_name = path.file_stem().unwrap();
             let mut out_path = PathBuf::from("site");
 
             index_markdown.push('[');
+            index_markdown.push('-');
+            index_markdown.push(' ');
             index_markdown.push_str(post.title.as_str());
             index_markdown.push(']');
             index_markdown.push('(');
@@ -83,12 +70,12 @@ fn main() {
     let mut index_html = head_string.clone();
     index_html = index_html.replace("$title", "");
     index_html = index_html.replace("$date", "");
-    index_html = index_html.replace("$content", to_markdown(index_markdown.as_str()).as_str());
+    index_html = index_html.replace("$content", to_html(index_markdown.as_str()).as_str());
     let mut index_file = fs::File::create("site/index.html").unwrap();
     index_file.write_all(&index_html.into_bytes()).unwrap();
 
     // Open browser, this works but running this in another thread after making sure
-    // that serve is started is a better idea, this only works on MacOs
+    // that server is started is a better idea, this only works on MacOs
     std::process::Command::new("open")
         .arg(String::from("http://127.0.0.1:4000/index.html"))
         .output()
@@ -115,7 +102,7 @@ fn main() {
     }
 }
 
-fn to_markdown(markdown: &str) -> String {
+fn to_html(markdown: &str) -> String {
     use pulldown_cmark::{html, Options, Parser};
 
     // Set up options and parser. Strikethroughs are not part of the CommonMark standard
