@@ -42,7 +42,7 @@ html {
 }
 body {
     background:rgb(255, 255, 255);
-    color:#000;
+    color:rgb(30, 30, 30);
     font-family: "OpenSans-Regular", "Helvetica Neue", Helvetica, Arial;
     overflow-x: hidden;
     padding:45px 90px;
@@ -117,8 +117,8 @@ body main > ul li:hover a {
     text-decoration: none;
 }
 body main > p {
-    line-height: small;
-    font-size: small;
+    line-height: medium;
+    font-size: medium;
     text-decoration: none;
     padding-left: 2px;
     padding-top: 10px;
@@ -129,6 +129,8 @@ body main > p a {
 }
 body main > p a:hover {
     text-decoration: none;
+    color: #000;
+    background-color: rgb(255, 219, 88);
 }
 body main > p strong {
     font-weight: bold 
@@ -197,6 +199,8 @@ body footer > p a {
 }
 body footer > p a:hover {
     text-decoration: none;
+    color: #000;
+    background-color: rgb(255, 219, 88);
 }
 body footer > p strong {
     font-weight: bold 
