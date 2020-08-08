@@ -1,7 +1,8 @@
----
-layout: post
-title: Title
----
+layout = "post"
+title = "Profile Rust on macOS"
+created = "date"
+updated = "Last updated: date"
+markdown = """
 ### 1st title
 normal text
 ###### small text
@@ -10,3 +11,4 @@ normal text
 
 try to add conclusion at the end of all posts
 ### Conclusion
+"""

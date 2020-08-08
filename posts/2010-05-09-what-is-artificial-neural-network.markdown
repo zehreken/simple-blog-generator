@@ -1,6 +1,6 @@
 layout = "post"
 title = "What Is Artificial Neural Network?"
-date = "2010-05-09"
+updated = "2010-05-09"
 markdown = """
 **For** the last two weeks I studied **artificial neural networks**, I can’t say I’m completely done with it but I’ll try to explain what I understood, there are also lots of good explanations out on the internet.
 

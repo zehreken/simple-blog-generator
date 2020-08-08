@@ -1,6 +1,6 @@
 layout = "post"
 title = "Perceptron"
-date = "2010-05-20"
+updated = "2010-05-20"
 markdown = """
 **In** the previous post, we have discussed some of the major elements of artificial neural networks. It is time to examine the structure of a simple neural network, **perceptron**. A perceptron is the simplest type of neural networks. It has an input layer, an output layer and no hidden layer. In practice, the usage of perceptrons is limited, but in theory perceptrons are important, their structure is easy to understand because of their simplicity. Below, there is an application I’ve created to understand the structure and process of neural networks more easily. By the way, you can download the source files. The perceptron has 1 input layer consists of 2 neurons and 1 output layer consists of 1 neuron. The pinky fields are input fields, that means you can set the values of them. An input value can be either 1 or 0. Even with this simplest neural network, perceptron, you can have a program that changes behaviour when needed. You can train the application as an **AND gate** or an **OR gate**. Here is a table shows the output values according to the input values for AND and OR gates.
 

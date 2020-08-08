@@ -54,10 +54,15 @@ body hr {
 body header a#logo img {
     width:15% 
 }
+body header > h1 {
+    font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
+    font-size:20px;
+    font-weight: bold;
+}
 body main > h1 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size:30px;
-    text-transform: capitalize;
+    font-weight: bold;
     background-color: rgb(255, 219, 88);
     padding-left: 3px;
     padding-top:0px;
@@ -77,12 +82,16 @@ body main > h3 {
     padding-top:0px;
     padding-bottom:0px;
 }
+body main > h5 {
+    font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
+    font-size:10px;
+    padding-left: 3px;
+    text-align: right;
+}
 body main > h6 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size:10px;
     padding-left: 3px;
-    padding-bottom: 5px;
-    color: rgb(50, 50, 50);
 }
 body main > * {
     max-width: 700px;
@@ -102,7 +111,6 @@ body hr {
 body main {
     border-top: 1px solid rgb(22, 22, 22);
     max-width: 700px;
-    padding-top: 10px;
 }
 body main > ul li a {
     text-transform: capitalize;

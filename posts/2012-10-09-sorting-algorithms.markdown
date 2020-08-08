@@ -1,6 +1,6 @@
 layout = "post"
 title = "Sorting Algorithms"
-date = "2012-10-09"
+updated = "2012-10-09"
 markdown = """
 **Several** months ago I’ve enrolled in one of Coursera’s awesome classes, **Algorithms: Design and Analysis** from **Tim Roughgarden**. I think, most of you know about these online classes from **Coursera** and **Udacity**, if you don’t, I strongly advise you to take a look. I’m sure you will find a class that suits you. Anyway, this class was my third online class and I didn’t manage to finish any of them yet, nevertheless I’ve learned so much from them.
 

@@ -1,6 +1,6 @@
 layout = "post"
 title = "A* Pathfinding Tutorial"
-date = "2012-05-24"
+updated = "2012-05-24"
 markdown = """
 **Hi** there. It has been over a year since my last post, I’ve read some of my old posts and noticed that I have been all whiny about doing something about curve fitting or something like that but things have changed. As the title says, this article is about A* Pathfinding Algorithm. Well, there is a big source on the internet about A* and other pathfinding algorithms, I needed to learn these things because of a tower defense game I’m working on and I have come up with this post. I hope you like it.
 

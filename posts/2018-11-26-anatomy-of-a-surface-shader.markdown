@@ -1,6 +1,6 @@
 layout = "post"
 title = "Anatomy of a Surface Shader"
-date = "2018-11-26"
+updated = "2018-11-26"
 markdown = """
 Shaders are always a popular topic in game development. Obviously, you need nice and fast shaders if you want your game to look nice and to play fast.
 
