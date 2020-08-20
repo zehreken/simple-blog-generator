@@ -192,6 +192,9 @@ body main > pre {
     padding-top: 0;
     font-size: 12px;
 }
+body main > table, th, td {
+    border: 1px solid black;
+}
 body footer {
     border-top: 1px solid rgb(22, 22, 22);
     max-width: 700px;
