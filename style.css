@@ -112,6 +112,9 @@ body main {
     border-top: 1px solid rgb(22, 22, 22);
     max-width: 700px;
 }
+body main > ul li {
+    list-style-type: square;
+}
 body main > ul li a {
     text-transform: capitalize;
     text-decoration: underline;
