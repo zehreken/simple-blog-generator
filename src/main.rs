@@ -42,10 +42,8 @@ fn main() {
 
             let mut html_output = head_string.clone();
             html_output = html_output.replace("$title", post.title.as_str());
-            html_output = html_output.replace(
-                "$updated",
-                format!("Last updated: {}", post.updated).as_str(),
-            );
+            html_output =
+                html_output.replace("$updated", format!("edited on {}", post.updated).as_str());
             html_output = html_output.replace("$content", to_html(post.markdown.as_str()).as_str());
 
             let file_name = path.file_stem().unwrap();

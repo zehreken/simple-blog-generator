@@ -184,7 +184,7 @@ body main > p iframe {
     padding:0px 
 }
 body main > pre {
-    background-color: rgb(211, 211, 211);
+    background-color: rgb(21, 21, 21);
     color:rgb(44, 43, 43);
     max-width: 700px;
     padding: 10px;
@@ -246,5 +246,5 @@ body footer > p i {
 code {
     tab-size: 2;
     white-space: pre-wrap;
-    color: rgb(0, 0, 196);
+    color: rgb(255, 219, 88);
 }
