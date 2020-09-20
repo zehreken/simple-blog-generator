@@ -1,5 +1,6 @@
 layout = "post"
 title = "Code Reuse for Rapid Prototyping"
+created = "2018-12-16"
 updated = "2018-12-16"
 markdown = """
 **Hyper casual games** are today's hottest topic in mobile game development.

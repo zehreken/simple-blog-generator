@@ -1,5 +1,6 @@
 layout = "post"
 title = "Performance Comparison of OOD and ECS Patterns within Unity"
+created = "2016-11-07"
 updated = "2016-11-07"
 markdown = """
 **For** the last three months at the company, we, programmers, talked, discussed and thought a lot about the architectural design patterns because we wanted to make our individual development approaches alike and we also wanted to be faster. Finally we have decided on using **Entity-Component-System** architecture.

@@ -1,5 +1,6 @@
 layout = "post"
 title = "Struct vs. Class in .NET"
+created = "2018-04-08"
 updated = "2018-04-08"
 markdown = """
 **Lately**, I've made a very important mistake while using structs in our persistency system(save/load game).

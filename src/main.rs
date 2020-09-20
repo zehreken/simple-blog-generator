@@ -37,11 +37,15 @@ fn main() {
             let contents =
                 fs::read_to_string(path.clone()).expect("Something went wrong reading the file");
 
-            let post: Post = toml::from_str(contents.as_str()).unwrap();
+            let post: Post = toml::from_str(contents.as_str())
+                .expect(format!("error while parsing: {:?}", path).as_str());
 
             let mut html_output = head_string.clone();
             html_output = html_output.replace("$title", post.title.as_str());
-            html_output = html_output.replace("$updated", post.updated.as_str());
+            html_output = html_output.replace(
+                "$updated",
+                format!("Last updated: {}", post.updated).as_str(),
+            );
             html_output = html_output.replace("$content", to_html(post.markdown.as_str()).as_str());
 
             let file_name = path.file_stem().unwrap();
@@ -71,7 +75,7 @@ fn main() {
     index_html = index_html.replace("$title", "");
     index_html = index_html.replace("$updated", "");
     index_html = index_html.replace("$content", to_html(index_markdown.as_str()).as_str());
-    index_html = index_html.replace("$*", "<span style=\"background-color:#FFDB58\">*</span>");
+    index_html = index_html.replace("$*", "<span style=\"background-color:#FFDB58\"> * </span>"); // 'Thin space' character is used before and after asterisk
     let mut index_file = fs::File::create("site/index.html").unwrap();
     index_file.write_all(&index_html.into_bytes()).unwrap();
 
@@ -124,6 +128,7 @@ fn to_html(markdown: &str) -> String {
 struct Post {
     layout: String,
     title: String,
+    created: String,
     updated: String,
     markdown: String,
 }

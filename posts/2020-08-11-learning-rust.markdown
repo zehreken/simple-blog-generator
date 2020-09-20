@@ -1,6 +1,7 @@
 layout = "post"
 title = "Learning Rust"
-updated = "Last updated: 2020-08-29"
+created = "2020-08-29"
+updated = "2020-08-29"
 markdown = """
 **Here** is a list of stuff that I've found interesting and important while trying to learn Rust Language.
 
