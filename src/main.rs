@@ -48,7 +48,7 @@ fn main() {
             let mut out_path = PathBuf::from("site");
 
             index_markdown.push('[');
-            index_markdown.push('-');
+            index_markdown.push_str("$*");
             index_markdown.push(' ');
             index_markdown.push_str(post.title.as_str());
             index_markdown.push(']');
@@ -60,7 +60,7 @@ fn main() {
             out_path.push(file_name);
             out_path.set_extension("html");
 
-            println!("{:?}", out_path.clone());
+            println!("{:?}", &out_path);
             let mut file = fs::File::create(out_path).expect("Error creating file");
             file.write_all(&html_output.into_bytes()[..])
                 .expect("Error writing to file");
@@ -71,6 +71,7 @@ fn main() {
     index_html = index_html.replace("$title", "");
     index_html = index_html.replace("$updated", "");
     index_html = index_html.replace("$content", to_html(index_markdown.as_str()).as_str());
+    index_html = index_html.replace("$*", "<span style=\"background-color:#FFDB58\">*</span>");
     let mut index_file = fs::File::create("site/index.html").unwrap();
     index_file.write_all(&index_html.into_bytes()).unwrap();
 
