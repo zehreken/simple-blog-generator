@@ -73,7 +73,7 @@ fn main() {
     index_html = index_html.replace("$title", "");
     index_html = index_html.replace("$updated", "");
     index_html = index_html.replace("$content", to_html(index_markdown.as_str()).as_str());
-    index_html = index_html.replace("$*", "<span style=\"background-color:#FFDB58\"> * </span>"); // 'Thin space' character is used before and after asterisk
+    index_html = index_html.replace("$*", "<span> * </span>"); // 'Thin space' character is used before and after asterisk
     let mut index_file = fs::File::create("site/index.html").unwrap();
     index_file.write_all(&index_html.into_bytes()).unwrap();
 

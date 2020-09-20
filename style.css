@@ -1,3 +1,6 @@
+:root {
+    --main-color: rgb(255, 219, 88);
+}
 * {
     margin:0;
     padding:0;
@@ -38,7 +41,7 @@
     font-style: normal;
 }
 html {
-    background:rgb(255, 219, 88);
+    background: var(--main-color);
 }
 body {
     background:rgb(255, 255, 255);
@@ -63,7 +66,7 @@ body main > h1 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size:30px;
     font-weight: bold;
-    background-color: rgb(255, 219, 88);
+    background-color: var(--main-color);
     padding-left: 3px;
     padding-top:0px;
     padding-bottom:0px;
@@ -100,9 +103,9 @@ body main > * {
 }
 body main > ul {
     font-family: "OpenSans-Regular";
-    font-size:12px;
+    font-size: small;
     line-height: 20px;
-    padding-left:2px 
+    padding-left: 18px 
 }
 body hr {
     border:0;
@@ -113,7 +116,7 @@ body main {
     max-width: 700px;
 }
 body main > ul li {
-    list-style-type: square;
+    list-style-type: disc;
 }
 body main > ul li a {
     text-transform: capitalize;
@@ -139,7 +142,7 @@ body main > p a {
 body main > p a:hover {
     text-decoration: none;
     color: #000;
-    background-color: rgb(255, 219, 88);
+    background-color: var(--main-color);
 }
 body main > p strong {
     font-weight: bold 
@@ -184,7 +187,7 @@ body main > p iframe {
     padding:0px 
 }
 body main > pre {
-    background-color: rgb(21, 21, 21);
+    background-color: rgb(0, 0, 0);
     color:rgb(44, 43, 43);
     max-width: 700px;
     padding: 10px;
@@ -194,6 +197,10 @@ body main > pre {
 }
 body main > table, th, td {
     border: 1px solid black;
+    width: 400px;
+}
+th {
+    background-color: var(--main-color);
 }
 body footer {
     border-top: 1px solid rgb(22, 22, 22);
@@ -212,7 +219,7 @@ body footer > p a {
 body footer > p a:hover {
     text-decoration: none;
     color: #000;
-    background-color: rgb(255, 219, 88);
+    background-color: var(--main-color);
 }
 body footer > p strong {
     font-weight: bold 
@@ -246,5 +253,8 @@ body footer > p i {
 code {
     tab-size: 2;
     white-space: pre-wrap;
-    color: rgb(255, 219, 88);
+    color: var(--main-color);
+}
+span {
+    background-color: var(--main-color);
 }
