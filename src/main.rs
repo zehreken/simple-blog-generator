@@ -32,7 +32,7 @@ fn main() {
     let mut index_markdown = String::new();
 
     // Add about page
-    index_markdown.push_str("[About](about.html)<br><br>");
+    index_markdown.push_str("[$* About](about.html)<br><br>");
 
     for entry in entries {
         let path = entry;
@@ -53,15 +53,17 @@ fn main() {
             let file_name = path.file_stem().unwrap();
             let mut out_path = PathBuf::from("site");
 
-            index_markdown.push('[');
-            index_markdown.push_str("$*");
-            index_markdown.push(' ');
-            index_markdown.push_str(post.title.as_str());
-            index_markdown.push(']');
-            index_markdown.push('(');
-            index_markdown.push_str(file_name.to_str().unwrap());
-            index_markdown.push_str(".html");
-            index_markdown.push_str(")<br>");
+            if post.layout == "post" {
+                index_markdown.push('[');
+                index_markdown.push_str("$*");
+                index_markdown.push(' ');
+                index_markdown.push_str(post.title.as_str());
+                index_markdown.push(']');
+                index_markdown.push('(');
+                index_markdown.push_str(file_name.to_str().unwrap());
+                index_markdown.push_str(".html");
+                index_markdown.push_str(")<br>");
+            }
 
             out_path.push(file_name);
             out_path.set_extension("html");
