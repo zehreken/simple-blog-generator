@@ -30,6 +30,10 @@ fn main() {
     utils::copy_file("style.css", "site/style.css");
 
     let mut index_markdown = String::new();
+
+    // Add about page
+    index_markdown.push_str("[About](about.html)<br><br>");
+
     for entry in entries {
         let path = entry;
         // This filters .DS_Store
