@@ -1,10 +1,13 @@
 layout = "post"
 title = "Profiling Rust on macOS"
 created = "2020-08-08"
-updated = "2020-09-22"
+updated = "2020-09-26"
 markdown = """
-I've been using Rust for a while and I think it is time to profile my Rust programs. There are many profilers to choose from and they have more different features than they have similar ones. Except Xcode, the rest of the options are probably avaiable for all systems.
 
+It has been some time since I've started to use Rust for my hobby projects. As you know when the projects get more complex, performance may become an issue. Here, I'm writing down the available options for profiling Rust programs on macOS for future reference but I'm sure most of the crates and tools are also usable in other operating systems.
+
+### Xcode
+If you have Xcode, you can use it to get a broad view of how your program behaves. You can see how much CPU time your program takes, how much memory it uses etc.
 * Run Xcode,
 * In the top menu, go to
 * Xcode>Open Developer Tool>Instruments
@@ -14,6 +17,7 @@ I've been using Rust for a while and I think it is time to profile my Rust progr
 Go to "All Processes" on the top left of the screen and find your program. Press record and you should see the CPU time your program takes.
 
 ### Using 'pprof'
+**pprof** is a very useful tool for profiling your programs CPU footprint.
 * Easy to use
 * Can create flamegraph and also a node based graph
 

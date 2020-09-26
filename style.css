@@ -251,7 +251,7 @@ body footer > p i {
    }
 }
 code {
-    tab-size: 2;
+    tab-size: 1;
     white-space: pre-wrap;
     color: var(--main-color);
 }
