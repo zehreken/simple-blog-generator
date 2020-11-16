@@ -3,7 +3,7 @@ title = "Learning Rust"
 created = "2020-08-29"
 updated = "2020-08-29"
 markdown = """
-**Here** is a list of stuff that I've found interesting and important while trying to learn Rust Language.
+**Here** is a list of stuff that I find interesting and important while trying to learn the Rust Language.
 
 * std::mem::replace
 * https://rust-unofficial.github.io/too-many-lists/index.html
@@ -16,7 +16,7 @@ A very good learning material, will give a deeper understanding after you finish
 * The iterator returned by iter_mut will yield &mut T, by convention.
 
 ### Conditional Compilation for Debug and Release Builds
-Here is the way to conditionally compile Rust code for Debug and Release builds
+Here is a way to conditionally compile Rust code for Debug and Release builds
 ```
 #[cfg(debug_assertions)]
 fn example() {
