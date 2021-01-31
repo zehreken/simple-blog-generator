@@ -1,4 +1,4 @@
-use crate::utils;
+use crate::{utils, SITE_DIRECTORY};
 use serde::Deserialize;
 use std::io::prelude::*;
 use std::{fs, io, path::PathBuf};
@@ -41,11 +41,27 @@ pub fn run() {
             out_path.push(file_name);
             out_path.set_extension("html");
 
+            index_markdown.push('[');
+            index_markdown.push_str(zettel_note.title.as_str());
+            index_markdown.push(']');
+            index_markdown.push('(');
+            index_markdown.push_str(file_name.to_str().unwrap());
+            index_markdown.push_str(".html)<br>");
+
             let mut file = fs::File::create(out_path).expect("Error creating file");
             file.write_all(&html_output.into_bytes()[..])
                 .expect("Error writing to file");
         }
     }
+
+    let mut index_html = html_string.clone();
+    index_html = index_html.replace("$title", "zettelkasten");
+    index_html = index_html.replace("$content", utils::to_html(index_markdown.as_str()).as_str());
+
+    let mut index_file = fs::File::create("site/zettelkasten/index.html").unwrap();
+    index_file
+        .write_all(&index_html.into_bytes()[..])
+        .expect("error writing index file");
 }
 
 #[derive(Debug, Deserialize)]
