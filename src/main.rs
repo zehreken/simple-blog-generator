@@ -6,11 +6,13 @@ use tiny_http::{Response, Server};
 use toml;
 
 mod utils;
+mod zettelkasten;
 
-const DIRECTORY_SITE: &str = "site";
+const SITE_DIRECTORY: &str = "site";
 
 fn main() {
-    utils::create_directory(DIRECTORY_SITE);
+    zettelkasten::run();
+    utils::create_directory(SITE_DIRECTORY);
 
     let head_string = fs::read_to_string("head.html");
     let head_string = match head_string {
@@ -51,10 +53,11 @@ fn main() {
                 "$updated",
                 format!("created on {}, edited on {}", post.created, post.updated).as_str(),
             );
-            html_output = html_output.replace("$content", to_html(post.markdown.as_str()).as_str());
+            html_output =
+                html_output.replace("$content", utils::to_html(post.markdown.as_str()).as_str());
 
             let file_name = path.file_stem().unwrap();
-            let mut out_path = PathBuf::from("site");
+            let mut out_path = PathBuf::from(SITE_DIRECTORY);
 
             if post.layout == "post" {
                 index_markdown.push('[');
@@ -81,13 +84,13 @@ fn main() {
     let mut index_html = head_string.clone();
     index_html = index_html.replace("$title", "");
     index_html = index_html.replace("$updated", "");
-    index_html = index_html.replace("$content", to_html(index_markdown.as_str()).as_str());
+    index_html = index_html.replace("$content", utils::to_html(index_markdown.as_str()).as_str());
     index_html = index_html.replace("$*", "<span> * </span>"); // 'Thin space' character is used before and after asterisk
     let mut index_file = fs::File::create("site/index.html").unwrap();
     index_file.write_all(&index_html.into_bytes()).unwrap();
 
     // Open browser, this works but running this in another thread after making sure
-    // that server is started is a better idea, this only works on MacOs
+    // that server is started is a better idea, this only works on macOS
     std::process::Command::new("open")
         .arg(String::from("http://127.0.0.1:4000/index.html"))
         .output()
@@ -112,23 +115,6 @@ fn main() {
             Err(error) => println!("I/O ERROR: {}", error),
         }
     }
-}
-
-fn to_html(markdown: &str) -> String {
-    use pulldown_cmark::{html, Options, Parser};
-
-    // Set up options and parser. Strikethroughs are not part of the CommonMark standard
-    // and we therefore must enable it explicitly.
-    let mut options = Options::empty();
-    options.insert(Options::ENABLE_STRIKETHROUGH);
-    options.insert(Options::ENABLE_TABLES);
-    let parser = Parser::new_ext(markdown, options);
-
-    // Write to String buffer.
-    let mut html_output = String::new();
-    html::push_html(&mut html_output, parser);
-
-    html_output
 }
 
 #[derive(Debug, Deserialize)]
