@@ -1,4 +1,4 @@
-use crate::{utils, SITE_DIRECTORY};
+use crate::utils;
 use serde::Deserialize;
 use std::io::prelude::*;
 use std::{fs, io, path::PathBuf};
@@ -17,6 +17,8 @@ pub fn run() {
         .expect("Error collecting notes");
 
     let mut index_markdown = String::new();
+
+    utils::copy_file("zettelstyle.css", "site/zettelkasten/zettelstyle.css");
 
     for note in notes {
         let path = note;
