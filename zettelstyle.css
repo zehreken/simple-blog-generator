@@ -1,3 +1,19 @@
 body {
-    max-width: 300px;
- }
+	max-width: 400px;
+}
+
+a:link {
+	color: #ff0055;
+}
+
+a:visited {
+	color: #ff0055;
+}
+
+a:hover {
+	color: #ff0055;
+}
+
+a:active {
+	color: #ff0055;
+}
