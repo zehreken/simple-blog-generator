@@ -15,6 +15,13 @@ A very good learning material, will give a deeper understanding after you finish
 * The iterator returned by iter will yield &T, by convention.
 * The iterator returned by iter_mut will yield &mut T, by convention.
 
+### Arrays
+An array can be defined in two ways:
+* A comma-separated list inside brackets
+* The initial value, followed by a semicolon, and then the length of the array in brackets
+Arrays are useful when you want your data allocated on the stack rather than the heap. They're also useful when you want to ensure you always have a fixed number of elements.
+
+
 ### Conditional Compilation for Debug and Release Builds
 Here is a way to conditionally compile Rust code for Debug and Release builds
 ```
