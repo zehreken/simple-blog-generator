@@ -21,6 +21,8 @@ An array can be defined in two ways:
 * The initial value, followed by a semicolon, and then the length of the array in brackets
 Arrays are useful when you want your data allocated on the stack rather than the heap. They're also useful when you want to ensure you always have a fixed number of elements.
 
+### Option
+Option<T> enum is used when the absence of a value is a possibility, known as null reference in some other languages.
 
 ### Conditional Compilation for Debug and Release Builds
 Here is a way to conditionally compile Rust code for Debug and Release builds
