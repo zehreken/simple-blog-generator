@@ -9,6 +9,13 @@ markdown = """
 * https://rust-unofficial.github.io/too-many-lists/index.html
 A very good learning material, will give a deeper understanding after you finish the Rustbook.
 * rustc --explain [error code]
+* I always liked the material and documents from Microsoft, this one is also very good
+    https://docs.microsoft.com/en-us/learn/paths/rust-first-steps/
+
+### Variables
+Variables are often calleed _bindings_ in Rust. It makes sense since by default variables are immutable in Rust.
+Any variable that goes out of scope is _dropped_. Dropping means releasing the resources that are tied(bound) to that variable.
+Only one thing can own a piece of data at a time in Rust.
 
 ### into_iter, iter and iter_mut
 * The iterator returned by into_iter may yield any of T, &T or &mut T, depending on the context.
@@ -23,6 +30,21 @@ Arrays are useful when you want your data allocated on the stack rather than the
 
 ### Option
 Option<T> enum is used when the absence of a value is a possibility, known as null reference in some other languages.
+The two examples below are identical, a good explanation for _if let_
+```
+// 1
+let some_number: Option<u8> = Some(7);
+match some_number {
+    Some(7) => println!("That's my lucky number!"),
+    _ => {},
+}
+// 2
+let some_number: Option<u8> = Some(7);
+if let Some(7) = some_number {
+    println!("That's my lucky number!");
+}
+```
+
 
 ### Conditional Compilation for Debug and Release Builds
 Here is a way to conditionally compile Rust code for Debug and Release builds
