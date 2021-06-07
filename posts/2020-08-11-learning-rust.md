@@ -17,6 +17,12 @@ Variables are often calleed _bindings_ in Rust. It makes sense since by default 
 Any variable that goes out of scope is _dropped_. Dropping means releasing the resources that are tied(bound) to that variable.
 Only one thing can own a piece of data at a time in Rust.
 
+A small note about lifetimes
+<pre class="prettyprint">
+struct MyStruct<'lifetime>(&'lifetime str);
+</pre>
+This annotation means that the lifetime of MyStruct can not outlive the reference that holds in its fields
+
 ### into_iter, iter and iter_mut
 * The iterator returned by into_iter may yield any of T, &T or &mut T, depending on the context.
 * The iterator returned by iter will yield &T, by convention.
@@ -31,7 +37,7 @@ Arrays are useful when you want your data allocated on the stack rather than the
 ### Option
 Option<T> enum is used when the absence of a value is a possibility, known as null reference in some other languages.
 The two examples below are identical, a good explanation for _if let_
-```
+<pre class="prettyprint">
 // 1
 let some_number: Option<u8> = Some(7);
 match some_number {
@@ -43,12 +49,12 @@ let some_number: Option<u8> = Some(7);
 if let Some(7) = some_number {
     println!("That's my lucky number!");
 }
-```
+</pre>
 
 
 ### Conditional Compilation for Debug and Release Builds
 Here is a way to conditionally compile Rust code for Debug and Release builds
-```
+<pre class="prettyprint">
 #[cfg(debug_assertions)]
 fn example() {
     println!("Debugging enabled");
@@ -74,5 +80,5 @@ fn main() {
 
     example();
 }
-```
+</pre>
 """

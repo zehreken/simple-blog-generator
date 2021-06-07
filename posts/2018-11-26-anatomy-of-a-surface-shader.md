@@ -9,7 +9,7 @@ I tried to learn shaders several times but didn't succeed a lot honestly. I can 
 
 Let's examine a very simple shader.
 
-```
+<pre class="prettyprint">
 Shader "ShaderLib/DiffuseWhite"
 {
     SubShader
@@ -35,16 +35,16 @@ Shader "ShaderLib/DiffuseWhite"
         ENDCG
     }
 }
-```
+</pre>
 
 This is a **surface** shader. Because it uses the surface function defined in this line.
-```
+<pre class="prettyprint">
 #pragma surface surf Lambert
-```
+</pre>
 The name _surf_ is defined in this line as well, so if you want to use another name for your surface function, you can define it like this
-```
+<pre class="prettyprint">
 #pragma surface function_name Lambert
-```
+</pre>
 
 Surface function has two parameters, first one is input and second one is output. Surface function takes the input parameter and modifies the output accordingly. Albedo represents the diffuse color. Currently diffuse color is white.
 """

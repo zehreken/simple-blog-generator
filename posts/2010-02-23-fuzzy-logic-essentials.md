@@ -10,7 +10,7 @@ markdown = """
 
 The graph above shows the **degrees of membership** of the black ones to the closeness fuzzy set according to their distance to the green one. As you see, the closest one has the highest degree of membership and the farmost one has the lowest.
 
-```
+<pre class="prettyprint">
 private function calculateDistance():void
 {
   for (i = 0; i < smallBacteriaArray.length; i++)
@@ -31,7 +31,7 @@ private function calculateDistance():void
     }
   }
 }
-```
+</pre>
 
 To calculate the degrees of membership to the midsized-ness fuzzy set, the process is very similar to the one above. Alright, we have calculated the degrees of membership but how do we use them? In practice we can use these membership values to decide or to make something decide. For example if you are interested in something that is close to you then you should choose the one which has the greatest degree of membership to the closeness fuzzy set. Programming with fuzzy logic is like having **unlimited number of if clauses but with high performance**.
 
