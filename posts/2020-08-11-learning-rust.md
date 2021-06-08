@@ -51,6 +51,26 @@ if let Some(7) = some_number {
 }
 </pre>
 
+### Traits
+Two ways of having trait bounds
+<pre class="prettyprint">
+// 1
+fn fn_one(value: &impl Trait) { ... }
+// 2
+fn fn_two&lt;T: Trait&gt;(value: &T) { ... }
+</pre>
+
+Iterator trait looks like this in Rust standard library
+One interesting thing is 'type Item'. It means every implementation of Iterator should return an associated type Item. 
+<pre class="prettyprint">
+trait Iterator {
+    type Item;
+    fn next(&mut self) -> Option&lt;Self::Item&gt;;
+}
+</pre>
+
+Fun topic about string literals
+https://doc.rust-lang.org/reference/tokens.html#raw-string-literals
 
 ### Conditional Compilation for Debug and Release Builds
 Here is a way to conditionally compile Rust code for Debug and Release builds
