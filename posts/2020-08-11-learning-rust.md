@@ -1,7 +1,7 @@
 layout = "post"
 title = "Learning Rust"
 created = "2020-08-29"
-updated = "2020-08-29"
+updated = "2021-06-13"
 markdown = """
 **Here** is a list of stuff that I find interesting and important while trying to learn the Rust Language.
 
@@ -66,6 +66,21 @@ One interesting thing is 'type Item'. It means every implementation of Iterator 
 trait Iterator {
     type Item;
     fn next(&mut self) -> Option&lt;Self::Item&gt;;
+}
+</pre>
+
+### (?) syntax sugar
+(?) is used to propagate errors. The two functions below are equivalent.
+<pre class="prettyprint">
+fn function_1() -> Result(Success, Failure) {
+	match operation_that_might_fail() {
+		Ok(success) => success,
+		Err(failure) => return Err(failure),
+	}
+}
+
+fn function_2() -> Result(Success, Failuer) {
+	operation_that_might_fail()?
 }
 </pre>
 

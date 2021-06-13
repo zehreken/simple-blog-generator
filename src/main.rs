@@ -1,10 +1,11 @@
-use serde::Deserialize;
+use site::Post;
 use std::io::prelude::*;
 use std::path::PathBuf;
 use std::{fs, io};
 use tiny_http::{Response, Server};
 use toml;
 
+mod site;
 mod utils;
 mod zettelkasten;
 
@@ -17,15 +18,16 @@ fn main() {
     let head_string = fs::read_to_string("head.html");
     let head_string = match head_string {
         Ok(file) => file,
-        Err(error) => panic!("Error while reading [head.html]: {}", error),
+        Err(error) => panic!("Error reading [head.html]: {}", error),
     };
 
     let mut entries = fs::read_dir("posts")
-        .expect("directory [posts] is not found")
+        .expect("Directory [posts] is not found")
         .map(|res| res.map(|e| e.path()))
         .collect::<Result<Vec<_>, io::Error>>()
         .expect("Error collecting entries");
 
+    // Sort by file name
     entries.sort();
     entries.reverse();
 
@@ -41,11 +43,11 @@ fn main() {
         let path = entry;
         // This filters .DS_Store
         if let Some(_) = path.extension() {
-            let contents =
-                fs::read_to_string(path.clone()).expect("Something went wrong reading the file");
+            let contents = fs::read_to_string(&path)
+                .expect(format!("Error reading file [{:?}]", path).as_str());
 
             let post: Post = toml::from_str(contents.as_str())
-                .expect(format!("error while parsing: {:?}", path).as_str());
+                .expect(format!("Error parsing file [{:?}]", path).as_str());
 
             let mut html_output = head_string.clone();
             html_output = html_output.replace("$title", post.title.as_str());
@@ -115,13 +117,4 @@ fn main() {
             Err(error) => println!("I/O ERROR: {}", error),
         }
     }
-}
-
-#[derive(Debug, Deserialize)]
-struct Post {
-    layout: String,
-    title: String,
-    created: String,
-    updated: String,
-    markdown: String,
 }
