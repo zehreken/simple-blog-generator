@@ -187,13 +187,22 @@ body main > p iframe {
     padding:0px 
 }
 body main > pre {
-    background-color: rgb(200, 200, 200);
+    /* background-color: rgb(240, 240, 240); */
     color:rgb(44, 43, 43);
     max-width: 700px;
-    padding: 10px;
+    padding: 30px;
     margin-top: 0;
     padding-top: 0;
-    font-size: 12px;
+    font-size: 13px;
+}
+ol.linenums
+{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+body main > pre.prettyprint li {
+    list-style-type: decimal;
+	background-color: rgb(200, 200, 200);
 }
 body main > table, th, td {
     border: 1px solid black;
@@ -249,7 +258,4 @@ body footer > p i {
     body main > ul.jump {
         columns: 1 !important 
    }
-}
-span {
-    background-color: var(--main-color);
 }
