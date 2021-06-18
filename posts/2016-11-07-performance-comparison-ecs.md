@@ -36,7 +36,7 @@ Unity, at its core is also an entity-component based engine. The most advised pr
 The test project is a simple project. The program creates 5000 cubes and all of the cubes run these two simple logic;
 
 Move
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 void Update()
 {
 	_transform.Translate(_xVel * Time.deltaTime, _yVel * Time.deltaTime, _zVel * Time.deltaTime, Space.World);
@@ -59,7 +59,7 @@ void Update()
 </pre>
 
 Rotate
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 void Update()
 {
 	_transform.Rotate(_xVel * Time.deltaTime, _yVel * Time.deltaTime, _zVel * Time.deltaTime);

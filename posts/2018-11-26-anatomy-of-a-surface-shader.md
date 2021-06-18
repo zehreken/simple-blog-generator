@@ -9,7 +9,7 @@ I tried to learn shaders several times but didn't succeed a lot honestly. I can 
 
 Let's examine a very simple shader.
 
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 Shader "ShaderLib/DiffuseWhite"
 {
     SubShader
@@ -38,11 +38,11 @@ Shader "ShaderLib/DiffuseWhite"
 </pre>
 
 This is a **surface** shader. Because it uses the surface function defined in this line.
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 #pragma surface surf Lambert
 </pre>
 The name _surf_ is defined in this line as well, so if you want to use another name for your surface function, you can define it like this
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 #pragma surface function_name Lambert
 </pre>
 

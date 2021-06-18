@@ -13,7 +13,7 @@ The things is most people do not know what this means and what are the effects.
 I am going to give some examples to explain these effects.
 
 * The **new** keyword. You can create a struct without using the **new** keyword, but then you need to assign all of the fields manually
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 struct MyStruct
 {
 	public int a;
@@ -25,7 +25,7 @@ myStruct.a = 1; // Don't do this and you are going to get a compile error
 If you use the new keyword, then the fields will be assigned to their default values. (e.g. 0 for int)
 
 * Extension methods for structs won't modify the actual object
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 public static void UpdateA(this MyStruct ms)
 {
 	ms.a += 1; // The passed ms object's field 'a' is still 1, remember pass by value
@@ -33,7 +33,7 @@ public static void UpdateA(this MyStruct ms)
 </pre>
 
 * Still a result of being a value type, you should be careful with **recursion**
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 public static MyStruct RecursiveA(MyStruct ms)  
 {  
 	ms.a += 1;
@@ -50,7 +50,7 @@ ms = RecursiveA(ms);
 The function above will still terminate when ms.a is 10 but the value of the actual ms.a will be 1.
 You can solve this problem by using a class of course or you can assign ms inside the function like this.
 
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 public static MyStruct RecursiveA(MyStruct ms)  
 {  
 	ms.a += 1;
@@ -63,7 +63,7 @@ public static MyStruct RecursiveA(MyStruct ms)
 </pre>
 
 * If you use the **ref** keyword, the struct will be passed by reference(its location in memory)
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 public static MyStruct RecursiveA(ref MyStruct ms)  
 {  
 	ms.a += 1;
