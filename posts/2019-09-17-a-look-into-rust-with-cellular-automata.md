@@ -5,6 +5,8 @@ updated = "2021-06-24"
 markdown = """
 **Nowadays** I'm trying to learn **Rust**, a relatively new programmming language which gets a lot of attention lately. I kept hearing the name Rust a lot in the past and read some articles here and there but never had the time to learn it. This post will be a documentation to keep track of my progress. I will try to implement a [**cellular automata**](https://en.wikipedia.org/wiki/Cellular_automaton) and use as many features as Rust provides.
 
+While writing this post, I noticed Rust also has a [**book**](https://rustwasm.github.io/docs/book/introduction.html) for Rust and WebAssembly. The funny thing is, one of the examples in the book is also a cellular automata, mentioned as *life*. Frankly I didn't know about this before starting this post.
+
 <canvas id="glcanvas" tabindex='1' style='width: 640px;height: 512px;overflow: hidden;background: black;z-index: 0;'></canvas>
 <!-- Minified and statically hosted version of https://github.com/not-fl3/miniquad/blob/master/native/sapp-wasm/js/gl.js -->
 <script src="https://not-fl3.github.io/miniquad-samples/gl.js"></script>
@@ -44,5 +46,20 @@ pub struct Cell {
     pub on_count: i32,
 }
 </pre>
-There is another interesting thing in the above snippet. Checkout the [**#\\[derive\\]**](https://doc.rust-lang.org/rust-by-example/trait/derive.html) attribute. 
+There is another interesting thing in the above snippet. Checkout the [**#\\[derive\\]**](https://doc.rust-lang.org/reference/attributes/derive.html) attribute in the original Rust documentation, basically what it does is implementing the traits automatically.
+
+We can bind functions to our Cell struct using the impl keyword.
+<pre class="prettyprint linenums">
+impl Cell {
+    pub fn new(x: i32, y: i32, current_state: i32) -> Self {
+        Self {
+            position: Point { x, y },
+            neighbours: get_moore_neighbours(x, y),
+            current_state,
+            future_state: 0,
+        }
+    }
+}
+</pre>
+I think "new" is conventionally used to name the function which creates the instance of the struct, there is no actual restriction. Another interesting thing is the "Self" keyword. We could also use Cell instead of Self but since we are implementing Cell the compiler knows what Self is.
 """

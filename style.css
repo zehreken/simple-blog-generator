@@ -40,6 +40,12 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+	font-family: 'Inconsolata-Regular';
+	src: url('assets/Inconsolata-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
 html {
     background: var(--main-color);
 }
@@ -188,12 +194,13 @@ body main > p iframe {
 }
 body main > pre {
     /* background-color: rgb(240, 240, 240); */
+	font-family: "Inconsolata-Regular", "Helvetica Neue", Helvetica, Arial;
     color:rgb(44, 43, 43);
     max-width: 700px;
     padding: 30px;
     margin-top: 0;
     padding-top: 0;
-    font-size: 13px;
+    font-size: 14px;
 }
 body main > table, th, td {
     border: 1px solid black;
@@ -251,9 +258,11 @@ body footer > p i {
    }
 }
 ol.linenums {
+	font-family: "Inconsolata-Regular", "Helvetica Neue", Helvetica, Arial;
 	margin-top: 0; margin-bottom: 0
 }
 .prettyprint ol.linenums > li {
+	font-family: "Inconsolata-Regular", "Helvetica Neue", Helvetica, Arial;
 	list-style-type: decimal;
 }
 /* Alternate shading for lines */
