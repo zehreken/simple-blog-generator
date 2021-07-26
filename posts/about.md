@@ -3,18 +3,8 @@ title = "About"
 created = "2020-09-22"
 updated = "2020-09-22"
 markdown = """
-My name is Güçhan Alkan.  
+Hi, I'm Güçhan Alkan. I've been working as a programmer since 2008, almost exclusively in the games industry. I worked on 2D and 3D games for various platforms including PC, PS3 and mobile devices. This blog is mostly about the stuff I'm curious about.  
 ![Ahoy!](/assets/about/01050034.jpg)  
-Note to self: Complete this page.
-
 Ask why it gets dark, nobody blames you.  
 Please, feel free to send me a message.  
-
-e-mail: zehreken@gmail.com  
-github: zehreken  
-twitter: zehreken  
-soundcloud: zehreken  
-deviantart: zehreken  
-last.fm: zehreken  
-linkedin: guchanalkan
 """

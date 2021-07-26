@@ -42,7 +42,7 @@ pub fn copy_file(from: &str, to: &str) {
     }
 }
 
-pub fn copy_directory(from: &str, to: &str) {
+pub fn _copy_directory(from: &str, _to: &str) {
     if Path::new(from).exists() {
         // copy directory
     } else {
