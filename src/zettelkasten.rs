@@ -32,6 +32,7 @@ pub fn run() {
 
             let mut html_output = html_string.clone();
             html_output = html_output.replace("$title", zettel_note.title.as_str());
+            html_output = html_output.replace("$tags", zettel_note.tags.as_str());
             html_output = html_output.replace(
                 "$content",
                 utils::to_html(zettel_note.markdown.as_str()).as_str(),
@@ -58,6 +59,7 @@ pub fn run() {
 
     let mut index_html = html_string.clone();
     index_html = index_html.replace("$title", "zettelkasten");
+    index_html = index_html.replace("$tags", "");
     index_html = index_html.replace("$content", utils::to_html(index_markdown.as_str()).as_str());
 
     let mut index_file = fs::File::create("site/zettelkasten/index.html").unwrap();
@@ -69,5 +71,6 @@ pub fn run() {
 #[derive(Debug, Deserialize)]
 struct ZettelNote {
     title: String,
+    tags: String,
     markdown: String,
 }
