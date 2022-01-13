@@ -27,7 +27,7 @@ impl Post {
 
 const SITE_DIRECTORY: &str = "site";
 
-pub fn run() {
+pub fn build() {
     utils::create_directory(SITE_DIRECTORY);
 
     let head_string = fs::read_to_string("head.html");

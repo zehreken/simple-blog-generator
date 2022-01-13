@@ -13,19 +13,24 @@ pub fn start(address: &str) {
 
     for request in server.incoming_requests() {
         println!(
-            "received request! method: {:?}\n, url: {:?}\n, headers: {:?}\n",
+            "Received request\nMethod: {:?}\nPath: {:?}\n",
             request.method(),
             request.url(),
-            request.headers()
         );
 
-        let file = fs::File::open(format!("site{}", request.url()));
-        match file {
+        match fs::read_dir(format!("site{}", request.url())) {
             Ok(_) => {
-                let response = Response::from_file(file.unwrap());
-                request.respond(response).unwrap();
+                if let Ok(file) = fs::File::open(format!("site{}/index.html", request.url())) {
+                    let response = Response::from_file(file);
+                    request.respond(response).unwrap();
+                }
             }
-            Err(error) => println!("I/O ERROR: {}", error),
+            Err(_) => {
+                if let Ok(file) = fs::File::open(format!("site{}", request.url())) {
+                    let response = Response::from_file(file);
+                    request.respond(response).unwrap();
+                }
+            }
         }
     }
 }

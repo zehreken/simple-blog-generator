@@ -4,9 +4,9 @@ mod utils;
 mod zettelkasten;
 
 fn main() {
-    zettelkasten::run();
+    zettelkasten::build();
 
-    blog::run();
+    blog::build();
 
     server::start("http://127.0.0.1:4000/index.html");
 }

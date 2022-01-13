@@ -5,7 +5,7 @@ use std::{fs, io, path::PathBuf};
 
 const ZETTEL_DIRECTORY: &str = "site/zettelkasten";
 
-pub fn run() {
+pub fn build() {
     utils::create_directory(ZETTEL_DIRECTORY);
 
     let html_string = fs::read_to_string("zettel.html").expect("Error while reading [zettel.html]");
