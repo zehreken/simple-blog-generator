@@ -1,6 +1,9 @@
 use std::fs;
 use std::path::Path;
 
+pub const SITE_DIRECTORY: &str = "site";
+pub const ZETTEL_DIRECTORY: &str = "site/zettelkasten";
+
 pub fn to_html(markdown: &str) -> String {
     use pulldown_cmark::{html, Options, Parser};
 

@@ -25,10 +25,8 @@ impl Post {
     }
 }
 
-const SITE_DIRECTORY: &str = "site";
-
 pub fn build() {
-    utils::create_directory(SITE_DIRECTORY);
+    utils::create_directory(utils::SITE_DIRECTORY);
 
     let head_string = fs::read_to_string("head.html");
     let head_string = match head_string {
@@ -73,7 +71,7 @@ pub fn build() {
                 html_output.replace("$content", utils::to_html(post.markdown.as_str()).as_str());
 
             let file_name = path.file_stem().unwrap();
-            let mut out_path = PathBuf::from(SITE_DIRECTORY);
+            let mut out_path = PathBuf::from(utils::SITE_DIRECTORY);
 
             if post.layout == "post" {
                 index_markdown.push('[');

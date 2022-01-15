@@ -3,10 +3,9 @@ use serde::Deserialize;
 use std::io::prelude::*;
 use std::{fs, io, path::PathBuf};
 
-const ZETTEL_DIRECTORY: &str = "site/zettelkasten";
-
 pub fn build() {
-    utils::create_directory(ZETTEL_DIRECTORY);
+    utils::create_directory(utils::SITE_DIRECTORY);
+    utils::create_directory(utils::ZETTEL_DIRECTORY);
 
     let html_string = fs::read_to_string("zettel.html").expect("Error while reading [zettel.html]");
 
@@ -39,7 +38,7 @@ pub fn build() {
             );
 
             let file_name = path.file_stem().unwrap();
-            let mut out_path = PathBuf::from(ZETTEL_DIRECTORY);
+            let mut out_path = PathBuf::from(utils::ZETTEL_DIRECTORY);
 
             out_path.push(file_name);
             out_path.set_extension("html");
