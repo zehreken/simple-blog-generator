@@ -63,10 +63,16 @@ pub fn build() {
 
             let mut html_output = head_string.clone();
             html_output = html_output.replace("$title", post.title.as_str());
-            html_output = html_output.replace(
-                "$updated",
-                format!("created on {}, edited on {}", post.created, post.updated).as_str(),
-            );
+            if post.created == post.updated {
+                html_output =
+                    html_output.replace("$date", format!("created on {}", post.created).as_str());
+            } else {
+                html_output = html_output.replace(
+                    "$date",
+                    format!("created on {}, edited on {}", post.created, post.updated).as_str(),
+                );
+            }
+
             html_output =
                 html_output.replace("$content", utils::to_html(post.markdown.as_str()).as_str());
 
@@ -97,7 +103,7 @@ pub fn build() {
 
     let mut index_html = head_string.clone();
     index_html = index_html.replace("$title", "");
-    index_html = index_html.replace("$updated", "");
+    index_html = index_html.replace("$date", "");
     index_html = index_html.replace("$content", utils::to_html(index_markdown.as_str()).as_str());
     index_html = index_html.replace("$*", "<span> * </span>"); // 'Thin space' character is used before and after asterisk
     let mut index_file = fs::File::create("site/index.html").unwrap();
