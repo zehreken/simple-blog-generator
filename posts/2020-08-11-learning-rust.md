@@ -21,7 +21,33 @@ A small note about lifetimes
 <pre class="prettyprint linenums">
 struct MyStruct<'lifetime>(&'lifetime str);
 </pre>
-This annotation means that the lifetime of MyStruct can not outlive the reference that holds in its fields
+This annotation means that the lifetime of MyStruct can not outlive the reference that holds in its fields.
+
+As of April 1st 2022, I understand the mut keyword better.
+<pre class="prettyprint linenums">
+fn my_function(mut x: i32)
+</pre>
+In this case **mut** modifies the variable x, not the variable that is passed. The passed variable
+does not need to be defined as **mut**.
+<pre class="prettyprint linenums">
+let v0 = vec![0, 1, 2];
+// v0.push(3); // error
+let mut v1 = v0;
+v1.push(3);
+</pre>
+This is another interesting case. **v0** is not defined as **mut** and when I try to push into it, the compiler throws an error but you can bind **v0** to a mutable variable, in this case **v1**.
+
+As you know you can only have one mutable reference at a time. The code below does not compile because at the execution of line 5 there are 2 mutable references to the same variable **x**. But if you switch line 4 and 5 it compiles because mutable reference **y** is not used at that point.
+<pre class="prettyprint linenums">
+fn main() {
+    let mut x = 100;
+    let y = &mut x;
+    let z = &mut x;
+    *y += 100;
+    *z += 1000;
+    assert_eq!(x, 1200);
+}
+</pre>
 
 ### into_iter, iter and iter_mut
 * The iterator returned by into_iter may yield any of T, &T or &mut T, depending on the context.

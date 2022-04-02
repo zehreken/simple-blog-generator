@@ -49,8 +49,9 @@ pub fn build() {
     let mut index_markdown = String::new();
 
     // Add pages
-    index_markdown.push_str("[$* About](about.html)<br>");
-    index_markdown.push_str("[$* Projects](projects.html)<br><br>");
+    index_markdown.push_str("[$* About](about.html)  \r");
+    index_markdown.push_str("[$* Projects](projects.html)  \r  \r");
+    let mut prev_year = String::from("");
 
     for entry in entries {
         let path = entry;
@@ -60,6 +61,7 @@ pub fn build() {
                 .expect(format!("Error reading file [{:?}]", path).as_str());
 
             let post: Post = Post::new(contents.as_str());
+            let year = post.created.split('-').next().unwrap().to_owned();
 
             let mut html_output = head_string.clone();
             html_output = html_output.replace("$title", post.title.as_str());
@@ -80,6 +82,12 @@ pub fn build() {
             let mut out_path = PathBuf::from(utils::SITE_DIRECTORY);
 
             if post.layout == "post" {
+                if prev_year != year {
+                    index_markdown.push_str("#### ");
+                    index_markdown.push_str(&year);
+                    index_markdown.push_str("  \r");
+                    prev_year = year.to_owned();
+                }
                 index_markdown.push('[');
                 index_markdown.push_str("$*");
                 index_markdown.push(' ');
@@ -87,8 +95,7 @@ pub fn build() {
                 index_markdown.push(']');
                 index_markdown.push('(');
                 index_markdown.push_str(file_name.to_str().unwrap());
-                index_markdown.push_str(".html");
-                index_markdown.push_str(")<br>");
+                index_markdown.push_str(".html)  \r");
             }
 
             out_path.push(file_name);
