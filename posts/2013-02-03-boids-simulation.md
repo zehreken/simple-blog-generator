@@ -2,6 +2,7 @@ layout = "post"
 title = "Boids (Flock) Simulation"
 created = "2013-02-03"
 updated = "2013-02-03"
+tags = "#tag"
 markdown = """
 **In** the previous months, I was searching for some interesting AI algorithms to study and I’ve come across one of the coolest things I’ve ever seen in my life, **Boids Simulation**. Boids simulation or flock simulation is about imitating the behavior of fish schools or any other flocking animal behavior in nature.
 

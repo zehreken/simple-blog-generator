@@ -14,6 +14,7 @@ pub struct Post {
     pub title: String,
     pub created: String,
     pub updated: String,
+    pub tags: String,
     pub markdown: String,
 }
 

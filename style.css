@@ -1,5 +1,7 @@
 :root {
-    --main-color: rgb(255, 219, 88);
+    --main-color: rgb(255, 88, 88);
+    --odd-line-color: rgb(255, 212, 212);
+    --even-line-color: rgb(255, 185, 185);
 }
 
 * {
@@ -109,8 +111,8 @@ body main>h3 {
 body main>h4 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size: 15px;
-    background-color: black;
-    color: white;
+    background-color: var(--main-color);
+    /* color: ; */
     padding-left: 3px;
     padding-top: 0px;
     padding-bottom: 0px;
@@ -337,7 +339,7 @@ li.L2,
 li.L4,
 li.L6,
 li.L8 {
-    background: #fff3c9
+    background: var(--even-line-color)
 }
 
 li.L1,
@@ -345,5 +347,5 @@ li.L3,
 li.L5,
 li.L7,
 li.L9 {
-    background: #ffe78f
+    background: var(--odd-line-color)
 }

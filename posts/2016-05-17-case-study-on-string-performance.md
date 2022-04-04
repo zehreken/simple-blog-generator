@@ -2,6 +2,7 @@ layout = "post"
 title = "Case Study on Using RegEx to Improve Game Performance"
 created = "2016-05-17"
 updated = "2016-05-17"
+tags = "#tag"
 markdown = """
 **Dealing** with strings is always a hassle. Since they are immutable, procedures with strings are slow and memory heavy. For the last two months I have been working on a word game for mobile devices. As you know, we programmers are responsible for the performance of our games on mobile platforms because of limited resources on the devices.
 

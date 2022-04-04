@@ -2,6 +2,7 @@ layout = "post"
 title = "Profiling Rust on macOS"
 created = "2020-08-08"
 updated = "2020-09-26"
+tags = "#tag"
 markdown = """
 
 It has been some time since I've started to use Rust for my hobby projects. As you know when the projects get more complex, performance may become an issue. Here, I'm writing down the available options for profiling Rust programs on macOS for future reference but I'm sure most of the crates and tools are also usable in other operating systems.

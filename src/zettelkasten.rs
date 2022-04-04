@@ -3,6 +3,13 @@ use serde::Deserialize;
 use std::io::prelude::*;
 use std::{fs, io, path::PathBuf};
 
+#[derive(Debug, Deserialize)]
+struct ZettelNote {
+    title: String,
+    tags: String,
+    markdown: String,
+}
+
 pub fn build() {
     utils::create_directory(utils::SITE_DIRECTORY);
     utils::create_directory(utils::ZETTEL_DIRECTORY);
@@ -65,11 +72,4 @@ pub fn build() {
     index_file
         .write_all(&index_html.into_bytes()[..])
         .expect("error writing index file");
-}
-
-#[derive(Debug, Deserialize)]
-struct ZettelNote {
-    title: String,
-    tags: String,
-    markdown: String,
 }

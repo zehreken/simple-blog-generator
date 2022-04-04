@@ -2,6 +2,7 @@ layout = "page"
 title = "Projects"
 created = "2020-10-03"
 updated = "2021-09-14"
+tags = "#tag"
 markdown = """
 Here are some of my hobby projects.
 ### modul

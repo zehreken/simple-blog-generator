@@ -2,6 +2,7 @@ layout = "post"
 title = "Profile Rust on macOS"
 created = "date"
 updated = "Last updated: date"
+tags = "#tag"
 markdown = """
 ### 1st title
 normal text

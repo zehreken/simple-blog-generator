@@ -2,6 +2,7 @@ layout = "post"
 title = "Fuzzy Logic Essentials"
 created = "2010-02-23"
 updated = "2020-09-26"
+tags = "#tag"
 markdown = """
 **We** said, in fuzzy logic, an element can **partially** belong to a set, a fuzzy set, unlike in traditional logic. Let’s see how. In the application below there are ten black circles and a green circle. Let’s assume they are some kind of living creatures, maybe bacterias, and the green one eats the black ones to survive. The question is, how it decides which black one to eat. The green bacteria or circle or thing, whatever you call, only minds the distance and size of the black bacterias, and it likes the close and midsized ones. So, we have two **fuzzy variables**, first one is closeness and second one is midsized-ness, thereby we have two **fuzzy sets**, closeness and midsized-ness fuzzy sets. This is one of the main characteristics of fuzzy logic, we can express **numerical values as linguistic values**, e.g. very close, not so close...
 
