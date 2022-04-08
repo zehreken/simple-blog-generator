@@ -1,7 +1,7 @@
 :root {
-    --main-color: rgb(255, 88, 88);
-    --odd-line-color: rgb(255, 212, 212);
-    --even-line-color: rgb(255, 185, 185);
+    --main-color: rgb(255, 219, 88);
+    --odd-line-color: #ffe78f;
+    --even-line-color: #fff3c9;
 }
 
 * {
