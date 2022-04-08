@@ -2,7 +2,7 @@ layout = "post"
 title = "Cache Miss and Data Locality"
 created = "2017-06-08"
 updated = "2017-06-08"
-tags = "#tag"
+tags = "#computer-science #data-oriented-programming"
 markdown = """
 **Programmers** working in the game industry are proud people. And they (the good ones at least) have the right to be. It is a hard job. We care about performance, and we want our code to be fast - sometimes more than necessary. But we usually look for problems in the wrong places, we try to optimize our code by using faster algorithms but never check or care about where we put our data.
 

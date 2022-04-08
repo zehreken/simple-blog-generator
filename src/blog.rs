@@ -1,4 +1,5 @@
 use std::{
+    collections::HashMap,
     fs,
     io::{self, Write},
     path::PathBuf,
@@ -53,6 +54,7 @@ pub fn build() {
     index_markdown.push_str("[$* About](about.html)  \r");
     index_markdown.push_str("[$* Projects](projects.html)  \r  \r");
     let mut prev_year = String::from("");
+    let mut posts_by_tag: HashMap<String, Vec<String>> = HashMap::new();
 
     for entry in entries {
         let path = entry;
@@ -62,7 +64,6 @@ pub fn build() {
                 .expect(format!("Error reading file [{:?}]", path).as_str());
 
             let post: Post = Post::new(contents.as_str());
-            let year = post.created.split('-').next().unwrap().to_owned();
 
             let mut html_output = head_string.clone();
             html_output = html_output.replace("$title", post.title.as_str());
@@ -76,6 +77,12 @@ pub fn build() {
                 );
             }
 
+            if post.layout == "post" {
+                html_output = html_output.replace("$tags", post.tags.as_str());
+            } else if post.layout == "page" {
+                html_output = html_output.replace("$tags", "");
+            }
+
             html_output =
                 html_output.replace("$content", utils::to_html(post.markdown.as_str()).as_str());
 
@@ -83,6 +90,19 @@ pub fn build() {
             let mut out_path = PathBuf::from(utils::SITE_DIRECTORY);
 
             if post.layout == "post" {
+                let year = post.created.split('-').next().unwrap().to_owned();
+                let tags = post.tags.split(' ');
+                for tag in tags {
+                    match posts_by_tag.get_mut(tag) {
+                        Some(posts) => posts.push(file_name.to_owned().into_string().unwrap()),
+                        None => {
+                            posts_by_tag.insert(
+                                tag.into(),
+                                vec![file_name.to_owned().into_string().unwrap()],
+                            );
+                        }
+                    }
+                }
                 if prev_year != year {
                     index_markdown.push_str("#### ");
                     index_markdown.push_str(&year);
@@ -109,9 +129,17 @@ pub fn build() {
         }
     }
 
+    for (tag, posts) in posts_by_tag {
+        println!("[TAG] {}", tag);
+        for post in posts {
+            println!("{}", post);
+        }
+    }
+
     let mut index_html = head_string.clone();
     index_html = index_html.replace("$title", "");
     index_html = index_html.replace("$date", "");
+    index_html = index_html.replace("$tags", "");
     index_html = index_html.replace("$content", utils::to_html(index_markdown.as_str()).as_str());
     index_html = index_html.replace("$*", "<span> * </span>"); // 'Thin space' character is used before and after asterisk
     let mut index_file = fs::File::create("site/index.html").unwrap();

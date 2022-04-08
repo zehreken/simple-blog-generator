@@ -55,7 +55,7 @@ pub fn build() {
             index_markdown.push(']');
             index_markdown.push('(');
             index_markdown.push_str(file_name.to_str().unwrap());
-            index_markdown.push_str(".html)<br>");
+            index_markdown.push_str(".html)  \r");
 
             let mut file = fs::File::create(out_path).expect("Error creating file");
             file.write_all(&html_output.into_bytes()[..])

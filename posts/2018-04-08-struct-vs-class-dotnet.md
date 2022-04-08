@@ -2,7 +2,7 @@ layout = "post"
 title = "Struct vs. Class in .NET"
 created = "2018-04-08"
 updated = "2018-04-08"
-tags = "#tag"
+tags = "#computer-science #dot-net"
 markdown = """
 **Lately**, I've made a very important mistake while using structs in our persistency system(save/load game).
 So I wanted to write this post, which may help others, especially **Unity** developers. Since they mostly use C#

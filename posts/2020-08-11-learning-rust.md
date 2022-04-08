@@ -2,7 +2,7 @@ layout = "post"
 title = "Learning Rust"
 created = "2020-08-29"
 updated = "2021-06-13"
-tags = "#tag"
+tags = "#computer-science #rust"
 markdown = """
 **Here** is a list of stuff that I find interesting and important while trying to learn the Rust Language.
 

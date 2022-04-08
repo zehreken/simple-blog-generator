@@ -2,7 +2,7 @@ layout = "post"
 title = "A Look into Rust with Conway's Game of Life"
 created = "2019-09-17"
 updated = "2021-07-04"
-tags = "#tag"
+tags = "#artificial-intelligence #rust #game"
 markdown = """
 **Nowadays** I'm trying to learn **Rust**, a relatively new programmming language which gets a lot of attention lately. I heard about Rust a lot in the past and read some articles here and there but never had the time to learn it. This post will be a documentation to keep track of my progress with Rust. I'll implement [**Conway's game of life**](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) and use as many features as I can.
 

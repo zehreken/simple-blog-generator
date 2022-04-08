@@ -2,7 +2,7 @@ layout = "post"
 title = "Collections in .NET"
 created = "2018-11-22"
 updated = "2018-11-22"
-tags = "#tag"
+tags = "#computer-science #dot-net"
 markdown = """
 Yesterday, I was surfing on msdn and reading .NET documentation and when I hit the topic **collections** I was surprised that there are some generic collection types that I have never heard of.
 

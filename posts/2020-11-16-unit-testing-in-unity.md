@@ -2,7 +2,7 @@ layout = "post"
 title = "Unit Testing in Unity"
 created = "2020-11-16"
 updated = "2020-11-18"
-tags = "#tag"
+tags = "#computer-science #unity #test-driven-development"
 markdown = """
 **Testing** is one of the most disregarded areas, especially in Unity development compared to the rest of the software industry. Of course, this is purely based on my personal experience. I just wanted to take some notes here about how to setup unit tests in Unity.
 

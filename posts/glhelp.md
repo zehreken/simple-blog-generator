@@ -2,7 +2,7 @@ layout = "page"
 title = "GL Help"
 created = "2021-08-23"
 updated = "2021-08-23"
-tags = "#tag"
+tags = ""
 markdown = """
 <canvas id="glcanvas" tabindex='1' style='width: 700px;height: 512px;overflow: hidden;background: black;z-index: 0;'></canvas>
 <!-- Minified and statically hosted version of https://github.com/not-fl3/miniquad/blob/master/native/sapp-wasm/js/gl.js -->
