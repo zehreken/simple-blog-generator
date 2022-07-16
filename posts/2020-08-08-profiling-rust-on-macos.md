@@ -1,10 +1,10 @@
 layout = "post"
 title = "Profiling Rust on macOS"
 created = "2020-08-08"
-updated = "2020-09-26"
+updated = "2022-07-10"
 tags = "#computer-science #rust #performance"
 markdown = """
-
+https://nnethercote.github.io/perf-book/profiling.html
 It has been some time since I've started to use Rust for my hobby projects. As you know when the projects get more complex, performance may become an issue. Here, I'm writing down the available options for profiling Rust programs on macOS for future reference but I'm sure most of the crates and tools are also usable in other operating systems.
 
 ### Xcode
@@ -16,6 +16,8 @@ This is probably the only option you can find only on macOS. You can use Xcode t
 * Run your Rust program with cargo run --release because if you don't, your program will run significantly slower.
 
 Go to "All Processes" on the top left of the screen and find your program. Press record and you should see the CPU time your program takes.
+
+### pinguin
 
 ### pprof
 **pprof** is a very useful tool for profiling your program's CPU footprint.
