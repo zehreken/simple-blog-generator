@@ -35,5 +35,9 @@ again. even though you call try_iter(), it will call unlock on that inner Mutex 
 which can mean that the OS kernel takes away your timeslice from the audio processing thread again
 and gives it to the waiting GUI thread" **WeirdConstructor**
 
+While adding a perspective camera, I realised that given a = mat4 and b = vec4, a * b is not equal
+to b * a. :D It took me almost 2 days to debug the weird shapes and this shows how rusty I am with
+basic math. I need to get better and better and better.
+
 # Document the development process of module
 """
