@@ -39,5 +39,11 @@ While adding a perspective camera, I realised that given a = mat4 and b = vec4, 
 to b * a. :D It took me almost 2 days to debug the weird shapes and this shows how rusty I am with
 basic math. I need to get better and better and better.
 
+### Visualising Tape as Waveform
+I basically tried averaging every n samples so that I could map the tape which is typically 1.5
+million samples points to 100 sample points. It didn't work, the graph was mostly flat. Then I
+bumped into this. https://stackoverflow.com/questions/26663494/algorithm-to-draw-waveform-from-audio
+It suggests negating the sample if it is less than 0.
+
 # Document the development process of module
 """

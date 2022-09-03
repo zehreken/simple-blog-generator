@@ -17,7 +17,32 @@ This is probably the only option you can find only on macOS. You can use Xcode t
 
 Go to "All Processes" on the top left of the screen and find your program. Press record and you should see the CPU time your program takes.
 
-### pinguin
+### puffin
+I'm very happy using puffin for profiling [modul](https://github.com/zehreken/modul).
+Puffin is opensource is and code is available on [github](https://github.com/EmbarkStudios/puffin).
+It is very simple to add puffin to your project and there is also a egui plugin so that you can have
+a live flamegraph in your program.
+
+The simplest integration is like this. First you need to set scopes on at start up.
+<pre class="prettyprint linenums">
+puffin::set_scopes_on(true);
+</pre>
+
+I'm using miniquad and egui in my program so rendering the window is as simple as adding just a line.
+<pre class="prettyprint linenums">
+self.egui_mq.run(ctx, |egui_ctx| {
+    draw_ui(&mut self.windows, egui_ctx, &mut self.modul);
+    puffin_egui::profiler_window(egui_ctx); <-- this line only
+});
+</pre>
+
+And once per frame you need to call
+<pre class="prettyprint linenums">
+fn update() {
+    ...
+    puffin::GlobalProfiler::lock().new_frame();
+}
+</pre>
 
 ### pprof
 **pprof** is a very useful tool for profiling your program's CPU footprint.
