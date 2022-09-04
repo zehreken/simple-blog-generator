@@ -44,6 +44,15 @@ fn update() {
 }
 </pre>
 
+You can then profile the scope or the function using puffin macros and also assign a name for easier analysis.
+<pre class="prettyprint linenums">
+puffin::profile_function!("function");
+</pre>
+or
+<pre class="prettyprint linenums">
+puffin::profile_scope!("scope");
+</pre>
+
 ### pprof
 **pprof** is a very useful tool for profiling your program's CPU footprint.
 * Easy to use
