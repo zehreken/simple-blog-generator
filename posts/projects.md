@@ -8,7 +8,7 @@ Here are some of my hobby projects.
 ### modul
 [modul](https://github.com/zehreken/modul) is a music making program written in Rust. It might not be doing much now but the goal is creating a live performance capable music program. It currently can sample audio and loop and then write to disk. It also has some capability to visualize each audio channel.
 Here is a video of me making not so good music with **modul**.
-[![modul on fire](https://img.youtube.com/vi/PIvr7XJBxGs/0.jpg)](https://www.youtube.com/watch?v=PIvr7XJBxGs)
+[![modul on fire](https://img.youtube.com/vi/b0J4Ii5FSK8/0.jpg)](https://youtu.be/b0J4Ii5FSK8)
 
 ### TAS
 [TAS](https://mogze.itch.io/tas) is a top down shooter I released in 2014 for iOS and Android. It was a very bad game from a game design perspective. I occasionally work on it to get better at game design.
