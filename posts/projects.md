@@ -1,7 +1,7 @@
 layout = "page"
 title = "Projects"
 created = "2020-10-03"
-updated = "2021-09-14"
+updated = "2022-09-14"
 tags = ""
 markdown = """
 Here are some of my hobby projects.

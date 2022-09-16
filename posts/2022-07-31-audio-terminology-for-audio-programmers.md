@@ -1,7 +1,7 @@
 layout = "post"
 title = "Audio Terminology for Audio Programmers"
 created = "2022-05-07"
-updated = "2022-05-07"
+updated = "2022-09-16"
 tags = "#audio"
 markdown = """
 ### Audio Terminology for Audio Programmers
