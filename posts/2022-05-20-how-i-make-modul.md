@@ -1,11 +1,12 @@
 layout = "post"
-title = "How modul is made?"
+title = "How I make modul"
 created = "2022-05-07"
-updated = "2022-05-07"
+updated = "2022-09-21"
 tags = "#audio"
 markdown = """
-# Find a better title
 https://tesselode.github.io/articles/audio-libraries-considered-challenging/
+
+I've been working on a audio/visual program called **modul** for the last 2 years. It is the only personal project that I have invested this amount of time. Fortunately it paid off. I have a lot of fun and learn new things when I work on **modul**. I wish I started to write about my work on **modul** much earlier but it is better late than sorry. 
 
 ###  Common problems that lead to latency
 It is probably about the buffer size. In modul, I didn't know how to set buffer sizes for the
