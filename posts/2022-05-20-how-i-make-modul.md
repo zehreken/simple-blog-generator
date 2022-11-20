@@ -48,7 +48,7 @@ It suggests negating the sample if it is less than 0.
 
 ### Fixing the Metronome
 After a while I wanted to add a metronome to the program because I needed to use an external metronome, my iPad, to start a song. I implemented one like below
-```
+<pre class="prettyprint linenums">
 pub fn update(&mut self, sample_count: u32) {
     self.sample_sum += sample_count;
 
@@ -56,15 +56,15 @@ pub fn update(&mut self, sample_count: u32) {
     self.show_beat = remainder > 0 && remainder < 10_000;
     self.beat_index = self.sample_sum / self.tick_period as u32;
 }
-```
+</pre>
 I was very happy that I now didn't need an external device to start a song. I used this for a while but I was having difficulty keeping time when I play the drums while listening to the metronome. For months I thought that it was because I was bad as a musician that I couldn't even keep a proper time. I practiced a lot with my synth and my drum. But all that practice didn't improve my time keeping and at that point I finally started to think that my metronome implementation could be buggy. I tried syncing modul's metronome with the microKorg and voila! There was a discrepancy. Either my metronome's time or microKorg's time was wrong. Fortunately I'm an experienced programmer and many many years ago I learnt to blame my code first than other systems which are tested thousands times more. I then changed the implementation to this
-```
+<pre class="prettyprint linenums">
 pub fn update(&mut self) {
     let remainder = self.instant.elapsed().as_nanos() % self.beat_period;
     self.show_beat = remainder > 0 && remainder < 50_000_000;
     self.beat_index = (self.instant.elapsed().as_nanos() / self.beat_period) as u32;
 }
-```
+</pre>
 This implementation can keep the time good enough for my ears at least. Conclusion is bugs and glitches in audio systems are very difficult to catch and fix also. Or maybe I'm so used to working on visual things on computers that I don't know what to sense when it comes to sound. It was so much fun though.
 
 Next day update: I decided to get the opinions of the rust audio community on discord and they immediately told me that it is a bad idea to keep time using `std::time` since kernel time will always drift and the audio hardware and driver is working really hard to keep the right time. So I discarded my implementation that used std::time and decided to fix the one that counts the samples. Instead of updating metronome by calling `metronome.update(sample_count)`, I changed it to `metronome.update()` and called it every time I pushed a sample to the output buffer. It works fine as far as my ears are concerned.
