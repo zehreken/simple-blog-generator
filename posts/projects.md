@@ -14,8 +14,8 @@ Here is a video of me making not so good music with **modul**.
 [TAS](https://mogze.itch.io/tas) is a top down shooter I released in 2014 for iOS and Android. It was a very bad game from a game design perspective. I occasionally work on it to get better at game design.
 
 ### GLhelp
-[GLhelp](glhelp) is a tool for better understanding the functions in the graphic libraries. I recently started working on this. It is written in Rust and it targets WASM.
+[GLhelp](glhelp.html) is a tool for better understanding the functions in the graphic libraries. I recently started working on this. It is written in Rust and it targets WASM.
 
 ### Audio
-[Audio](audio)
+[Audio](audio.html)
 """

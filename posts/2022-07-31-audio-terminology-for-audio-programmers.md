@@ -4,10 +4,7 @@ created = "2022-05-07"
 updated = "2022-09-16"
 tags = "#audio"
 markdown = """
-I decided to write this post since I'll be an audio programmer in a few months
-time. It is very exciting but also a little scary since I have no professional
-experience with audio. As an audio programmer, if you want your fellow audio
-designer love you, you should know these terms.
+**Here** are some useful terms for audio programmers.
 
 **dB(decibel):** A unit to measure 'sound pressure level'. It is also a thing in
 logarithms.

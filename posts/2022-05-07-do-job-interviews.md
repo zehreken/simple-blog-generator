@@ -4,7 +4,7 @@ created = "2022-05-07"
 updated = "2022-07-09"
 tags = "#career"
 markdown = """
-For the last few months, I've been doing job interviews like crazy. I get
+**For** the last few months, I've been doing job interviews like crazy. I get
 multiple messages from recruiters every week and I'm sure many other programmers
 do. There are so many new companies opening in Stockholm and around the world
 and there is such a high demand for programmers. I can't really think of a
