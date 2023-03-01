@@ -4,12 +4,12 @@ created = "2010-02-23"
 updated = "2020-09-26"
 tags = "#artificial-intelligence"
 markdown = """
-**We** said, in fuzzy logic, an element can **partially** belong to a set, a fuzzy set, unlike in traditional logic. Let’s see how. In the application below there are ten black circles and a green circle. Let’s assume they are some kind of living creatures, maybe bacterias, and the green one eats the black ones to survive. The question is, how it decides which black one to eat. The green bacteria or circle or thing, whatever you call, only minds the distance and size of the black bacterias, and it likes the close and midsized ones. So, we have two **fuzzy variables**, first one is closeness and second one is midsized-ness, thereby we have two **fuzzy sets**, closeness and midsized-ness fuzzy sets. This is one of the main characteristics of fuzzy logic, we can express **numerical values as linguistic values**, e.g. very close, not so close...
+**We** said, in fuzzy logic, an element can **partially** belong to a set, a fuzzy set, unlike in traditional logic. Let’s see how. In the application below, there are ten black circles and a green circle. Let’s assume they are some kind of living creatures, maybe bacterias, and the green one eats the black ones to survive. The question is, how does it decide which black one to eat? The green bacteria or circle or thing, whatever you call, only minds the distance and size of the black bacterias, and it likes the ones that are close and midsized. So, we have two **fuzzy variables** here, first one is closeness and second one is midsized-ness, thereby we have two **fuzzy sets**, closeness and midsized-ness fuzzy sets. This is one of the main characteristics of fuzzy logic, we can express **numerical values as linguistic values**, e.g. very close, not so close...
 
 ![fuzzy chart](/assets/2010/fuzzy_logic_essentials_chart.jpg)  
-###### Membership degrees to the closeness fuzzy set for black bacterias
+<sup>**Membership degrees to the closeness fuzzy set for black bacterias**</sup>
 
-The graph above shows the **degrees of membership** of the black ones to the closeness fuzzy set according to their distance to the green one. As you see, the closest one has the highest degree of membership and the farmost one has the lowest.
+The graph above shows the **degrees of membership** of the black ones to the closeness fuzzy set according to their distance to the green one. As you see, the closest one has the highest degree of membership and the farthest one has the lowest.
 
 <pre class="prettyprint linenums">
 private function calculateDistance():void
