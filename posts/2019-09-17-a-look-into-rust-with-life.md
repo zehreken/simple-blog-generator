@@ -8,7 +8,7 @@ markdown = """
 
 While writing this post, I noticed Rust also has a [book](https://rustwasm.github.io/docs/book/introduction.html) specifically for Rust and WebAssembly. The funny thing is, one of the examples in the book is also a cellular automaton, mentioned as *life*. To be frank, I didn't know about that before starting this post but I'm not surprised because cellular automata are great for exploring a new language.
 
-<canvas id="glcanvas" tabindex='1' style='width: 700px;height: 512px;overflow: hidden;background: black;z-index: 0;'></canvas>
+<canvas id="glcanvas" tabindex='1'></canvas>
 <!-- Minified and statically hosted version of https://github.com/not-fl3/miniquad/blob/master/native/sapp-wasm/js/gl.js -->
 <script src="https://not-fl3.github.io/miniquad-samples/gl.js"></script>
 <script>load('/assets/2021/life.wasm');</script> <!-- Your compiled wasm file -->

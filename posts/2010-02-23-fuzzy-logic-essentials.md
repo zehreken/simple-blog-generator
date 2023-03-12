@@ -18,7 +18,7 @@ private function calculateDistance():void
   {
     // Simple formula to calcute the distance between two points
     distance = Math.sqrt(Math.pow((this.x - smallBacteriaArray[i].x), 2) + Math.pow((this.y - smallBacteriaArray[i].y), 2));
-	if (distance > 250)
+    if (distance > 250)
     {
       // If the distance is greater than 250 pixels,
       // the degree of membership to the closeness fuzzy set is 0
@@ -36,7 +36,7 @@ private function calculateDistance():void
 
 To calculate the degrees of membership to the midsized-ness fuzzy set, the process is very similar to the one above. Alright, we have calculated the degrees of membership but how do we use them? In practice we can use these membership values to decide or to make something decide. For example if you are interested in something that is close to you then you should choose the one which has the greatest degree of membership to the closeness fuzzy set. Programming with fuzzy logic is like having **unlimited number of if clauses but with high performance**.
 
-<canvas id="glcanvas" tabindex='1' style='width: 600px;height: 500px;overflow: hidden;background: black;z-index: 0;'></canvas>
+<canvas id="glcanvas" tabindex='1'></canvas>
 <!-- Minified and statically hosted version of https://github.com/not-fl3/miniquad/blob/master/native/sapp-wasm/js/gl.js -->
 <script src="https://not-fl3.github.io/miniquad-samples/gl.js"></script>
 <script>load('/assets/2010/fuzzy_logic_essentials.wasm');</script> <!-- Your compiled wasm file -->
