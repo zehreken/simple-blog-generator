@@ -4,8 +4,19 @@ created = "2023-02-25"
 updated = "2023-02-25"
 tags = "#unity"
 markdown = """
-- The most tricky part is changing how you think about programming. Object oriented approach is not useful but also harmful.
-- There are many bugs in the stack at the moment, tools are rough.
-- But the performance it brings is incredible. Combined with Burst and the Job system, everything can run really fast.
-- There are some limitations of Burst compiler. It is annoying in the beginning but after you learn it gets easier and fun.
+This post is going to be a summary of the official Entities package document,
+kind of a cheat-sheet.
+
+The following operations are considered structural changes:
+* Creating or destroying an entity
+* Adding or removing components
+* Setting a shared component value
+
+Physics
+* All physics objects that are in the scene but outside the subscene will be
+ignored since they don't get converted to entities.
+
+* A ```World``` organises entities into isolated groups. A World owns both an
+EntityManager and a set of Sytems. In Dow client and server are different
+Worlds.
 """

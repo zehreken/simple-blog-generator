@@ -20,4 +20,25 @@ consumes the samples faster than the audio input device can produce.
 
 **Buffer overrun:** In audio context, similar to buffer underrun, buffer overrun occurs
 when the buffer is filled faster than the processing thread consumes.
+
+**Attenuation:** The combined effect of scattering and absorption is called attenuation.
+
+**Propagation:** This is basically the movement of sound. In games this can be more about how the sounds through portals(e.g. doors, windows).
+
+**Diffraction:** The phenomenon in sound propagation when the sound wave moves around an object whose dimensions are smaller than or about equal to the wavelength of the sound.
+
+**Obstruction:** Obstruction occurs when a game object partially blocks the space between the source and the listener.
+
+**Occlusion:** Occlusion occurs when a game object completely blocks the space between the source and the listener.
+
+**Wavelength:** Wavelength is the distance between identical points in the cycles of a waveform signal. It is the horizontal distance.
+
+**HRTF:** Short for head *related transfer function*. It describes how an ear receives a sound from a point in space based on its physical properties, like the shape of the external ear, ear canal and also head size etc. This is also know as anatomical transfer function(ATF).
+
+**Dry&Wet:** In audio dry refers to unprocessed audio and wet refers to processed audio.
+
+**Early Reflections:** Early reflections are the echoes of a signal that arrive at the listener within a short amount of time, around 30ms, hence the name early reflections. Also called first reflections.
+
+**Comb Filtering:** Happens when the same signal arrives at the listener at different times with a very small delay between signals.
+
 """
