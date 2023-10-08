@@ -8,6 +8,7 @@ use std::{
 };
 
 const STYLE: &str = "style_gray";
+const BULLET: &str = "●";
 
 #[derive(Debug, Deserialize)]
 pub struct Post {
@@ -37,7 +38,7 @@ fn build_index(tag: &str, posts: &Vec<String>) {
     let mut index_markdown = String::new();
     for post in posts {
         index_markdown.push('[');
-        index_markdown.push_str("$*");
+        index_markdown.push_str(format!("${0}", BULLET).as_str());
         index_markdown.push(' ');
         index_markdown.push_str(post);
         index_markdown.push(']');
@@ -52,7 +53,7 @@ fn build_index(tag: &str, posts: &Vec<String>) {
     index_html = index_html.replace("$date", "");
     index_html = index_html.replace("$tags", "");
     index_html = index_html.replace("$content", utils::to_html(index_markdown.as_str()).as_str());
-    index_html = index_html.replace("$*", "<span> * </span>"); // 'Thin space' character is used before and after asterisk
+    index_html = index_html.replace("$●", "<span> ● </span>"); // 'Thin space' character is used before and after asterisk
     let mut index_file =
         fs::File::create(format!("site/tags/{}.html", tag.replace("#", ""))).unwrap();
     index_file.write_all(&index_html.into_bytes()).unwrap()
@@ -97,8 +98,8 @@ pub fn build() {
     let mut index_markdown = String::new();
 
     // Add pages
-    index_markdown.push_str("[$* About](about.html)  \r");
-    index_markdown.push_str("[$* Projects](projects.html)  \r  \r");
+    index_markdown.push_str("[$● About](about.html)  \r");
+    index_markdown.push_str("[$● Projects](projects.html)  \r  \r");
     // End of pages
     let mut prev_year = String::from("");
     let mut posts_by_tag: HashMap<String, Vec<String>> = HashMap::new();
@@ -158,7 +159,7 @@ pub fn build() {
                     prev_year = year.to_owned();
                 }
                 index_markdown.push('[');
-                index_markdown.push_str("$*");
+                index_markdown.push_str("$●");
                 index_markdown.push(' ');
                 index_markdown.push_str(post.title.as_str());
                 index_markdown.push(']');
@@ -191,7 +192,7 @@ pub fn build() {
     index_html = index_html.replace("$date", "");
     index_html = index_html.replace("$tags", "");
     index_html = index_html.replace("$content", utils::to_html(index_markdown.as_str()).as_str());
-    index_html = index_html.replace("$*", "<span> * </span>"); // 'Thin space' character is used before and after asterisk
+    index_html = index_html.replace("$●", "<span> ● </span>"); // 'Thin space' character is used before and after asterisk
     let mut index_file = fs::File::create("site/index.html").unwrap();
     index_file.write_all(&index_html.into_bytes()).unwrap()
 }
