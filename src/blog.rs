@@ -1,3 +1,5 @@
+use crate::utils;
+use serde::Deserialize;
 use std::{
     collections::HashMap,
     fs,
@@ -5,9 +7,7 @@ use std::{
     path::PathBuf,
 };
 
-use serde::Deserialize;
-
-use crate::utils;
+const STYLE: &str = "style_gray";
 
 #[derive(Debug, Deserialize)]
 pub struct Post {
@@ -90,7 +90,9 @@ pub fn build() {
     entries.sort();
     entries.reverse();
 
-    utils::copy_file("style.css", "site/style.css");
+    let source = format!("{0}.css", STYLE);
+    let target = "site/style.css";
+    utils::copy_file(source.as_str(), target);
 
     let mut index_markdown = String::new();
 
