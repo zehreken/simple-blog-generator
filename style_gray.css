@@ -79,15 +79,19 @@ body header a#logo img {
     width: 15%
 }
 
+body header>* {
+    max-width: var(--width);
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
 body header>h1 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size: 20px;
     background-color: var(--primary-color);
     font-weight: bold;
-    padding-left: 10px;
     padding-top: 30px;
     color: var(--accent-color);
-    width: var(--width);
 }
 
 body main>h1 {
@@ -144,7 +148,7 @@ body main>h6 {
 }
 
 body main>* {
-    max-width: 700px;
+    max-width: var(--width);
     margin-bottom: 0px;
     margin-top: 0px;
 }
@@ -163,7 +167,7 @@ body hr {
 
 body main {
     border-top: 1px solid var(--primary-color);
-    max-width: 700px;
+    max-width: var(--width);
 }
 
 body main>ul li {
@@ -258,7 +262,7 @@ body main>pre {
     /* background-color: rgb(240, 240, 240); */
     font-family: "Inconsolata-Regular", "Helvetica Neue", Helvetica, Arial;
     color: rgb(44, 43, 43);
-    max-width: 700px;
+    max-width: var(--width);
     padding: 30px;
     margin-top: 0;
     padding-top: 0;
@@ -279,7 +283,7 @@ th {
 
 body footer {
     border-top: 1px solid var(--primary-color);
-    max-width: 700px;
+    max-width: var(--width);
     padding-top: 10px;
 }
 
@@ -334,7 +338,7 @@ canvas#glcanvas {
     z-index: 0;
 }
 
-@media (max-width: 700px) {
+@media (max-width: var(--width)) {
     body {
         padding: 30px;
     }
