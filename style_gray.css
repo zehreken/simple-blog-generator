@@ -3,7 +3,7 @@
     --secondary-color: #d9d9d9;
     --accent-color: #ff9d0b;
     --odd-line-color: #eaeaea;
-    --even-line-color: #d6d6d6;
+    --even-line-color: #fcfcfc;
     --width: 700px;
 }
 
@@ -379,4 +379,5 @@ li.L9 {
 sup {
     font-size: x-small;
     vertical-align: super;
+    background-color: var(--even-line-color);
 }
