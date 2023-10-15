@@ -22,10 +22,17 @@ The decision-making process of the green entity revolves around the evaluation o
     data: {
     labels: [0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250],
     datasets: [{
-        label: 'Degree of membership',
+        label: 'Promixity membership',
         data: [1, 0.80, 0.64, 0.48, 0.36, 0.25, 0.16, 0.09, 0.04, 0.01, 0],
         fill: false,
         borderColor: '#1c1c1c',
+        tension: 0.1
+    },
+    {
+        label: 'Size membership',
+        data: [0, 0.0625, 0.125, 0.1875, 0.25, 0.3125, 0.375, 0.4375, 0.5, 0.5625, 0.625],
+        fill: false,
+        borderColor: '#ff9d0b',
         tension: 0.1
     }]
     },
@@ -36,25 +43,26 @@ The decision-making process of the green entity revolves around the evaluation o
 The graph above shows the **degree of membership** of the black ones to the closeness fuzzy set according to their distance to the green one. As you see, the closest one has the highest degree of membership and the farthest one has the lowest.
 
 <pre class="prettyprint linenums">
-private function calculateDistance():void
-{
-  for (i = 0; i < smallBacteriaArray.length; i++)
-  {
-    // Simple formula to calcute the distance between two points
-    distance = Math.sqrt(Math.pow((this.x - smallBacteriaArray[i].x), 2) + Math.pow((this.y - smallBacteriaArray[i].y), 2));
-    if (distance > 250)
-    {
-      // If the distance is greater than 250 pixels,
-      // the degree of membership to the closeness fuzzy set is 0
-      closenessArray[i] = 0;
+pub fn update_big_cell(&mut self, delta_time: f32, cells: &mut Vec<Cell>) {
+    let mut closeness = [0.0; 10];
+    let mut sizes = [0.0; 10];
+
+    for i in 0..10 {
+        if !cells[i].is_alive() {
+            continue;
+        }
+        let distance = (self.position - cells[i].get_position()).length();
+        closeness[i] = if distance > 300.0 {
+            0.0
+        } else {
+            1.0 - distance / 250.0
+        };
+
+        let mut size_diff = (self.size - cells[i].get_size()).abs();
+        size_diff /= self.size;
+
+        sizes[i] = 1.0 - size_diff;
     }
-    else
-    {
-      distance /= 250; //normalizing values
-      distance = 1 - distance;
-      closenessArray[i] = Math.pow(distance, 2);
-    }
-  }
 }
 </pre>
 
