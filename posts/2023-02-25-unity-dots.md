@@ -5,7 +5,7 @@ updated = "2023-02-25"
 tags = "#unity"
 markdown = """
 #### Burst Compiler
-I want to inspect the effects of using Run(), Schedule() and ScheduleParallel(). I still don't understand underlying implications of using them.
+I want to inspect the implications of using Run(), Schedule() and ScheduleParallel(). I still don't understand the underlying implications of using them
 
 #### Obsolete
 This post is going to be a summary of the official Entities package document,
