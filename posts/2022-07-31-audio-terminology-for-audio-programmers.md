@@ -4,7 +4,7 @@ created = "2022-05-07"
 updated = "2022-09-16"
 tags = "#audio"
 markdown = """
-**Here** are some useful terms for audio programmers.
+**It** is very important to speak the same language as the sound designer in game development. As a seasoned programmer in games without much audio programming experience, learning their jargon helps me a lot. Here are some useful terms for game audio programmers.
 
 **dB(decibel):** A unit to measure 'sound pressure level'. It is also a thing in
 logarithms.
@@ -41,4 +41,5 @@ when the buffer is filled faster than the processing thread consumes.
 
 **Comb Filtering:** Happens when the same signal arrives at the listener at different times with a very small delay between signals.
 
+**Stinger/Bumper:** Generally a short clip of music or sound that can be used to introduce, end or link various sections of an audio or audiovisual production. Think about the times when you solve a puzzle in a game or you see an enemy type for the first time.
 """
