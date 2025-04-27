@@ -67,7 +67,7 @@ body {
     color: var(--primary-color);
     font-family: "OpenSans-Regular", "Helvetica Neue", Helvetica, Arial;
     overflow-x: hidden;
-    padding: 5px 90px;
+    padding: 0px 90px;
 }
 
 body hr {
@@ -80,7 +80,7 @@ body header a#logo img {
 }
 
 body header>* {
-    max-width: 700px;
+    max-width: 687px;
     margin-bottom: 0px;
     margin-top: 0px;
 }
@@ -90,7 +90,9 @@ body header>h1 {
     font-size: 20px;
     background-color: var(--primary-color);
     font-weight: bold;
-    padding-top: 30px;
+    padding-top: 10px;
+    padding-left: 13px;
+    padding-bottom: 10px;
     color: var(--accent-color);
 }
 
@@ -99,7 +101,7 @@ body main>h1 {
     font-size: 30px;
     font-weight: bold;
     background-color: var(--primary-color);
-    padding-left: 3px;
+    padding-left: 13px;
     padding-top: 0px;
     padding-bottom: 0px;
     color: var(--secondary-color);
@@ -108,7 +110,7 @@ body main>h1 {
 body main>h2 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size: 20px;
-    padding-left: 3px;
+    padding-left: 13px;
     padding-top: 0px;
     padding-bottom: 0px;
     color: var(--primary-color);
@@ -117,7 +119,7 @@ body main>h2 {
 body main>h3 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size: 15px;
-    padding-left: 3px;
+    padding-left: 13px;
     padding-top: 0px;
     padding-bottom: 0px;
     color: var(--primary-color);
@@ -128,7 +130,7 @@ body main>h4 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size: 15px;
     background-color: var(--primary-color);
-    padding-left: 3px;
+    padding-left: 13px;
     padding-top: 0px;
     padding-bottom: 0px;
     color: var(--secondary-color);
@@ -137,14 +139,14 @@ body main>h4 {
 body main>h5 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size: 10px;
-    padding-left: 3px;
+    padding-left: 13px;
     text-align: right;
 }
 
 body main>h6 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size: 10px;
-    padding-left: 3px;
+    padding-left: 13px;
 }
 
 body main>* {
