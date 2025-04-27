@@ -43,3 +43,5 @@ when the buffer is filled faster than the processing thread consumes.
 
 **Stinger/Bumper:** Generally a short clip of music or sound that can be used to introduce, end or link various sections of an audio or audiovisual production. Think about the times when you solve a puzzle in a game or you see an enemy type for the first time.
 """
+
+**Quantization:** Quantization is a general concept that can be applied to any continuous range of values, not just audio signals. It is the process of converting a continuous range of amplitude values from an analog signal into a finite set of discrete digital values, typically during analog-to-digital conversion.
