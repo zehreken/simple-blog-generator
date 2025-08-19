@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andiamo</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-side">
+            <div class="content">
+                <h1>Güçhan Alkan</h1>
+                <p>Programmer</p>
+            </div>
+        </div>
+
+        <div class="right-side">
+            <div class="content">
+                <canvas id="glcanvas"></canvas>
+                <!-- Minified and statically hosted version of https://github.com/not-fl3/miniquad/blob/master/native/sapp-wasm/js/gl.js -->
+                <script src="https://not-fl3.github.io/miniquad-samples/gl.js"></script>
+                <script>load('site/assets/2021/life.wasm');</script>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
