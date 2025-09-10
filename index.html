@@ -4,16 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andiamo</title>
+    <title>Interactive Portfolio</title>
     <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
     <div class="container">
         <div class="left-side">
-            <div class="content">
-                <h1>Güçhan Alkan</h1>
-                <p>Programmer</p>
+            <div class="app-grid">
+                <button class="grid-item" style="flex-direction: column;">
+                    <span style="font-size: 24px;">Güçhan Alkan</span>
+                    <span style="font-size: 16px;">Programmer</span>
+                </button>
+                <button class="grid-item" url="https://lab.guchanalkan.com/">LAB</button>
+                <button class="grid-item" data-app="conway.wasm">CONWAY: The game of life.
+                </button>
+                <button class="grid-item" data-app="fuzzy.wasm">FUZZY</button>
+                <button class="grid-item" data-app="boids.wasm">BOIDS</button>
+                <button class="grid-item" data-app="astar.wasm">ASTAR</button>
+                <button class="grid-item">#5</button>
+                <button class="grid-item">#6</button>
+                <button class="grid-item">#7</button>
+                <button class="grid-item">#8</button>
+                <button class="grid-item">#9</button>
+                <button class="grid-item">#10</button>
+
+                <!-- repeat pattern for more rows -->
             </div>
         </div>
 
@@ -22,7 +38,32 @@
                 <canvas id="glcanvas"></canvas>
                 <!-- Minified and statically hosted version of https://github.com/not-fl3/miniquad/blob/master/native/sapp-wasm/js/gl.js -->
                 <script src="https://not-fl3.github.io/miniquad-samples/gl.js"></script>
-                <script>load('site/assets/2021/life.wasm');</script>
+                <script>
+                    const apps = [
+                        'conway.wasm',
+                        'fuzzy.wasm',
+                        'boids.wasm',
+                        'astar.wasm',
+                    ];
+
+                    // Pick random app
+                    const randomApp = apps[Math.floor(Math.random() * apps.length)];
+                    load(randomApp);
+
+                    // Button handlers
+                    document.querySelectorAll('.grid-item[data-app], .grid-item[url]').forEach(button => {
+                        button.addEventListener('click', () => {
+                            const appName = button.getAttribute('data-app');
+                            if (appName) {
+                                load(appName);
+                            }
+                            const url = button.getAttribute('url');
+                            if (url) {
+                                window.open(url);
+                            }
+                        });
+                    });
+                </script>
             </div>
         </div>
     </div>
