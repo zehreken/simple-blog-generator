@@ -53,7 +53,11 @@ fn build_index(tag: &str, posts: &Vec<String>) {
     index_html = index_html.replace("$date", "");
     index_html = index_html.replace("$tags", "");
     index_html = index_html.replace("$content", utils::to_html(index_markdown.as_str()).as_str());
-    index_html = index_html.replace("$●", "<span> ● </span>"); // 'Thin space' character is used before and after asterisk
+    index_html = index_html.replace("$■◼", "<span> ■◼ </span>"); // 'Thin space' character is used before and after asterisk
+    let exists = fs::exists("site/tags/").unwrap();
+    if !exists {
+        fs::create_dir("site/tags/").unwrap();
+    }
     let mut index_file =
         fs::File::create(format!("site/tags/{}.html", tag.replace("#", ""))).unwrap();
     index_file.write_all(&index_html.into_bytes()).unwrap()
