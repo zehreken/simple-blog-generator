@@ -1,5 +1,5 @@
 layout = "post"
-title = "How I make modul"
+title = "How I Make Modul"
 created = "2022-05-07"
 updated = "2022-09-21"
 tags = "#audio"
