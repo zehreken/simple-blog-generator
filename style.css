@@ -1,11 +1,16 @@
 :root {
-    --main-color: rgb(255, 219, 88);
-    --odd-line-color: #ffe78f;
-    --even-line-color: #fff3c9;
+    --primary-color: #1c1c1c;
+    --secondary-color: #d9d9d9;
+    --accent-color: #ff0055;
+    --odd-line-color: #eaeaea;
+    --even-line-color: #fcfcfc;
+    --width: 700px;
 }
 
 * {
     margin: 0;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0;
     border: 0;
     outline: 0;
@@ -55,16 +60,22 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Jersey20-Regular';
+    src: url('assets/Jersey20-Regular.ttf') format('truetype');
+    font-size: normal;
+    font-style: normal;
+}
+
 html {
-    background: var(--main-color);
+    background: var(--primary-color);
 }
 
 body {
-    background: rgb(255, 255, 255);
-    color: rgb(30, 30, 30);
+    background: var(--secondary-color);
+    color: var(--primary-color);
     font-family: "OpenSans-Regular", "Helvetica Neue", Helvetica, Arial;
     overflow-x: hidden;
-    padding: 45px 90px;
 }
 
 body hr {
@@ -76,59 +87,74 @@ body header a#logo img {
     width: 15%
 }
 
+body header>* {
+    max-width: 687px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
 body header>h1 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size: 20px;
+    background-color: var(--primary-color);
     font-weight: bold;
+    padding-top: 10px;
+    padding-left: 13px;
+    padding-bottom: 10px;
+    color: var(--accent-color);
 }
 
 body main>h1 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size: 30px;
     font-weight: bold;
-    background-color: var(--main-color);
-    padding-left: 3px;
+    background-color: var(--primary-color);
+    padding-left: 13px;
     padding-top: 0px;
     padding-bottom: 0px;
+    color: var(--secondary-color);
 }
 
 body main>h2 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size: 20px;
-    padding-left: 3px;
+    padding-left: 13px;
     padding-top: 0px;
     padding-bottom: 0px;
+    color: var(--primary-color);
 }
 
 body main>h3 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size: 15px;
-    padding-left: 3px;
+    padding-left: 13px;
     padding-top: 0px;
     padding-bottom: 0px;
+    color: var(--primary-color);
+    background-color: var(--accent-color);
 }
 
 body main>h4 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size: 15px;
-    background-color: var(--main-color);
-    /* color: ; */
-    padding-left: 3px;
+    background-color: var(--primary-color);
+    padding-left: 13px;
     padding-top: 0px;
     padding-bottom: 0px;
+    color: var(--secondary-color);
 }
 
 body main>h5 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size: 10px;
-    padding-left: 3px;
+    padding-left: 13px;
     text-align: right;
 }
 
 body main>h6 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
     font-size: 10px;
-    padding-left: 3px;
+    padding-left: 13px;
 }
 
 body main>* {
@@ -150,7 +176,7 @@ body hr {
 }
 
 body main {
-    border-top: 1px solid rgb(22, 22, 22);
+    border-top: 1px solid var(--primary-color);
     max-width: 700px;
 }
 
@@ -186,8 +212,8 @@ body main>p a {
 
 body main>p a:hover {
     text-decoration: none;
-    color: #000;
-    background-color: var(--main-color);
+    color: var(--primary-color);
+    background-color: var(--accent-color);
 }
 
 body main>p strong {
@@ -262,13 +288,12 @@ td {
 }
 
 th {
-    background-color: var(--main-color);
+    background-color: var(--primary-color);
 }
 
 body footer {
-    border-top: 1px solid rgb(22, 22, 22);
+    border-top: 1px solid var(--primary-color);
     max-width: 700px;
-    padding-top: 10px;
     padding-top: 10px;
 }
 
@@ -285,8 +310,8 @@ body footer>p a {
 
 body footer>p a:hover {
     text-decoration: none;
-    color: #000;
-    background-color: var(--main-color);
+    color: var(--primary-color);
+    background-color: var(--accent-color);
 }
 
 body footer>p strong {
@@ -364,4 +389,5 @@ li.L9 {
 sup {
     font-size: x-small;
     vertical-align: super;
+    background-color: var(--even-line-color);
 }
