@@ -3,11 +3,22 @@ use tiny_http::{Response, Server};
 
 pub fn start(address: &str) {
     // Open browser, this works but running this in another thread after making sure
-    // that server is started is a better idea, this only works on macOS
-    std::process::Command::new("open")
-        .arg(String::from(address))
-        .output()
-        .unwrap();
+    // that server is started is a better idea
+    #[cfg(target_os = "macos")]
+    {
+        std::process::Command::new("open")
+            .arg(address)
+            .spawn()
+            .unwrap();
+    }
+
+    #[cfg(target_os = "windows")]
+    {
+        std::process::Command::new("cmd")
+            .args(["/c", "start", "", address])
+            .spawn()
+            .unwrap();
+    }
 
     let server = Server::http("127.0.0.1:4000").unwrap();
 
