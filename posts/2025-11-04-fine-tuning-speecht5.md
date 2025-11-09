@@ -4,7 +4,7 @@ created = "2025-11-04"
 updated = "2025-11-04"
 tags = "#artificial-intelligence #machine-learning"
 markdown = """
-**Machine learning** has changed the world in the last couple of years. I was a consumer of these models but only a spectator when it came to understanding how they worked. In this post, I’ll share my experience trying to train the SpeechT5 text-to-speech model to imitate my own voice.
+**Machine learning** has changed the world in the last couple of years. I was a consumer of these models but only a spectator when it came to understanding how they worked. In this post, I’ll share my experience trying to train the SpeechT5 **text-to-speech** model to imitate my own voice.
 
 As I often do nowadays, I started by asking questions to ChatGPT, Grok, and Claude. They are great **tools** for learning. I also familiarized myself with [Hugging Face](https://huggingface.co/). If you haven’t used it before, it’s like GitHub but for machine learning models.
 
@@ -81,22 +81,25 @@ tensor([-0.0694, -0.0536, -0.0454, -0.0202,  0.0246,  0.0315,  0.0061,  0.0169,
          0.0010,  0.0009,  0.0008,  0.0006,  0.0005,  0.0004,  0.0003,  0.0001],
        device='cuda:0')
 </pre>
+###### Speaker embedding tensor
 
 Finally came training the model. My first attempt was surprisingly quick since I ran it on the **GPU**, and after hours of preparation, I was eager to hear the result. Unfortunately, the model had collapsed and produced only horrible noise. I tried again with a much lower learning rate, watching the **loss value** gradually decrease and feeling hopeful. But the model collapsed again, generating the same noise. I later learned that it’s not possible to train a model like SpeechT5 properly with only ten minutes of audio.
 
-I said that the numbers in speaker embedding are meaningless to us but I actually lied. If you look closely to the numbers, the first 160 are varied in sign and amplitude but after that they hover around 0.018. This might mean that the training data was limited-exactly my case- or it is partially trained.
+I said that the numbers in speaker embedding are meaningless to humans, but that is not entirely true. If you look closely to the numbers, the first 160 are varied in sign and amplitude but after that they hover around 0.018. This might mean that the training data was limited (exactly my case) or it is partially trained.
 
 <audio controls>
     <source src="/assets/2025/noise.wav" type="audio/wav">
     Your browser does not support the audio element.
 </audio>
 
-After some research, I found out that instead of training the full model, I could **fine-tune** it using my speaker embedding. Since SpeechT5 already knows how to speak English, I could influence it to use my vocal characteristics. This approach worked better, the generated audio was still noisy and robotic compared to the model’s original voices, but it definitely resembled my voice and captured my speech rhythm.
+After some research, I found out that instead of training the full model, I could **fine-tune** it using my speaker embedding. Since SpeechT5 already knows how to speak English, I could influence it to use my vocal characteristics. This approach worked better. The generated audio was still noisy and robotic compared to the model’s original voices, but it definitely resembled my voice and captured my speech rhythm.”
 
 <audio controls>
     <source src="/assets/2025/speech.wav" type="audio/wav">
     Your browser does not support the audio element.
 </audio>
+
+There is still a lot to experiment with. First I want this model to properly clone my voice. And then I want to play with more expressive models like Dia.
 
 If you think that this article is wrong or missing, or maybe you have a question, please feel free to send me a message.
 
