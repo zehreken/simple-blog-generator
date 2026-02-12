@@ -7,7 +7,7 @@ use std::{
     path::PathBuf,
 };
 
-const STYLE: &str = "style";
+const STYLE: &str = "main";
 const BULLET: &str = "■";
 
 #[derive(Debug, Deserialize)]
@@ -96,7 +96,7 @@ pub fn build() {
     entries.reverse();
 
     let source = format!("{0}.css", STYLE);
-    let target = "site/style.css";
+    let target = "site/main.css";
     utils::copy_file(source.as_str(), target);
 
     let mut index_markdown = String::new();
