@@ -31,7 +31,7 @@ LogLearning: Display: Subprocess:         "UseTensorBoard": false,
 Since Unreal logs are really crappy, it took me some time to figure this out. I needed to add this path
 C:/Program Files/Epic Games/UE_5.5/Engine/Binaries/ThirdParty/Python3/Win64/Lib/site-packages to the Additional Paths list under Edit>Project Settings>Plugins>Python in Unreal Editor.
 
-![TensorBoard path](/assets/2026/tensorboard_warning.png)
+![TensorBoard path](/assets/2026/tensorboard_warning.png)  
 <sup>**Python plugin settings**</sup>
 
 After adding the path to the list, I got this log which means that logging is active.
@@ -52,7 +52,7 @@ The Address is where you can see the visualized data, just open your browser and
 
 You need to run your simulation for a while to see some data in TensorBoard.
 
-![TensorBoard dashboard](/assets/2026/tensorboard_dashboard.png)
+![TensorBoard dashboard](/assets/2026/tensorboard_dashboard.png)  
 <sup>**TensorBoard dashboard**</sup>
 
 The TensorBoard visualizations were immediately intuitive, likely because I had been diving into the theory behind reward functions. It was a satisfying moment where the practical data perfectly aligned with the concepts I'd been learning.
@@ -60,17 +60,17 @@ The TensorBoard visualizations were immediately intuitive, likely because I had 
 Now we can see what is going on inside our car's brain, thanks to TensorBoard. Now it is time to play around with rewards. I'll write this in more detail in another post but basically rewards are how we communicate with the agent. Rewards can be either positive or negative, negative rewards are like punishment.
 Rewards are set in BP_SportsCarTrainingEnv blueprint. We can see in the image below that when the car moves along the spline, it is rewarded by 1.0 and when the car gets further away from the spline it is punished by -10.0. So in this example being close to the spline is ten times more important than moving along it. You can see the data from two different runs and how they converge similarly. The car agent drives decently after 2000 steps.
 
-![Rewards](/assets/2026/rewards.png)
+![Rewards](/assets/2026/rewards.png)  
 <sup>**Positive and negative rewards**</sup>
 
 Let's see how choosing a bad reward function affects the learning process. This is also called reward shaping. I just changed the negative reward to -10000.0. Now it is 10000 times more important to be close to the spline than moving along it. What this causes is an agent that is too afraid to move and since RL is about maximizing the reward, not barely moving at all results in a higher reward. If you observe the red line, you can see it never converges, stays well below 0.
 
-![Harsh punishment](/assets/2026/tensorboard_hard_punishment.png)
+![Harsh punishment](/assets/2026/tensorboard_hard_punishment.png)  
 <sup>**Red line shows how harsh punishment affects convergence**</sup>
 
 And lastly I tried zero punishment for not staying close to the spline. Surprisingly the agent still learned to drive decently, I'd say even faster. I think this one shows that negative rewards in this simulation are not strictly necessary.
 
-![Zero punishment](/assets/2026/tensorboard_zero_punishment.png)
+![Zero punishment](/assets/2026/tensorboard_zero_punishment.png)  
 <sup>**Blue line shows the simulation when there is no punishment**</sup>
 
 This is just the tip of the iceberg when it comes to reinforcement learning. It is really different from the other two main machine learning paradigms, namely supervised and unsupervised learning. In supervised learning we have labeled data, in unsupervised learning we have unlabeled data but in reinforcement learning we have neither. We just have an agent that interacts with an environment and learns from its mistakes. But we also affect the agent by designing a reward function. I think this makes reinforcement learning both more interesting and also slightly difficult.
