@@ -125,7 +125,7 @@ pub fn build() {
             } else {
                 html_output = html_output.replace(
                     "$date",
-                    format!("created on {}, edited on {}", post.created, post.updated).as_str(),
+                    format!("created on {}, updated on {}", post.created, post.updated).as_str(),
                 );
             }
 

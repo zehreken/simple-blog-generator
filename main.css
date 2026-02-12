@@ -89,8 +89,7 @@ body header a#logo img {
 
 body header>* {
     max-width: 687px;
-    margin-bottom: 0px;
-    margin-top: 0px;
+    margin: 0;
 }
 
 body header>h1 {
@@ -101,6 +100,33 @@ body header>h1 {
     padding-top: 10px;
     padding-left: 13px;
     padding-bottom: 10px;
+    color: var(--accent-color);
+}
+
+body header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    max-width: 700px;
+}
+
+body header nav {
+    padding-right: 13px;
+}
+
+body header nav a {
+    font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--secondary-color);
+    text-decoration: none;
+    margin-left: 15px;
+    text-transform: lowercase;
+}
+
+body header nav a:hover {
+    text-decoration: none;
     color: var(--accent-color);
 }
 
