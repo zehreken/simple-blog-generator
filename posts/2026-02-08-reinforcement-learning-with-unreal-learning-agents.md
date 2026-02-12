@@ -74,3 +74,4 @@ And lastly I tried zero punishment for not staying close to the spline. Surprisi
 <sup>**Blue line shows the simulation when there is no punishment**</sup>
 
 This is just the tip of the iceberg when it comes to reinforcement learning. It is really different from the other two main machine learning paradigms, namely supervised and unsupervised learning. In supervised learning we have labeled data, in unsupervised learning we have unlabeled data but in reinforcement learning we have neither. We just have an agent that interacts with an environment and learns from its mistakes. But we also affect the agent by designing a reward function. I think this makes reinforcement learning both more interesting and also slightly difficult.
+"""
