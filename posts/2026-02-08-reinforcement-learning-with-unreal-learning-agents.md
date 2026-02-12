@@ -51,17 +51,18 @@ The tensorboard visualization made immediate sense to me since I was reading abo
 
 Now we can see what is going in our car's brain, thanks to TensorBoard and now it is time to play around with rewards. I'll write this in more detail in another post but basically rewards are how a reinforcement learning method works. Rewards can be either positive or negative which sounds more like punishment. :P
 Rewards are set in BP_SportsCarTrainingEnv blueprint. We can see in the image below that when the car moves along the spline speed it is rewarded by 1 and when the car gets further away from the spline it is rewarded (or rather punished) by -10. So in this example being close to the spline is 10 times more important than moving along it.
+
 ![Alt text](/assets/2026/rewards.png)
 ###### Positive and negative rewards
 
 You can see the data from two different runs and how they converge similarly. The car agent drives decently after 2000 steps.
 Let's see how bad reward value selection affects the learning process. I just changed the negative reward to -10000. Now it is 10000 times more important to be close the spline than moving along it. What this causes is an agent that is too afraid to move and since RL is about maximixing the reward, not barely moving at all results in a higher reward. If you observe the red line, you can see it never converged, stayed well below 0.
 
-[Alt text](/assets/2026/tensorboard_hard_punishment.png)
+![Alt text](/assets/2026/tensorboard_hard_punishment.png)
 ###### Red line shows how harsh punishment affects convergence
 
 And lastly I tried zero punishment for not staying close to the spline. Surprisingly the agent still learned to drive decently, I'd say even faster. I think this one shows that negative reward for this simulation is not really necessary.
 
-[Alt text](/assets/2026/tensorboard_zero_punishment.png)
+![Alt text](/assets/2026/tensorboard_zero_punishment.png)
 ###### Blue line shows the simulation when there is no punishment
 """
