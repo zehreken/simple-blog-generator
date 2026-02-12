@@ -101,10 +101,6 @@ pub fn build() {
 
     let mut index_markdown = String::new();
 
-    // Add pages
-    index_markdown.push_str("[$■ About](about.html)  \r");
-    index_markdown.push_str("[$■ Projects](projects.html)  \r  \r");
-    // End of pages
     let mut prev_year = String::from("");
     let mut posts_by_tag: HashMap<String, Vec<String>> = HashMap::new();
 
