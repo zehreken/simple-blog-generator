@@ -69,8 +69,10 @@ void Update()
 
 The program also has a hitpoint system to make it more like a game.
 
-![Alt text](/assets/2016/performance_comparison_ecs.png)  
-###### Simple simulation
+<figure>
+    <img src="/assets/2016/performance_comparison_ecs.png" alt="Simple simulation">
+    <figcaption>Simple simulation</figcaption>
+</figure>
 
 ### Initialization Performance Comparison
 Multiple MonoBehavoiurs take a lot of time to initialize because MonoBehaviour is huge. Single MonoBehaviour also takes more time because it is still MonoBehaviour. Entitas is fast but not as fast as the Update Method Pattern, probably because of the overhead of the systems. The fastest is plain OOD.

@@ -8,8 +8,10 @@ markdown = """
 
 An artificial neural network is a very basic simulation of biological neural networks in human brain. Artificial neural networks are **adaptive systems**, they can learn and change their behaviours if needed. A network consists of interconnected nodes(artificial neurons) which are grouped in three different types of layers, **input** layer, **hidden** layer and **output** layer. In a network, there is only 1 input layer and 1 output layer, the number of hidden layers is not limited but generally 1 hidden layer is adequate. There can also be networks with no hidden layer.
 
-![Alt text](/assets/2010/neural_network_neuron.jpg)  
-###### An illustration of a simple feedforward neural network and an artificial neuron
+<figure>
+    <img src="/assets/2010/neural_network_neuron.jpg" alt="An illustration of a simple feedforward neural network and an artificial neuron">
+    <figcaption>An illustration of a simple feedforward neural network and an artificial neuron</figcaption>
+</figure>
 
 Usually, input layer has no function except forwarding the input values to the nodes in the hidden layer and every node in the hidden layer multiplies each input by its respective weight value then sums this value with the values of all other inputs for this node and passes the result to an output or activation function. Activation function can either be step function or a sigmoid function. Each node adjusts the respective **weight** for each input, we call this the learning process.
 
