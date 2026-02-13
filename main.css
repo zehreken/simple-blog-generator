@@ -283,7 +283,7 @@ body main>ul.jump li:hover {
 }
 
 body main>p img {
-    max-width: 500px;
+    max-width: 100%;
     width: 100%;
 }
 
