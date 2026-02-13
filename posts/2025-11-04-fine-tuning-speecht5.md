@@ -14,6 +14,7 @@ To make this work, I had to record myself first. I asked Claude to generate a ta
 
 The next step was creating the speaker embedding. A speaker embedding is basically an array of floating-point numbers representing someone’s voice characteristics—in this case, mine. You can see the values below but it does not mean much to humans.
 
+<figure>
 <pre class="prettyprint linenums">
 tensor([-0.0694, -0.0536, -0.0454, -0.0202,  0.0246,  0.0315,  0.0061,  0.0169,
          0.0244,  0.0273,  0.0311,  0.0291,  0.0320,  0.0250,  0.0165,  0.0154,
@@ -81,7 +82,8 @@ tensor([-0.0694, -0.0536, -0.0454, -0.0202,  0.0246,  0.0315,  0.0061,  0.0169,
          0.0010,  0.0009,  0.0008,  0.0006,  0.0005,  0.0004,  0.0003,  0.0001],
        device='cuda:0')
 </pre>
-###### Speaker embedding tensor
+<figcaption>Speaker embedding tensor</figcaption>
+</figure>
 
 Finally came training the model. My first attempt was surprisingly quick since I ran it on the **GPU**, and after hours of preparation, I was eager to hear the result. Unfortunately, the model had collapsed and produced only horrible noise. I tried again with a much lower learning rate, watching the **loss value** gradually decrease and feeling hopeful. But the model collapsed again, generating the same noise. I later learned that it’s not possible to train a model like SpeechT5 properly with only ten minutes of audio.
 
