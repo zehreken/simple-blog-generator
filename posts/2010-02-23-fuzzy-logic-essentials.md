@@ -8,10 +8,12 @@ markdown = """
 
 The decision-making process of the green entity revolves around the evaluation of two key attributes: proximity and size in relation to the black bacteria. It exhibits a preference for those black entities that are both close in distance and possess a moderate size. Consequently, we introduce two fundamental **fuzzy variables** in this scenario: 'closeness' and 'midsized-ness.' These variables, in turn, give rise to two corresponding fuzzy sets: 'closeness' and 'midsized-ness.' One of the defining features of fuzzy logic is its ability to represent **numerical values as linguistic terms**, allowing us to describe qualities such as 'very close' or 'not so close' in a nuanced and flexible manner.
 
-<sup>**Membership degrees to the closeness fuzzy set for black bacterias**</sup>
-<div>
-  <canvas id="fuzzySets"></canvas>
-</div>
+<figure>
+  <div>
+    <canvas id="fuzzySets"></canvas>
+  </div>
+  <figcaption>Membership degrees to the closeness fuzzy set for black bacterias</figcaption>
+</figure>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
@@ -68,8 +70,10 @@ pub fn update_big_cell(&mut self, delta_time: f32, cells: &mut Vec<Cell>) {
 
 To calculate the degrees of membership to the midsized-ness fuzzy set, the process is very similar to the one above. Alright, we have calculated the degrees of membership but how do we use them? In practice we can use these membership values to decide or to make something decide. For example if you are interested in something that is close to you then you should choose the one which has the greatest degree of membership to the closeness fuzzy set. Programming with fuzzy logic is like having **unlimited number of if clauses but with high performance**.
 
-<sup>**Fuzzy logic essentials**</sup>
-<canvas id="glcanvas"></canvas>
+<figure>
+  <canvas id="glcanvas"></canvas>
+  <figcaption>Fuzzy logic essentials</figcaption>
+</figure>
 <!-- Minified and statically hosted version of https://github.com/not-fl3/miniquad/blob/master/native/sapp-wasm/js/gl.js -->
 <script src="https://not-fl3.github.io/miniquad-samples/gl.js"></script>
 <script>load('/assets/2010/fuzzy_logic_essentials.wasm');</script><!-- Your compiled wasm file -->
