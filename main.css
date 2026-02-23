@@ -294,6 +294,12 @@ body main figure img {
     display: block;
 }
 
+body main video {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+}
+
 body main>p img {
     max-width: 100%;
     width: 100%;

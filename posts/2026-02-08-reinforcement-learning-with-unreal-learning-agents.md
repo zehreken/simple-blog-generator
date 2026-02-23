@@ -7,7 +7,7 @@ markdown = """
 I finished the [reinforcement learning tutorial](https://dev.epicgames.com/community/learning/courses/GAR/unreal-engine-learning-agents-5-5/bZnJ/unreal-engine-learning-agents-5-5) using Unreal's Learning Agents plugin some time ago. It is a great tutorial if you are looking for an introduction to reinforcement learning with the PPO algorithm and this post is for people who have completed it or are interested in doing the tutorial.
 When I finished the first part, it was really cool seeing the cars learning how to drive on a track they had never been on before. But I didn't really understand much about the underlying mechanism, PPO, encoder, decoder, policy, critic and so on.
 
-<video src="/assets/2026/cars_driving.mp4" controls width="1000">
+<video src="/assets/2026/cars_driving.mp4" controls>
   Your browser does not support the video tag.
 </video>
 
