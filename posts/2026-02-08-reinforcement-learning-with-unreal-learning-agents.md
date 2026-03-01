@@ -7,9 +7,12 @@ markdown = """
 I finished the [reinforcement learning tutorial](https://dev.epicgames.com/community/learning/courses/GAR/unreal-engine-learning-agents-5-5/bZnJ/unreal-engine-learning-agents-5-5) using Unreal's Learning Agents plugin some time ago. It is a great tutorial if you are looking for an introduction to reinforcement learning with the PPO algorithm and this post is for people who have completed it or are interested in doing the tutorial.
 When I finished the first part, it was really cool seeing the cars learning how to drive on a track they had never been on before. But I didn't really understand much about the underlying mechanism, PPO, encoder, decoder, policy, critic and so on.
 
-<video src="/assets/2026/cars_driving.mp4" controls>
-  Your browser does not support the video tag.
-</video>
+<figure>
+    <video src="/assets/2026/cars_driving.mp4" controls>
+        Your browser does not support the video tag.
+    </video>
+    <figcaption>Cars driving after 3000 steps</figcaption>
+</figure>
 
 My interest in this just grew as I started reading the Reinforcement Learning bible by Richard S. Sutton and Andrew G. Barto and I decided to revisit the same tutorial to understand what is going on under the hood. The book is freely available [here](https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf) and highly recommended. While doing some reading I bumped into a debugging tool called TensorBoard, the standard for debugging artificial neural networks. Honestly it gave me the same feeling I had when I first learned about proper debuggers almost 2 decades ago.
 
@@ -48,7 +51,7 @@ LogLearning: Display: Subprocess:         "UseTensorBoard": true,
 
 And then finally to see the visualized data, you need to run TensorBoard. Go to C:/Program Files/Epic Games/UE_5.5/Engine/Binaries/ThirdParty/Python3/Win64/Scripts and you should have tensorboard.exe there. If not that means you did not install it properly. You can do it by running the command below.
 <pre class="prettyprint linenums">
-.\\tensorboard.exe --logdir="[YourProjectPath]\\Intermediate\\LearningAgents\\TensorBoard\\runs"
+tensorboard.exe --logdir="[YourProjectPath]/Intermediate/LearningAgents/TensorBoard/runs"
 </pre>
 
 If it starts successfully, you should see a log like this
@@ -64,7 +67,15 @@ You need to run your simulation for a while to see some data in TensorBoard.
     <figcaption>TensorBoard dashboard</figcaption>
 </figure>
 
-The TensorBoard visualizations were immediately intuitive, likely because I had been diving into the theory behind reward functions. It was a satisfying moment where the practical data perfectly aligned with the concepts I'd been learning.
+The TensorBoard visualizations were immediately intuitive, likely because I had been diving into the theory behind reward functions. It was a satisfying moment where the practical data perfectly aligned with the concepts I'd been learning. I just want to write down the definitions of the metrics I saw in TensorBoard.
+
+**Episode**: A complete sequence of interactions from the starting state until a terminal state is reached (e.g., the car completes a lap or crashes).
+
+**Average Reward**: The mean reward received by the agent per individual time step.
+
+**Average Return**: The average total reward accumulated over the course of an episode, often used to gauge the overall performance of the policy.
+
+**Average Reward Sum**: In the context of Unreal's Learning Agents, this represents the total reward an agent receives during an episode, averaged across all active agents in the training batch.
 
 Now we can see what is going on inside our car's brain, thanks to TensorBoard. Now it is time to play around with rewards. I'll write this in more detail in another post but basically rewards are how we communicate with the agent. Rewards can be either positive or negative, negative rewards are like punishment.
 Rewards are set in BP_SportsCarTrainingEnv blueprint. We can see in the image below that when the car moves along the spline, it is rewarded by 1.0 and when the car gets further away from the spline it is punished by -10.0. So in this example being close to the spline is ten times more important than moving along it. You can see the data from two different runs and how they converge similarly. The car agent drives decently after 2000 steps.
