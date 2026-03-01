@@ -31,7 +31,10 @@ LogLearning: Display: Subprocess:         "UseTensorBoard": false,
 </pre>
 
 Since Unreal logs are really crappy, it took me some time to figure this out. I needed to add this path
-C:/Program Files/Epic Games/UE_5.5/Engine/Binaries/ThirdParty/Python3/Win64/Lib/site-packages to the Additional Paths list under Edit>Project Settings>Plugins>Python in Unreal Editor.
+<pre class="prettyprint linenums">
+C:/Program Files/Epic Games/UE_5.5/Engine/Binaries/ThirdParty/Python3/Win64/Lib/site-packages
+</pre>
+to the Additional Paths list under Edit>Project Settings>Plugins>Python in Unreal Editor.
 
 <figure>
     <img src="/assets/2026/tensorboard_warning.png" alt="TensorBoard path">

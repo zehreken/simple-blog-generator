@@ -1,0 +1,7 @@
+layout = "post"
+title = "Reinforcement Learning and Life Lessons"
+created = "2026-02-28"
+updated = "2026-02-28"
+tags = "#reinforcement-learning #artificial-intelligence"
+markdown = """
+"""
