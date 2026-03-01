@@ -371,6 +371,12 @@ body footer>p i {
     font-style: italic;
 }
 
+.wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
 .embed-container {
     position: relative;
     height: 0;
