@@ -8,7 +8,7 @@ I finished the [reinforcement learning tutorial](https://dev.epicgames.com/commu
 When I finished the first part, it was really cool seeing the cars learning how to drive on a track they had never been on before. But I didn't really understand much about the underlying mechanism, PPO, encoder, decoder, policy, critic and so on.
 
 <figure>
-    <video src="/assets/2026/cars_driving.mp4" controls>
+    <video src="/assets/2026/cars_driving.mp4" controls playsinline>
         Your browser does not support the video tag.
     </video>
     <figcaption>Cars driving after 3000 steps</figcaption>

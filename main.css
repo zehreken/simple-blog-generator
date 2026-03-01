@@ -286,6 +286,8 @@ body main figure {
     max-width: 100%;
     margin: 10px 0;
     line-height: normal;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 body main figure img {
@@ -318,10 +320,13 @@ body main pre {
     color: rgb(44, 43, 43);
     max-width: 700px;
     padding: 30px;
-    margin-top: 0;
     padding-top: 0;
+    margin-top: 0;
     font-size: 13px;
     white-space: pre-wrap;
+    overflow-x: auto;
+    word-break: break-word;
+    box-sizing: border-box;
 }
 
 body main>table,
