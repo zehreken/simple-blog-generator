@@ -17,7 +17,7 @@ The capabilities of the driving agent in the first iteration was already impress
     <figcaption>Agents driving faster after observation space improvements</figcaption>
 </figure>
 
-I tried hard to come up with interesting ideas to improve observation space. I thought about adding distance to the borders of the track but then I realized the track has the same width everywhere and this is not useful. Then I thought about adding progress on track as an observation but that would mean that the agent would memorize the track and would not be able to generalize to other tracks. In the end I decided to play with the number of points on the spline and the distance between them. The results are pretty interesting. In the image below you can see training runs with several different observation spaces.
+I tried to come up with interesting ideas to improve observation space. I thought about adding distance to the borders of the track but then I realized the track has the same width everywhere and this is not useful. Then I thought about adding progress on track as an observation but that would mean that the agent would memorize the track and would not be able to generalize to other tracks. In the end I decided to play with the number of points on the spline and the distance between them. The results are pretty interesting. In the image below you can see training runs with several different observation spaces.
 
 <figure>
     <img src="/assets/2026/tensorboard_observation_space.png" alt="Different observation spaces">
@@ -30,7 +30,7 @@ I tried hard to come up with interesting ideas to improve observation space. I t
 - Red: 7 points 2 meters apart
 - Orange: 1 point only
 
-As you can see from the graphs, I realized that the further the agent sees the better it drives, so to prove that I added another observation space, this time;
+As you can see from the graphs, I realized that the further the agent sees, the better it drives, so to prove that I added another observation space, this time;
 - Green: 2 points 100 meters apart
 
 but it didn't turn out as I expected, the car mostly drove fine but kept crashing into the wall at certain corners and performed much worse than the observation space with only 1 point.
@@ -45,20 +45,21 @@ but it didn't turn out as I expected, the car mostly drove fine but kept crashin
 The environment setup, what is observed and what is not have a huge impact on the result of the agent's behaviour.
 
 ### Headless Mode
-It is really important to mention the headless mode since these agents take a very long time to train in Unreal editor. Running the training in headless mode took on average 1/4 of the time it took in the editor for me. Headless mode is explained in the tutorial and is pretty straight-forward but how to use snapshots is not clear.
+It is really important to mention the headless mode since these agents take a very long time to train in Unreal editor. Running the training in headless mode was 4 times faster than training in the editor on my computer. Headless mode is explained in the tutorial and is pretty straight-forward but how to use snapshots is not clear.
 
 <figure>
     <img src="/assets/2026/headless_mode.png" alt="Headless mode versus editor">
     <figcaption>Headless mode is almost 4 times faster</figcaption>
 </figure>
 
-Enabling snapshots in trainer settings enables you to save snapshots of Encoder, Decoder, Policy and Critic networks every 1000 steps. This way you can compare different observation spaces or same space with incremental step count easily. I edited BP_SportsCarManager to load the snapshots.
+Enabling snapshots in trainer settings enables you to save snapshots of Encoder, Decoder, Policy and Critic networks every 1000 steps by default. This way you can compare different observation spaces or the same space with incremental step count easily. I edited BP_SportsCarManager to load the snapshots.
 
 <figure>
     <img src="/assets/2026/loading_snapshots.png" alt="Loading snapshots">
     <figcaption>Loading snapshots</figcaption>
 </figure>
 
+### What's Next
 I'll try to extend this post with these ideas soon or maybe write part III.
 Adaptive Observation Spacing: Instead of fixed distances between spline observation points, dynamically adjust the spacing based on track curvature at the car's current position. On tight curves, points are close together for precision. On straights, points spread further apart for lookahead. The observation vector size stays the same, but information density adapts to what's useful.
 
