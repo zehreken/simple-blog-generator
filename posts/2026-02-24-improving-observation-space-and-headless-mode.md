@@ -59,6 +59,8 @@ Enabling snapshots in trainer settings enables you to save snapshots of Encoder,
     <figcaption>Loading snapshots</figcaption>
 </figure>
 
+You can download this project from using [this link](https://github.com/zehreken/ue-learning-agents).
+
 ### What's Next
 I'll try to extend this post with these ideas soon or maybe write part III.
 Adaptive Observation Spacing: Instead of fixed distances between spline observation points, dynamically adjust the spacing based on track curvature at the car's current position. On tight curves, points are close together for precision. On straights, points spread further apart for lookahead. The observation vector size stays the same, but information density adapts to what's useful.
