@@ -94,7 +94,7 @@ body header>* {
 
 body header>h1 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
-    font-size: 20px;
+    font-size: 16px;
     background-color: var(--primary-color);
     font-weight: bold;
     padding-top: 10px;
@@ -117,7 +117,7 @@ body header nav {
 
 body header nav a {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     color: var(--secondary-color);
     text-decoration: none;
