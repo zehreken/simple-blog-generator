@@ -30,7 +30,7 @@ Actually, making a fair comparison of sorting algorithms is not quite possible w
 
 I think, this time I’ve come up with an application which explains itself but just for the sake of this post, here are the instructions on how to use it.
 
-<object width="500" height="500" data="/assets/2012/sorting_algorithms.swf"></object>
+<object width="500" height="500" data="/assets/2012-10-09-sorting-algorithms/sorting_algorithms.swf"></object>
 
 ### Instructions
 All of the grey squares are buttons and all of the green squares are sorting nodes
@@ -47,5 +47,5 @@ And last but not least, I want to share some resources about sorting algorithms,
 
 If you think that this article is wrong or missing, or maybe you have a question, please feel free to send me a message.
 
-[download source files](/assets/2012/sorting_algorithms_source.zip)
+[download source files](/assets/2012-10-09-sorting-algorithms/sorting_algorithms_source.zip)
 """

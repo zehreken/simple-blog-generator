@@ -13,7 +13,7 @@ I will try to explain the concept as simple as possible for true beginners like 
 First of all, we should know about the area we are searching for the shortest path. The area can be a **grid** or a **graph**. Actually this makes no difference.
 
 <figure>
-    <img src="/assets/2012/astar_illustration00.png" alt="An illustration of a grid and an illustration of a graph">
+    <img src="/assets/2012-05-24-astar-pathfinding-tutorial/astar_illustration00.png" alt="An illustration of a grid and an illustration of a graph">
     <figcaption>Here are an illustration of a grid and an illustration of a graph</figcaption>
 </figure>
 
@@ -32,7 +32,7 @@ I will to try to explain the algorithm step by step because I think this is the 
 **1.** Examine the search area. Define the start and finish nodes. Calculate each H cost (heuristic) from each node to the finish node. Note that, right now all of the G cost values for each node is “0”. You will get a grid like this.
 
 <figure>
-    <img src="/assets/2012/astar_illustration01.png" alt="H costs are calculated according to the rule: no diagonal movement">
+    <img src="/assets/2012-05-24-astar-pathfinding-tutorial/astar_illustration01.png" alt="H costs are calculated according to the rule: no diagonal movement">
     <figcaption>H costs are calculated according to the rule: no diagonal movement</figcaption>
 </figure>
 
@@ -52,9 +52,9 @@ I’ve developed a simple application for the sake of better understanding of A*
 * “Find Path” button starts the simulation
 * “Switch Type” button lets you choose between the step by step and instant simulation types
 
-<object width="500" height="500" data="/assets/2012/a_star_pathfinding.swf"></object>  
+<object width="500" height="500" data="/assets/2012-05-24-astar-pathfinding-tutorial/a_star_pathfinding.swf"></object>  
  
 If you think that this article is wrong or missing, or maybe you have a question, please feel free to send me a message.
 
-[download source files](/assets/2012/a_star_pathfinding_source.zip)
+[download source files](/assets/2012-05-24-astar-pathfinding-tutorial/a_star_pathfinding_source.zip)
 """

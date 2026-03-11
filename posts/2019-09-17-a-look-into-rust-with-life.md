@@ -11,7 +11,7 @@ While writing this post, I noticed Rust also has a [book](https://rustwasm.githu
 <canvas id="glcanvas"></canvas>
 <!-- Minified and statically hosted version of https://github.com/not-fl3/miniquad/blob/master/native/sapp-wasm/js/gl.js -->
 <script src="https://not-fl3.github.io/miniquad-samples/gl.js"></script>
-<script>load('/assets/2021/life.wasm');</script> <!-- Your compiled wasm file -->
+<script>load('/assets/2019-09-17-a-look-into-rust-with-life/life.wasm');</script> <!-- Your compiled wasm file -->
 
 So what is Conway's game of life? I've already provided a link above but it is arguably the most popular cellular automaton. A system that can show complex behaviour with a few simple rules.
 

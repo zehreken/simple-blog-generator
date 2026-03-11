@@ -8,7 +8,7 @@ I finished the [reinforcement learning tutorial](https://dev.epicgames.com/commu
 When I finished the first part, it was really cool seeing the cars learning how to drive on a track they had never been on before. But I didn't really understand much about the underlying mechanism, PPO, encoder, decoder, policy, critic and so on.
 
 <figure>
-    <video src="/assets/2026/cars_driving.mp4" controls playsinline poster="/assets/2026/cars_driving_thumb.png">
+    <video src="/assets/2026-02-08-reinforcement-learning-with-unreal-learning-agents/cars_driving.mp4" controls playsinline poster="/assets/2026-02-08-reinforcement-learning-with-unreal-learning-agents/cars_driving_thumb.png">
         Your browser does not support the video tag.
     </video>
     <figcaption>Cars driving after 3000 steps</figcaption>
@@ -23,7 +23,7 @@ pip -m install tensorboard
 
 To be able to use TensorBoard with Unreal Editor, you also need to enable it in **Trainer Training Settings** in your **BP_SportsCarManager** blueprint.
 <figure>
-    <img src="/assets/2026/tensorboard_check.png" alt="TensorBoard check">
+    <img src="/assets/2026-02-08-reinforcement-learning-with-unreal-learning-agents/tensorboard_check.png" alt="TensorBoard check">
     <figcaption>BP_SportsCarManager contains Trainer Training Settings variable</figcaption>
 </figure>
 
@@ -40,7 +40,7 @@ C:/Program Files/Epic Games/UE_5.5/Engine/Binaries/ThirdParty/Python3/Win64/Lib/
 to the Additional Paths list under Edit>Project Settings>Plugins>Python in Unreal Editor.
 
 <figure>
-    <img src="/assets/2026/tensorboard_warning.png" alt="TensorBoard path">
+    <img src="/assets/2026-02-08-reinforcement-learning-with-unreal-learning-agents/tensorboard_warning.png" alt="TensorBoard path">
     <figcaption>Python plugin settings</figcaption>
 </figure>
 
@@ -63,7 +63,7 @@ The Address is where you can see the visualized data, just open your browser and
 You need to run your simulation for a while to see some data in TensorBoard.
 
 <figure>
-    <img src="/assets/2026/tensorboard_dashboard.png" alt="TensorBoard dashboard">
+    <img src="/assets/2026-02-08-reinforcement-learning-with-unreal-learning-agents/tensorboard_dashboard.png" alt="TensorBoard dashboard">
     <figcaption>TensorBoard dashboard</figcaption>
 </figure>
 
@@ -81,21 +81,21 @@ Now we can see what is going on inside our car's brain, thanks to TensorBoard. N
 Rewards are set in BP_SportsCarTrainingEnv blueprint. We can see in the image below that when the car moves along the spline, it is rewarded by 1.0 and when the car gets further away from the spline it is punished by -10.0. So in this example being close to the spline is ten times more important than moving along it. You can see the data from two different runs and how they converge similarly. The car agent drives decently after 2000 steps.
 
 <figure>
-    <img src="/assets/2026/rewards.png" alt="Rewards">
+    <img src="/assets/2026-02-08-reinforcement-learning-with-unreal-learning-agents/rewards.png" alt="Rewards">
     <figcaption>Positive and negative rewards</figcaption>
 </figure>
 
 Let's see how choosing a bad reward function affects the learning process. This is also called reward shaping. I just changed the negative reward to -10000.0. Now it is 10000 times more important to be close to the spline than moving along it. What this causes is an agent that is too afraid to move and since RL is about maximizing the reward, not barely moving at all results in a higher reward. If you observe the red line, you can see it never converges, stays well below 0.
 
 <figure>
-    <img src="/assets/2026/tensorboard_hard_punishment.png" alt="Harsh punishment">
+    <img src="/assets/2026-02-08-reinforcement-learning-with-unreal-learning-agents/tensorboard_hard_punishment.png" alt="Harsh punishment">
     <figcaption>Red line shows how harsh punishment affects convergence</figcaption>
 </figure>
 
 And lastly I tried zero punishment for not staying close to the spline. Surprisingly the agent still learned to drive decently, I'd say even faster. I think this one shows that negative rewards in this simulation are not strictly necessary.
 
 <figure>
-    <img src="/assets/2026/tensorboard_zero_punishment.png" alt="Zero punishment">
+    <img src="/assets/2026-02-08-reinforcement-learning-with-unreal-learning-agents/tensorboard_zero_punishment.png" alt="Zero punishment">
     <figcaption>Blue line shows the simulation when there is no punishment</figcaption>
 </figure>
 

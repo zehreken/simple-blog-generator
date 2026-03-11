@@ -11,7 +11,7 @@ Let's visit BP_SportsCarInteractor blueprint again and open SpecifyAgentObservat
 The capabilities of the driving agent in the first iteration was already impressive for me but when I watched the agents for some time I could see the janky, fidgety driving. The reason for that is the car agent only observes one point on the track ahead of it. [The tutorial](https://dev.epicgames.com/community/learning/courses/GAR/unreal-engine-learning-agents-5-5/1w7V/unreal-engine-improving-observations-debugging-5-5) nicely addresses this by adding 6 more observation points, 5 meters apart, on the spline ahead of the car. With this observation space, the agent drives smoother and faster as you can see in the video below.
 
 <figure>
-    <video src="/assets/2026/improved_7_5.mp4" controls playsinline poster="/assets/2026/cars_driving_thumb.png">
+    <video src="/assets/2026-02-24-improving-observation-space-and-headless-mode/improved_7_5.mp4" controls playsinline poster="/assets/2026-02-08-reinforcement-learning-with-unreal-learning-agents/cars_driving_thumb.png">
         Your browser does not support the video tag.
     </video>
     <figcaption>Agents driving faster after observation space improvements</figcaption>
@@ -20,7 +20,7 @@ The capabilities of the driving agent in the first iteration was already impress
 I tried to come up with interesting ideas to improve observation space. I thought about adding distance to the borders of the track but then I realized the track has the same width everywhere and this is not useful. Then I thought about adding progress on track as an observation but that would mean that the agent would memorize the track and would not be able to generalize to other tracks. In the end I decided to play with the number of points on the spline and the distance between them. The results are pretty interesting. In the image below you can see training runs with several different observation spaces.
 
 <figure>
-    <img src="/assets/2026/tensorboard_observation_space.png" alt="Different observation spaces">
+    <img src="/assets/2026-02-24-improving-observation-space-and-headless-mode/tensorboard_observation_space.png" alt="Different observation spaces">
     <figcaption>TensorBoard graphs showing different observation spaces</figcaption>
 </figure>
 
@@ -36,7 +36,7 @@ As you can see from the graphs, I realized that the further the agent sees, the 
 but it didn't turn out as I expected, the car mostly drove fine but kept crashing into the wall at certain corners and performed much worse than the observation space with only 1 point.
 
 <figure>
-    <video src="/assets/2026/crazy_driving_2_100.mp4" controls playsinline poster="/assets/2026/cars_driving_thumb.png">
+    <video src="/assets/2026-02-24-improving-observation-space-and-headless-mode/crazy_driving_2_100.mp4" controls playsinline poster="/assets/2026-02-08-reinforcement-learning-with-unreal-learning-agents/cars_driving_thumb.png">
         Your browser does not support the video tag.
     </video>
     <figcaption>Crazy driving skills with 2 points observed</figcaption>
@@ -48,14 +48,14 @@ The environment setup, what is observed and what is not have a huge impact on th
 It is really important to mention the headless mode since these agents take a very long time to train in Unreal editor. Running the training in headless mode was 4 times faster than training in the editor on my computer. Headless mode is explained in the tutorial and is pretty straight-forward but how to use snapshots is not clear.
 
 <figure>
-    <img src="/assets/2026/headless_mode.png" alt="Headless mode versus editor">
+    <img src="/assets/2026-02-24-improving-observation-space-and-headless-mode/headless_mode.png" alt="Headless mode versus editor">
     <figcaption>Headless mode is almost 4 times faster</figcaption>
 </figure>
 
 Enabling snapshots in trainer settings enables you to save snapshots of Encoder, Decoder, Policy and Critic networks every 1000 steps by default. This way you can compare different observation spaces or the same space with incremental step count easily. I edited BP_SportsCarManager to load the snapshots.
 
 <figure>
-    <img src="/assets/2026/loading_snapshots.png" alt="Loading snapshots">
+    <img src="/assets/2026-02-24-improving-observation-space-and-headless-mode/loading_snapshots.png" alt="Loading snapshots">
     <figcaption>Loading snapshots</figcaption>
 </figure>
 

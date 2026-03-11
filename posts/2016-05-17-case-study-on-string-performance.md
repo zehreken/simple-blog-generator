@@ -27,9 +27,9 @@ private static List<string> CartesianProduct(List<string> sourceOne, List<string
 
 The performance was awful even with 3 wildcards and after 5 wildcards the waiting time was like an eternity. Most of the CPU time was spent on calculating the cartesian product.
 
-![Alt text](/assets/2016/case_study_cartesian_product_performance.png)
+![Alt text](/assets/2016-05-17-case-study-on-string-performance/case_study_cartesian_product_performance.png)
 
-So we started looking for alternative search algorithms. One of my colleagues, Onur, suggested that using **RegEx** can be a good idea. I immediately implemented that and the performance was great. RegEx didn’t care if you used 5 or 15 wildcards in a word. It was instant. But still, our HashSet implementation was faster when no wildcard was used. For more performance I also put every word into separate lists according to their letter counts and sorted every list according to the score of the word. So I was able to guarantee that the first word the regex finds is the word with the highest score. You can find the source files for this test in this [file](/assets/2016/wildcard_test-master.zip).
+So we started looking for alternative search algorithms. One of my colleagues, Onur, suggested that using **RegEx** can be a good idea. I immediately implemented that and the performance was great. RegEx didn’t care if you used 5 or 15 wildcards in a word. It was instant. But still, our HashSet implementation was faster when no wildcard was used. For more performance I also put every word into separate lists according to their letter counts and sorted every list according to the score of the word. So I was able to guarantee that the first word the regex finds is the word with the highest score. You can find the source files for this test in this [file](/assets/2016-05-17-case-study-on-string-performance/wildcard_test-master.zip).
 
 If you think that this article is wrong or missing, or maybe you have a question, please feel free to send me a message.
 """

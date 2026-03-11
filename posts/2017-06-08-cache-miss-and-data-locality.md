@@ -143,7 +143,7 @@ See, it's full of unnecessary data that causes the CPU to miss the cache.
 
 It has been a very long time since the hype of Data Oriented Programming, and I have been programming in a data oriented way for almost a year now. At first (like most of the things I first encounter) I thought it was the holy grail and will solve each and every problem, but now I think there is a place for OOD and DOD (and in that sense other programming paradigms) in the same software. Both of them have their strengths and weaknesses. Till memory speed catches up with CPU speed, using DOD is a very good idea.
 
-You can find the source files in this [file](/assets/2017/dod_tests-master.zip).
+You can find the source files in this [file](/assets/2017-06-08-cache-miss-and-data-locality/dod_tests-master.zip).
 
 If you think that this blog post is wrong or missing, please send me a message.
 """

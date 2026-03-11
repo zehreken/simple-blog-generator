@@ -8,7 +8,7 @@ markdown = """
 
 Recently, I did not have time to deal with my blog or any other fun stuff I usually do, but because of the worse weather, I had to stay in my friend’s house and I thought I should write this post.
 
-![Alt text](/assets/2010/google_ai_challenge.jpg)  
+![Alt text](/assets/2010-12-07-a-review-about-google-ai-challenge/google_ai_challenge.jpg)  
 
 Anyway, the contest is about programming an artificial intelligence which competes with the other artificial intelligences through a game. The game is a very popular online and mobile game right now and there are many examples with different themes. I do not want to waste your time by trying to explain the gameplay, so here is a [sample game](http://armorgames.com/play/2675/phage-wars). As you can see, the object of the game is infesting all of the bubbles or cells or planets or whatever you call and the object of the contest is doing this with an artificial intelligence. I have participated in the contest, I had so little time to work on my AI but I’m happy with the result. I really liked the contest because I had the chance to try out what I’ve learned from my experiments and studies about artificial intelligence so far.
 

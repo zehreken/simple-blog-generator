@@ -90,14 +90,14 @@ Finally came training the model. My first attempt was surprisingly quick since I
 I said that the numbers in speaker embedding are meaningless to humans, but that is not entirely true. If you look closely to the numbers, the first 160 are varied in sign and amplitude but after that they hover around 0.018. This might mean that the training data was limited (exactly my case) or it is partially trained.
 
 <audio controls>
-    <source src="/assets/2025/noise.wav" type="audio/wav">
+    <source src="/assets/2025-11-04-fine-tuning-speecht5/noise.wav" type="audio/wav">
     Your browser does not support the audio element.
 </audio>
 
 After some research, I found out that instead of training the full model, I could **fine-tune** it using my speaker embedding. Since SpeechT5 already knows how to speak English, I could influence it to use my vocal characteristics. This approach worked better. The generated audio was still noisy and robotic compared to the model’s original voices, but it definitely resembled my voice and captured my speech rhythm.”
 
 <audio controls>
-    <source src="/assets/2025/speech.wav" type="audio/wav">
+    <source src="/assets/2025-11-04-fine-tuning-speecht5/speech.wav" type="audio/wav">
     Your browser does not support the audio element.
 </audio>
 

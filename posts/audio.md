@@ -7,5 +7,5 @@ markdown = """
 <canvas id="glcanvas" tabindex='1' style='width: 700px;height: 512px;overflow: hidden;background: black;z-index: 0;'></canvas>
 <!-- Minified and statically hosted version of https://github.com/not-fl3/miniquad/blob/master/native/sapp-wasm/js/gl.js -->
 <script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js"></script>
-<script>load('/assets/2023/audio.wasm');</script> <!-- Your compiled wasm file -->
+<script>load('/assets/audio/audio.wasm');</script> <!-- Your compiled wasm file -->
 """
