@@ -132,7 +132,7 @@ body header nav a:hover {
 
 body main>h1 {
     font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
     background-color: var(--primary-color);
     padding-left: 13px;

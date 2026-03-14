@@ -115,15 +115,7 @@ pub fn build() {
 
             let mut html_output = head_string.clone();
             html_output = html_output.replace("$title", post.title.as_str());
-            if post.created == post.updated {
-                html_output =
-                    html_output.replace("$date", format!("created on {}", post.created).as_str());
-            } else {
-                html_output = html_output.replace(
-                    "$date",
-                    format!("created on {}, updated on {}", post.created, post.updated).as_str(),
-                );
-            }
+            html_output = html_output.replace("$date", format!("{}", post.created).as_str());
 
             if post.layout == "post" {
                 html_output =
