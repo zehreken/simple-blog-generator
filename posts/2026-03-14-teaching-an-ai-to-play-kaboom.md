@@ -47,4 +47,5 @@ and on each update: 0.001, this small reward was basically for surviving
 
 Similarly the agent succesfully converged after around 3000 steps. This time the agent had a different quirky behaviour which I was expecting actually. It liked to camp in the corners. I think a human player would do the same in this case since the game does not really reward moving much and the obstacle density is quite low.
 
+You can find the source files in [this github link](https://github.com/zehreken/mini-games-rl).
 """

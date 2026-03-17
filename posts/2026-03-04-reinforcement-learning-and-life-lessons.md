@@ -26,7 +26,7 @@ Relationships follow a similar pattern. We might find a rewarding partnership bu
 
 ### The Constraint of Time
 
-In theory, an RL agent has no time constraints, it can run as long as there is compute power. But we "mere humans" have a finite clock. Our action space is constantly shrinking. At ten years old, the dream of an Olympic gold medal is a valid data point in your action space; a few decades later, that option simply disappears.
+In theory, an RL agent has no time constraints, it can run as long as there is compute power. But we "mere humans" have a finite clock. Our action space is constantly shrinking. At ten years old, the dream of an Olympic gold medal is a valid data point in your action space; a few decades later, that option simply disappears. As a kid I always had grandiose dreams about my future, it was sometimes being a very successful business person or a very famous musician. Now at the age of 40, I realize that my action space is getting smaller faster every year.
 
 This leads to the ultimate human question: How do we know when we’ve found a "good enough" life path, versus when we are simply settling because we’re afraid to keep looking?
 """
