@@ -1,0 +1,25 @@
+:root {
+    --main-color: rgb(255, 88, 88);
+}
+
+body {
+    max-width: 400px;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+    background-color: var(--main-color);
+}
+
+a:active {
+    color: black;
+}

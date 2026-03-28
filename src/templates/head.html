@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='$language'>
+
+<head>
+    $analytics_block
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>$site_name</title>
+    <meta name="generator" content="https://github.com/zehreken/simple-blog-generator" />
+    <meta property="og:title" content="$site_name" />
+    <meta property="og:locale" content="$language" />
+    <meta name="description" content="$description" />
+    <meta property="og:description" content="$description" />
+    <link rel="canonical" href="$site_url" />
+    <meta property="og:url" content="$site_url" />
+    <meta property="og:site_name" content="$site_name" />
+    <script type="application/ld+json">
+{"@type":"WebSite","url":"$site_url","name":"$site_name","description":"$description","@context":"https://schema.org"}</script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1><a class="site-title" rel="author" href="/">$site_name</a></h1>
+            <nav>
+                $nav_links
+            </nav>
+        </header>
+        <br>
+        <hr>
+        <main>
+            <h5>$date</h5>
+            <h5>$tags</h5>
+            <h1>$title</h1>
+            $content
+        </main>
+        <hr>
+        <footer>
+            <p>$footer_links</p>
+        </footer>
+    </div>
+</body>
+
+</html>

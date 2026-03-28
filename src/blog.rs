@@ -1,4 +1,4 @@
-use crate::utils;
+use crate::{context::BuildContext, utils};
 use serde::Deserialize;
 use std::{
     collections::HashMap,
@@ -7,14 +7,12 @@ use std::{
     path::PathBuf,
 };
 
-const STYLE: &str = "main";
-const BULLET: &str = "■";
-
 #[derive(Debug, Deserialize)]
 pub struct Post {
     pub layout: String,
     pub title: String,
     pub created: String,
+    #[allow(dead_code)]
     pub updated: String,
     pub tags: String,
     pub markdown: String,
@@ -22,169 +20,145 @@ pub struct Post {
 
 impl Post {
     pub fn new(content: &str) -> Self {
-        let post: Post =
-            toml::from_str(content).expect(format!("Error deserializing content").as_str());
-        post
+        toml::from_str(content).expect("Error deserializing post content")
     }
 }
 
-fn build_index(tag: &str, posts: &Vec<String>) {
-    let head_string = fs::read_to_string("tag_head.html");
-    let head_string = match head_string {
-        Ok(file) => file,
-        Err(error) => panic!("Error reading [tag_head.html]: {}", error),
-    };
+fn build_tag_index(tag: &str, posts: &[String], ctx: &BuildContext) {
+    let head_string = &ctx.templates.tag_head;
 
     let mut index_markdown = String::new();
     for post in posts {
-        index_markdown.push('[');
-        index_markdown.push_str(format!("${0}", BULLET).as_str());
-        index_markdown.push(' ');
-        index_markdown.push_str(post);
-        index_markdown.push(']');
-        index_markdown.push('(');
-        index_markdown.push_str("../");
-        index_markdown.push_str(post);
-        index_markdown.push_str(".html)  \r");
+        index_markdown.push_str(&format!("[$■ {}](../{}.html)  \r", post, post));
     }
 
     let mut index_html = head_string.clone();
     index_html = index_html.replace("$title", "");
     index_html = index_html.replace("$date", "");
     index_html = index_html.replace("$tags", "");
-    index_html = index_html.replace("$content", utils::to_html(index_markdown.as_str()).as_str());
-    index_html = index_html.replace("$■", "<span> ■ </span>"); // 'Thin space' character is used before and after asterisk
-    let exists = fs::exists("site/tags/").unwrap();
-    if !exists {
-        fs::create_dir("site/tags/").unwrap();
+    index_html = index_html.replace("$content", &utils::to_html(&index_markdown));
+    index_html = index_html.replace("$■", "<span>\u{2009}■\u{2009}</span>");
+
+    let tags_dir = ctx.output_dir.join("tags");
+    if !tags_dir.exists() {
+        fs::create_dir(&tags_dir).expect("Failed to create tags directory");
     }
-    let mut index_file =
-        fs::File::create(format!("site/tags/{}.html", tag.replace("#", ""))).unwrap();
-    index_file.write_all(&index_html.into_bytes()).unwrap()
+
+    let tag_file = tags_dir.join(format!("{}.html", tag.replace('#', "")));
+    let mut index_file = fs::File::create(tag_file).expect("Failed to create tag index file");
+    index_file
+        .write_all(index_html.as_bytes())
+        .expect("Failed to write tag index");
 }
 
 fn get_tags_link(tags: &str) -> String {
-    let mut tags_link = String::from("");
-    tags_link.push_str("<p>");
+    let mut tags_link = String::from("<p>");
     for tag in tags.split(' ') {
-        tags_link.push_str(format!("<a href=tags/{}.html>", tag.replace("#", "")).as_str());
-        tags_link.push_str(tag);
-        tags_link.push_str("</a> ");
+        tags_link.push_str(&format!(
+            "<a href=tags/{}.html>{}</a> ",
+            tag.replace('#', ""),
+            tag
+        ));
     }
     tags_link.push_str("</p>");
-
     tags_link
 }
 
-pub fn build() {
-    utils::create_directory(utils::SITE_DIRECTORY);
+pub fn build(ctx: &BuildContext) {
+    if !ctx.output_dir.exists() {
+        fs::create_dir_all(&ctx.output_dir).expect("Failed to create output directory");
+    }
 
-    let head_string = fs::read_to_string("head.html");
-    let head_string = match head_string {
-        Ok(file) => file,
-        Err(error) => panic!("Error reading [head.html]: {}", error),
-    };
+    let head_string = &ctx.templates.head;
 
-    let mut entries = fs::read_dir("posts")
-        .expect("Directory [posts] is not found")
+    let mut entries = fs::read_dir(&ctx.posts_dir)
+        .unwrap_or_else(|_| panic!("Directory {:?} not found", ctx.posts_dir))
         .map(|res| res.map(|e| e.path()))
         .collect::<Result<Vec<_>, io::Error>>()
         .expect("Error collecting entries");
 
-    // Sort by file name
     entries.sort();
     entries.reverse();
 
-    let source = format!("{0}.css", STYLE);
-    let target = "site/main.css";
-    utils::copy_file(source.as_str(), target);
+    fs::write(ctx.output_dir.join("main.css"), &ctx.templates.main_css)
+        .expect("Failed to write main.css");
 
     let mut index_markdown = String::new();
-
-    let mut prev_year = String::from("");
+    let mut prev_year = String::new();
     let mut posts_by_tag: HashMap<String, Vec<String>> = HashMap::new();
 
     for entry in entries {
         let path = entry;
-        // This filters .DS_Store
-        if let Some(_) = path.extension() {
-            let contents = fs::read_to_string(&path)
-                .expect(format!("Error reading file [{:?}]", path).as_str());
+        if path.extension().is_none() {
+            continue;
+        }
 
-            let post: Post = Post::new(contents.as_str());
+        let contents =
+            fs::read_to_string(&path).unwrap_or_else(|_| panic!("Error reading file {:?}", path));
 
-            let mut html_output = head_string.clone();
-            html_output = html_output.replace("$title", post.title.as_str());
-            html_output = html_output.replace("$date", format!("{}", post.created).as_str());
+        let post = Post::new(&contents);
 
-            if post.layout == "post" {
-                html_output =
-                    html_output.replace("$tags", get_tags_link(post.tags.as_str()).as_str());
-            } else if post.layout == "page" {
-                html_output = html_output.replace("$tags", "");
-            }
+        let mut html_output = head_string.clone();
+        html_output = html_output.replace("$title", &post.title);
+        html_output = html_output.replace("$date", &post.created);
 
-            html_output =
-                html_output.replace("$content", utils::to_html(post.markdown.as_str()).as_str());
+        if post.layout == "post" {
+            html_output = html_output.replace("$tags", &get_tags_link(&post.tags));
+        } else {
+            html_output = html_output.replace("$tags", "");
+        }
 
-            let file_name = path.file_stem().unwrap();
-            let mut out_path = PathBuf::from(utils::SITE_DIRECTORY);
+        html_output = html_output.replace("$content", &utils::to_html(&post.markdown));
 
-            if post.layout == "post" {
-                let year = post.created.split('-').next().unwrap().to_owned();
-                let tags = post.tags.split(' ');
-                for tag in tags {
-                    match posts_by_tag.get_mut(tag) {
-                        Some(posts) => posts.push(file_name.to_owned().into_string().unwrap()),
-                        None => {
-                            posts_by_tag.insert(
-                                tag.into(),
-                                vec![file_name.to_owned().into_string().unwrap()],
-                            );
-                        }
+        let file_name = path.file_stem().unwrap();
+        let mut out_path: PathBuf = ctx.output_dir.clone();
+
+        if post.layout == "post" {
+            let year = post.created.split('-').next().unwrap().to_owned();
+            for tag in post.tags.split(' ') {
+                let stem = file_name.to_str().unwrap().to_owned();
+                match posts_by_tag.get_mut(tag) {
+                    Some(posts) => posts.push(stem),
+                    None => {
+                        posts_by_tag.insert(tag.to_owned(), vec![stem]);
                     }
                 }
-                if prev_year != year {
-                    index_markdown.push_str("#### ");
-                    index_markdown.push_str(&year);
-                    index_markdown.push_str("  \r");
-                    prev_year = year.to_owned();
-                }
-                index_markdown.push('[');
-                index_markdown.push_str("$■");
-                index_markdown.push(' ');
-                index_markdown.push_str(post.title.as_str());
-                index_markdown.push(']');
-                index_markdown.push('(');
-                index_markdown.push_str(file_name.to_str().unwrap());
-                index_markdown.push_str(".html)  \r");
             }
-
-            out_path.push(file_name);
-            out_path.set_extension("html");
-
-            println!("{:?}", &out_path);
-            let mut file = fs::File::create(out_path).expect("Error creating file");
-            file.write_all(&html_output.into_bytes()[..])
-                .expect("Error writing to file");
+            if prev_year != year {
+                index_markdown.push_str(&format!("#### {}  \r", year));
+                prev_year = year;
+            }
+            index_markdown.push_str(&format!(
+                "[$■ {}]({}.html)  \r",
+                post.title,
+                file_name.to_str().unwrap()
+            ));
         }
+
+        out_path.push(file_name);
+        out_path.set_extension("html");
+
+        println!("{:?}", &out_path);
+        let mut file = fs::File::create(out_path).expect("Error creating file");
+        file.write_all(html_output.as_bytes())
+            .expect("Error writing to file");
     }
 
     for (tag, posts) in &posts_by_tag {
         println!("[TAG] {}", tag);
-        build_index(tag, posts);
-        for post in posts {
-            println!("{}", post);
-            build_index(tag, posts);
-        }
+        build_tag_index(tag, posts, ctx);
     }
 
     let mut index_html = head_string.clone();
     index_html = index_html.replace("$title", "");
     index_html = index_html.replace("$date", "");
     index_html = index_html.replace("$tags", "");
-    index_html = index_html.replace("$content", utils::to_html(index_markdown.as_str()).as_str());
-    index_html = index_html.replace("$■", "<span> ■ </span>"); // 'Thin space' character is used before and after asterisk
-    let mut index_file = fs::File::create("site/index.html").unwrap();
-    index_file.write_all(&index_html.into_bytes()).unwrap()
+    index_html = index_html.replace("$content", &utils::to_html(&index_markdown));
+    index_html = index_html.replace("$■", "<span>\u{2009}■\u{2009}</span>");
+
+    let mut index_file =
+        fs::File::create(ctx.output_dir.join("index.html")).expect("Failed to create index.html");
+    index_file
+        .write_all(index_html.as_bytes())
+        .expect("Failed to write index.html");
 }
