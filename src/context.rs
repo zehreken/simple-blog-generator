@@ -20,7 +20,7 @@ impl BuildContext {
                 .paths
                 .as_ref()
                 .and_then(|p| p.output.as_deref())
-                .unwrap_or("site");
+                .unwrap_or("docs");
             project_root.join(dir)
         });
 
