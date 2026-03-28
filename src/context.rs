@@ -29,7 +29,7 @@ impl BuildContext {
                 .paths
                 .as_ref()
                 .and_then(|p| p.posts.as_deref())
-                .unwrap_or("posts"),
+                .unwrap_or("source/posts"),
         );
 
         let zettelkasten_dir = project_root.join(
@@ -37,7 +37,7 @@ impl BuildContext {
                 .paths
                 .as_ref()
                 .and_then(|p| p.zettelkasten.as_deref())
-                .unwrap_or("zettelkasten"),
+                .unwrap_or("source/zettelkasten"),
         );
 
         let templates = templates::resolve(project_root, &config);
