@@ -45,6 +45,7 @@ impl Default for SiteConfig {
 #[derive(Debug, Deserialize)]
 pub struct AnalyticsConfig {
     pub google_tag: Option<String>,
+    pub librecounter: Option<bool>,
 }
 
 #[derive(Debug, Deserialize, Clone)]

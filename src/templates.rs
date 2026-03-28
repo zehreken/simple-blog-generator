@@ -89,6 +89,14 @@ fn apply_config(template: &str, config: &SbgConfig) -> String {
         })
         .unwrap_or_default();
 
+    let counter_block = config
+        .analytics
+        .as_ref()
+        .and_then(|a| a.librecounter)
+        .filter(|&enabled| enabled)
+        .map(|_| "<img src=\"https://librecounter.org/counter.svg\" referrerPolicy=\"unsafe-url\" width=\"0\" />")
+        .unwrap_or_default();
+
     let language = config.site.language.as_deref().unwrap_or("en_US");
     let description = config.site.description.as_deref().unwrap_or("");
     let url = config.site.url.as_deref().unwrap_or("/");
@@ -99,6 +107,7 @@ fn apply_config(template: &str, config: &SbgConfig) -> String {
         .replace("$description", description)
         .replace("$site_url", url)
         .replace("$analytics_block", &analytics_block)
+        .replace("$counter_block", counter_block)
         .replace("$nav_links", &nav_links)
         .replace("$footer_links", &footer_links)
 }

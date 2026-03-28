@@ -1,15 +1,16 @@
 [site]
-name        = "Test Blog"
+name = "Test Blog"
 description = "A test site for sbg development"
-url         = "http://localhost"
+url = "http://localhost"
 
 [nav]
-links = [
-    { label = "about", href = "/about.html" },
-]
+links = [{ label = "about", href = "/about.html" }]
 
 [footer]
 links = [
     { label = "github", href = "https://github.com/zehreken" },
     { label = "zettel", href = "/zettelkasten/" },
 ]
+
+[analytics]
+librecounter = true
