@@ -88,15 +88,15 @@ fn build_tag_index(
 }
 
 fn get_tags_link(tags: &str) -> String {
-    let mut tags_link = String::from("<p>");
+    let mut tags_link = String::from("<div class=\"tag-nav\">");
     for tag in tags.split(' ') {
         tags_link.push_str(&format!(
-            "<a href=tags/{}.html>{}</a> ",
+            "<a href=\"tags/{}.html\" class=\"tag-pill\">{}</a>",
             tag.replace('#', ""),
             tag
         ));
     }
-    tags_link.push_str("</p>");
+    tags_link.push_str("</div>");
     tags_link
 }
 
