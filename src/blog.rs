@@ -151,11 +151,20 @@ pub fn build(ctx: &BuildContext) {
         build_tag_index(tag, posts, ctx);
     }
 
+    let mut sorted_tags: Vec<&str> = posts_by_tag.keys().map(|s| s.as_str()).collect();
+    sorted_tags.sort();
+    let mut tag_nav = String::from("<div class=\"tag-nav\"><a href=\"index.html\" class=\"tag-pill active\">all</a>");
+    for tag in &sorted_tags {
+        let slug = tag.replace('#', "");
+        tag_nav.push_str(&format!("<a href=\"tags/{}.html\" class=\"tag-pill\">{}</a>", slug, tag));
+    }
+    tag_nav.push_str("</div>");
+
     let mut index_html = head_string.clone();
     index_html = index_html.replace("$title", "");
     index_html = index_html.replace("$date", "");
     index_html = index_html.replace("$tags", "");
-    index_html = index_html.replace("$content", &utils::to_html(&index_markdown));
+    index_html = index_html.replace("$content", &format!("{}{}", tag_nav, utils::to_html(&index_markdown)));
     index_html = index_html.replace("$■", "<span>\u{2009}■\u{2009}</span>");
 
     let mut index_file =

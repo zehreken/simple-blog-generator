@@ -447,6 +447,28 @@ sup {
     background-color: var(--even-line-color);
 }
 
+.tag-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 10px 0;
+    max-width: 700px;
+}
+
+.tag-pill {
+    font-family: "OpenSans-Regular", "Helvetica Neue", Helvetica, Arial;
+    font-size: 11px;
+    color: var(--primary-color);
+    opacity: 0.4;
+    text-decoration: none;
+    text-transform: lowercase;
+}
+
+.tag-pill:hover,
+.tag-pill.active {
+    opacity: 1;
+}
+
 .post-date {
     font-size: 11px;
     color: #000;
