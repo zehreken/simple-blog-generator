@@ -447,6 +447,13 @@ sup {
     background-color: var(--even-line-color);
 }
 
+.post-date {
+    font-size: 11px;
+    color: #000;
+    font-family: "OpenSans-Regular", "Helvetica Neue", Helvetica, Arial;
+    margin-right: 6px;
+}
+
 figcaption {
     font-size: 0.85rem;
     color: #666;

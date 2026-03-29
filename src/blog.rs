@@ -128,8 +128,10 @@ pub fn build(ctx: &BuildContext) {
                 index_markdown.push_str(&format!("#### {}  \r", year));
                 prev_year = year;
             }
+            let month_day = post.created.splitn(3, '-').skip(1).collect::<Vec<_>>().join("-");
             index_markdown.push_str(&format!(
-                "[$■ {}]({}.html)  \r",
+                "<span class=\"post-date\">{}</span> [{}]({}.html)  \r",
+                month_day,
                 post.title,
                 file_name.to_str().unwrap()
             ));
