@@ -24,19 +24,55 @@ impl Post {
     }
 }
 
-fn build_tag_index(tag: &str, posts: &[String], ctx: &BuildContext) {
+struct PostMeta {
+    stem: String,
+    title: String,
+    date: String,
+}
+
+fn build_tag_index(
+    tag: &str,
+    posts: &[PostMeta],
+    sorted_tags: &[&str],
+    ctx: &BuildContext,
+) {
     let head_string = &ctx.templates.tag_head;
 
+    // Build tag nav with current tag unclickable
+    let mut tag_nav = String::from("<div class=\"tag-nav\"><a href=\"../index.html\" class=\"tag-pill\">all</a>");
+    for t in sorted_tags {
+        let slug = t.replace('#', "");
+        if *t == tag {
+            tag_nav.push_str(&format!("<span class=\"tag-pill active\">{}</span>", t));
+        } else {
+            tag_nav.push_str(&format!("<a href=\"{}.html\" class=\"tag-pill\">{}</a>", slug, t));
+        }
+    }
+    tag_nav.push_str("</div>");
+
     let mut index_markdown = String::new();
+    let mut prev_year = String::new();
     for post in posts {
-        index_markdown.push_str(&format!("[$■ {}](../{}.html)  \r", post, post));
+        let year = post.date.split('-').next().unwrap_or("").to_owned();
+        if prev_year != year {
+            index_markdown.push_str(&format!("#### {}  \r", year));
+            prev_year = year;
+        }
+        let month_day = post.date.splitn(3, '-').skip(1).collect::<Vec<_>>().join("-");
+        index_markdown.push_str(&format!(
+            "<span class=\"post-date\">{}</span> [{}](../{}.html)  \r",
+            month_day, post.title, post.stem
+        ));
     }
 
     let mut index_html = head_string.clone();
     index_html = index_html.replace("$title", "");
     index_html = index_html.replace("$date", "");
     index_html = index_html.replace("$tags", "");
-    index_html = index_html.replace("$content", &utils::to_html(&index_markdown));
+    index_html = index_html.replace(
+        "$content",
+        &format!("{}{}", tag_nav, utils::to_html(&index_markdown)),
+    );
     index_html = index_html.replace("$■", "<span>\u{2009}■\u{2009}</span>");
 
     let tags_dir = ctx.output_dir.join("tags");
@@ -85,7 +121,7 @@ pub fn build(ctx: &BuildContext) {
 
     let mut index_markdown = String::new();
     let mut prev_year = String::new();
-    let mut posts_by_tag: HashMap<String, Vec<String>> = HashMap::new();
+    let mut posts_by_tag: HashMap<String, Vec<PostMeta>> = HashMap::new();
 
     for entry in entries {
         let path = entry;
@@ -116,11 +152,15 @@ pub fn build(ctx: &BuildContext) {
         if post.layout == "post" {
             let year = post.created.split('-').next().unwrap().to_owned();
             for tag in post.tags.split(' ') {
-                let stem = file_name.to_str().unwrap().to_owned();
+                let meta = PostMeta {
+                    stem: file_name.to_str().unwrap().to_owned(),
+                    title: post.title.clone(),
+                    date: post.created.clone(),
+                };
                 match posts_by_tag.get_mut(tag) {
-                    Some(posts) => posts.push(stem),
+                    Some(posts) => posts.push(meta),
                     None => {
-                        posts_by_tag.insert(tag.to_owned(), vec![stem]);
+                        posts_by_tag.insert(tag.to_owned(), vec![meta]);
                     }
                 }
             }
@@ -146,13 +186,13 @@ pub fn build(ctx: &BuildContext) {
             .expect("Error writing to file");
     }
 
-    for (tag, posts) in &posts_by_tag {
-        println!("[TAG] {}", tag);
-        build_tag_index(tag, posts, ctx);
-    }
-
     let mut sorted_tags: Vec<&str> = posts_by_tag.keys().map(|s| s.as_str()).collect();
     sorted_tags.sort();
+
+    for (tag, posts) in &posts_by_tag {
+        println!("[TAG] {}", tag);
+        build_tag_index(tag, posts, &sorted_tags, ctx);
+    }
     let mut tag_nav = String::from("<div class=\"tag-nav\"><a href=\"index.html\" class=\"tag-pill active\">all</a>");
     for tag in &sorted_tags {
         let slug = tag.replace('#', "");
