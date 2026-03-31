@@ -171,9 +171,10 @@ body main>h4 {
 }
 
 body main>h5 {
-    font-family: "OpenSans-Bold", "Helvetica Neue", Helvetica, Arial;
-    font-size: 10px;
+    font-family: "OpenSans-Regular", "Helvetica Neue", Helvetica, Arial;
+    font-size: 11px;
     padding-left: 13px;
+    color: #000;
     text-align: right;
 }
 
