@@ -423,6 +423,7 @@ ol.linenums {
 .prettyprint ol.linenums>li {
     font-family: "Inconsolata-Regular", "Helvetica Neue", Helvetica, Arial;
     list-style-type: decimal;
+    list-style-position: inside;
 }
 
 /* Alternate shading for lines */
